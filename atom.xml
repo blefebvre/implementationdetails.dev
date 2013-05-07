@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://blefebvre.github.io/atom.xml" rel="self"/>
-  <link href="http://blefebvre.github.io/"/>
-  <updated>2013-05-06T22:14:17-04:00</updated>
-  <id>http://blefebvre.github.io/</id>
+  <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
+  <link href="http://brucelefebvre.com/"/>
+  <updated>2013-05-07T00:28:06-04:00</updated>
+  <id>http://brucelefebvre.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Bruce Lefebvre]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

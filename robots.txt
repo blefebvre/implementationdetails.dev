@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://blefebvre.github.io/sitemap.xml 
+Sitemap: http://brucelefebvre.com/sitemap.xml 
