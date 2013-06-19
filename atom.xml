@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2013-06-20T00:17:43+02:00</updated>
+  <updated>2013-06-20T01:12:49+02:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cqcon Mobile First]]></title>
+    <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-mobile-first/"/>
+    <updated>2013-06-20T00:00:00+02:00</updated>
+    <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-mobile-first</id>
+    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
+]]></content>
+  </entry>
   
 </feed>
