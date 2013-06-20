@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Blog]]></title>
-  <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: rwd | My Blog]]></title>
+  <link href="http://brucelefebvre.com/blog/categories/rwd/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
   <updated>2013-06-20T08:11:26+02:00</updated>
   <id>http://brucelefebvre.com/</id>
@@ -18,7 +18,7 @@
     <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
     <updated>2013-06-20T08:10:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
-    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
+    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>
   </entry>
   
