@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Evolve 2013: CQ Mobile Apps</title>
+
+		<meta name="description" content="Mobile applications using Adobe Experience Manager">
+		<meta name="author" content="Andrew Savory, Bruce Lefebvre">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<link rel="stylesheet" href="css/theme/evolve-overrides.css">
+
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-state="bg first">
+					<h1>CQ Mobile Apps</h1>
+					<p>
+						<br />
+						<small><a href="http://www.andrewsavory.com/">Andrew Savory</a> / <a href="http://twitter.com/savs">@savs</a></small><br/>
+						<small><a href="http://brucelefebvre.com/">Bruce Lefebvre</a> / <a href="http://twitter.com/brucelefebvre">@brucelefebvre</a></small><br/>
+					</p>
+				</section>
+
+				<!-- Introductions -->
+				<section>
+					<section>
+						<h2>Introductions</h2>
+						<!--
+							- Who we are and what we do
+						-->
+					</section>
+					<section>
+						<h2>Andrew</h2>
+						<ul>
+							<li>Senior Technical Product Marketing Manager, Mobile</li>
+							<li>asavory@adobe.com</li>
+							<li><a href="http://twitter.com/savs">@savs</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Bruce</h2>
+						<ul>
+							<li>Computer Scientist, CQ</li>
+							<li><a href="http://twitter.com/brucelefebvre">@brucelefebvre</a></li>
+						</ul>
+					</section>
+					<section>
+						<img style="border: none" width="50%" src="images/question bubble.svg" "Questions"/>
+						<aside class="notes">
+							<ul>
+								<li>Who the audience are</li>
+								<li>How many have a mobile site</li>
+								<li>How many have a mobile app</li>
+								<li>How many are planning a mobile app</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<!-- Mobile Challenges -->
+				<section>
+					<section>
+						<img style="border: none" width="50%" src="images/mobile_tablet_noun_project_16427.svg" "Mobile and Tablet"/>
+						<aside class="notes">
+							<p>Let's talk about mobile.</p>
+						</aside>
+					</section>
+					<section style="background-image: url('images/Map Pin Red.svg'); background-size: 10%; background-repeat: no-repeat; background-position: top right;">
+						<h2>You are here</h2>
+						<p>You have a big investment in your existing website:</p>
+						<ul>
+							<li>Lots of content</li>
+							<li>Lots of processes</li>
+							<li>Lots of training</li>
+							<li>Lots of integrations</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>process = editorial processes; workflows for review, defined roles/responsibilities</li>
+								<li>training = staff time invested in knowing authoring tools</li>
+								<li>integration = ecommerce, crm, authentication/authorisation, enterprise data</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>You need to address mobile</h2>
+					</section>
+					<section>
+						<h2>Mobile challenges</h2>
+						<ul>
+							<li>Mobile websites<br />
+							<span class="fragment">...are easy (with CQ)</span></li>
+							<li class="fragment">Mobile apps are hard</li>
+						</ul>
+						<aside class="notes">
+							<p>Builds: mobile websites; mobile apps.</p>
+							<p>Mobile websites are easy because:</p>
+							<ul>
+								<li>live copy/multi-site manager</li>
+								<li>device groups and detection</li>
+								<li>emulators and simulators</li>
+								<li>responsive design and adaptive images</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Mobile apps are hard</h2>
+						<p>How do you:</p>
+						<ul>
+							<li>Re-use your content</li>
+							<li>Provide back-end server infrastructure</li>
+							<li>Develop for multiple mobile platforms</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Content: without abandoning existing processes</li>
+								<li>Infrastructure: without abandoning existing integrations, and scale</li>
+								<li>Platforms: without installing every SDK and learning every language</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Mobile experiences are hard</h2>
+						<p>Unique challenges:</p>
+						<ul>
+							<li>New functionality to use (touch, sensors)</li>
+							<li>Constraints (memory, performance, battery, connectivity)</li>
+							<li>Difficult to update</li>
+						</ul>
+						<aside class="notes">
+							<p>updates are tough:</p>
+							<ul>
+								<li>going to an agency</li>
+								<li>pushing to app store(s)</li>
+								<li>getting users to update</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/app_store_reviews.png" alt="Bad app store reviews" />
+						<aside class="notes">
+							<p>poor experience impacts usage as well as brand</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Key challenges</h2>
+						<ul>
+							<li>Repurposing content and workflows from CQ</li>
+							<li>Leveraging existing infrastructure to feed complex apps</li>
+							<li>Empowering Marketing and giving control back</li>
+						</ul>
+						<aside class="notes">
+							<p>Challenges are well-defined, but what do we have that can help us?</p>
+							<p>Let's take a look at 3 key components to mobile success.</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- App server platform -->
+				<section>
+					<section>
+						<img src="images/experiencemanager.png" alt="CQ logo" />
+						<h2>CQ Architecture</h2>
+						<ul>
+							<li>OSGi Framework</li>
+							<li>Java, JSP, JS</li>
+							<li>Content store</li>
+							<li>Scalable</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>OSGi great modular framework for bundles and applications</li>
+								<li>Common server-side languages supported</li>
+								<li>content store based on java content repository open standard</li>
+								<li>already trust it to deliver high-traffic websites</li>
+							</ul>
+							<p>So Bruce, we have the server-side sorted. Do you have anything to help on the client side?</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- PhoneGap & PhoneGap Build -->
+				<section>
+					<section>
+						<img src="images/phonegap-logo.png" alt="PhoneGap logo" />
+						<h2>PhoneGap</h2>
+						<aside class="notes">
+							born at Nitobi in 2008<br>
+							before joining Adobe: web consultants<br>
+							tasked with building apps...<br>
+							avoid hitching wagon to single platform<br>
+							<br>
+							many devices, many languages. how?<br>
+							<br>
+							PhoneGap enables..
+						</aside>
+					</section>
+
+					<section>
+						<h2>Apps written with web tech</h2>
+						<h3>you know and love</h3>
+					</section>
+
+					<section>
+						<blockquote>
+							"...using HTML, CSS, and Javascript to not get locked into a proprietary vendor platform."
+						</blockquote>
+						<cite>- Brian LeRoux</cite>
+						<aside class="notes">
+							web current best solution for solving cross platform<br>
+							example, rich interaction.. 
+							<br>
+							device cross platform...
+						</aside>
+					</section>
+
+					<section>
+						<h2>Supported platforms</h2>
+						<ul>
+							<li>iOS</li>
+							<li>Android</li>
+							<li>Blackberry</li>
+							<li>Windows Phone</li>
+							<li>more on the way...</li>
+						</ul>
+						<aside class="notes">
+							what's the advantage?
+						</aside>
+					</section>
+
+					<section>
+						<h2>Device API</h2>
+						<ul>
+							<li>Geo location</li>
+							<li>Accelerometer</li>
+							<li>Camera</li>
+							<li>File system</li>
+							<li>Contacts</li>
+							<li>Notifications</li>
+							<li class="fragment">&lt;your custom plugin&gt;</li>
+						</ul>
+						<aside class="notes">
+							HTML content in device native webview<br>
+							JS to native bridge<br>
+							access device features<br>
+							<br>
+							... capabilities not available to web apps<br>
+							need more?<br>
+							<br>
+							(HIT NEXT)<br>
+							plugins supported
+						</aside>
+					</section>
+
+					<section>
+						<h2>Open source</h2>
+						<img src="images/cordova_bot.png" alt="Cordova bot logo" />
+						<aside class="notes">
+							Cordova, an Apache project<br>
+							community contributions welcome
+						</aside>
+					</section>
+
+					<section>
+						<h2>In the real world</h2>
+					</section>
+					<section>
+						<img src="images/phonegap_ios.png" alt="PhoneGap apps in the iOS app store"/>
+						<div>
+							<a href="http://phonegap.com/app/feature/">http://phonegap.com/app/feature/</a>
+						</div>
+						<aside class="notes">
+							apps featured on phonegap.com<br>
+							<br>
+							these are just a few iOS examples...<br>
+							how can you manage building for all platforms?
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/buildbot.png" style="width: 6em" alt="PG build logo" />
+						<h2>PhoneGap Build</h2>
+						<ul>
+							<li>Compile in the cloud</li>
+							<li>Avoid vendor SDKs</li>
+							<li>Now part of Creative Cloud</li>
+						</ul>
+						<aside class="notes">
+							compile in the cloud<br>
+							avoid SDKs<br>
+							CC<br>
+							<br>
+							as of 3.0, CLI<br>
+							dev centric workflow<br>
+							<br>
+							how can it work with CQ?
+						</aside>
+					</section>
+
+				</section>
+
+				<!-- Content Sync -->
+				<section>
+					<section>
+						<img style="width: 8em;" src="images/noun_project_3048.svg" alt="Package" />
+						<h2>Content Sync</h2>
+						<aside class="notes">
+							<ul>
+								<li>Secret ingredient for getting client and server talking.</li>
+								<li>Documented since 5.4</li>
+								<li>For shipping content and updates from CQ to a client</li>
+								<li>Great for mobile apps because ...</li>
+							</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Standards based</li>
+							<li>Optimized for low bandwidth</li>
+							<li>All content welcome</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>standards -> HTTP, ZIP; great for interop</li>
+								<li>bandwidth -> delta update great for slow connections</li>
+								<li>content -> web content, images, xml, json, binaries ...</li>
+							</ul>
+							<p>With CQ as mobile server and PhoneGap for apps, what can we build?</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- Solutions -->
+				<!-- BlueSky -->
+				<section>
+					<section>
+						<h2>Scenario: BlueSky</h2>
+					</section>
+					<section>
+						<h2>The requirement</h2>
+						<ul>
+							<li>Custom mobile application</li>
+							<li>Re-use server architecture</li>
+							<li>Deliver a dynamic <em>mobile</em> experience</li>
+						</ul>
+						<aside class="notes">
+							<p>Builds: custom app; server; dynamic</p>
+							<ul>
+								<li>app: show how we can make apps /app store discoverability / mobile stats (significant more time spent in apps than web)</li>
+								<li>server: keep investment, leverage desktop</li>
+								<li>dynamic: tailored to mobile, mobile features</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>What we built</h2>
+						<ul>
+							<li>Third-party client app</li>
+								<ul>
+									<li>PhoneGap, Angular.js</li>
+								</ul>
+							<li>Server-side JSPs emitting JSON</li>
+							<li>Hypermedia API</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>third-party; only interaction was thru API spec. Angular is js MVC framework</li>
+								<li>server-side: re-use existing content; easy to develop with CQ skills</li>
+								<li>api: only known endpoint was the first one. Flexible, loose coupling to service.</li>
+							</ul>
+							<!--
+							"Hypermedia as the Engine of Application State" (HATEOAS)
+
+							http://stackoverflow.com/questions/1164154/is-that-rest-api-really-rpc-roy-fielding-seems-to-think-so?rq=1
+
+							"Hypermedia APIs embrace the principles that make the web great: flexibility, standardization, and loose coupling to any given service." -- http://www.designinghypermediaapis.com/
+
+							http://2beards.net/2012/03/what-the-hell-is-a-hypermedia-api-and-why-should-i-care/
+
+							http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http
+							-->
+						</aside>
+					</section>
+					<section>
+						<h2>Demo</h2>
+						<aside class="notes">
+							<p>Screenshots here for time, for network, and for offline use after conference.</p>
+							<p>Live demo also running locally and on mobile, happy to show after the talk.</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_geooutdoors_screen.png" alt="Geometrixx Outdoors desktop site" />
+						<aside class="notes">
+							<ul>
+								<li>Geometrixx Outdoors is a great demo ecommerce site</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_geooutdoors_communities_screen.png" alt="Geometrixx Outdoors Communities desktop site" />
+						<aside class="notes">
+							<ul>
+								<li>Geometrixx Outdoors has a communities section, demoing social communities</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_geooutdoors_community_screen.png" alt="Geometrixx Outdoors Community desktop site" />
+						<aside class="notes">
+							<ul>
+								<li>Communities are rich and engaging with a ton of content</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_geooutdoors_mobile_screen.png" alt="Geometrixx Outdoors mobile site" />
+						<aside class="notes">
+							<ul>
+								<li>... but large amount of content doesn't work well as a mobile experience, so it's not included in mobile site</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_splashscreen.png" alt="BlueSky app splashscreen" />
+						<aside class="notes">
+							<ul>
+								<li>BlueSky app provides a community-centric mobile experience for Geo Outdoors</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_login_screen.png" alt="BlueSky login screen" />
+						<aside class="notes">
+							<p>Authentication using standard HTTP(s), login with normal CQ community login. Credentials cached in local phone storage.</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_communities_screen.png" alt="BlueSky Communities screen" />
+						<aside class="notes">
+							<ul>
+								<li>Same content</li>
+								<li>Formatted for mobile experience</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_community.png" alt="BlueSky Community screen" />
+						<aside class="notes">
+							<ul>
+								<li>Content delivered as JSON</li>
+								<li>App has full control over rendering</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_community_members.png" alt="BlueSky community members" />
+						<aside class="notes">
+							<ul>
+								<li>Access most of desktop features</li>
+								<li>Formatted for mobile experience</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_comment.png" alt="BlueSky comment" />
+						<aside class="notes">
+							<ul>
+								<li>Drill down to content</li>
+								<li>Big buttons for mobile</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_map_location.png" alt="BlueSky map location" />
+						<aside class="notes">
+							<ul>
+								<li>Access to device functionality</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_add_article.png" alt="BlueSky add article" />
+						<aside class="notes">
+							<ul>
+								<li>Not just consuming content: add article</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_add_article_text.png" alt="BlueSky add article text" />
+						<aside class="notes">
+							<ul>
+								<li>Lets you author content on mobile</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_add_article_preview.png" alt="BlueSky add article preview" />
+						<aside class="notes">
+							<ul>
+								<li>Preview adding content</li>
+								<li>Picks up my ID as you'd expect</li>
+								<li>Using device-specific features for add location and add picture</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_add_article_picture.png" alt="BlueSky add article picture" />
+						<aside class="notes">
+							<ul>
+								<li>Add picture gives you choice of gallery or camera</li>
+								<li>Access provided through PhoneGap, so no native code needs to be developed, just use JS API</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_settings.png" alt="BlueSky settings screen" />
+						<aside class="notes">
+							<ul>
+								<li>Gives access to config options</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_profile.png" alt="BlueSky profile screen" />
+						<aside class="notes">
+							<ul>
+								<li>Lets you view and edit your CQ profile</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/bluesky_invite_contact.png" alt="BlueSky invite contact screen" />
+						<aside class="notes">
+							<ul>
+								<li>Accessing device-specific content</li>
+								<li>Access is through PhoneGap contacts API</li>
+								<li>Address book is customised mobile experience</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h2>The value</h2>
+						<ul>
+							<li>For users: mobile <em>experience</em>, not mobile <em>effort</em></li>
+							<li>Leverages existing CQ investment, common technologies</li>
+							<li>Loosely-coupled API provides flexibility, minimises pain</li>
+						</ul>
+						<aside class="notes">
+							<p>Shown can build mobile app using phonegap that offers compelling experience accessing native device functionalities with JS through phonegap APIs.</p>
+							<p>Re-use CQ content, and CQ infrastructure investment by using CQ as back-end app server.</p>
+							<p>Let's bring in PhoneGap Build and Content Sync.</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- Newsreader -->
+				<section>
+					<section>
+						<h2>Scenario: Newsreader</h2>
+					</section>
+					<section>
+						<h2>The requirement</h2>
+						<ul>
+							<li class="fragment">Repurpose content</li>
+							<li class="fragment">Build apps across platforms</li>
+							<li class="fragment">Keep content up-to-date</li>
+						</ul>
+						<aside class="notes">
+							<p>Scenario: similar content sites. Imagine magazine or movie studio.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>What we built</h2>
+						<ul>
+							<li>A PhoneGap app (stored in CQ)</li>
+							<li>PhoneGap Build for cross-platform</li>
+							<li>ContentSync for content updates</li>
+						</ul>
+						<aside class="notes">
+							<p>"We" is Gabriel Walt and Cedric Huesler, who built this demo originally for Adobe Summit 2013.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Interlude</h2>
+						<p>Do you read the release notes?</p>
+					</section>
+					<section>
+						<img src="images/cq_mobile_release_notes.png" alt="Screenshot of CQ 5.6.1 release notes" />
+						<aside class="notes">
+							<p>We introduced PhoneGap Build integration in 5.6.1 but didn't explain much about how to use it.</p>
+						</aside>
+					</section>
+					<section>
+						<!-- <img src="images/release_notes_phonegap_zoom.png" alt="Zoom of release notes" /> -->
+						<p><em>&ldquo;Integration with Adobe <a href="https://build.phonegap.com/">PhoneGap Build</a> service<br />
+						to generate mobile apps from within Experience Manager&rdquo;</em></p><br />
+						<p class="fragment"><em>&ldquo;Enable more efficient developer workflow
+						<br/>to maintain and update content-driven mobile apps&rdquo;</em></p>
+						<aside class="notes">
+							<p>Build: release note text</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Demo</h2>
+						<aside class="notes">
+							<ul>
+								<li>PhoneGap Build and Empty PhoneGap Build app list</li>
+								<li>Cloud Services; Configure PhoneGap Build connection</li>
+								<li>PhoneGap app in CRXDE Lite WWW</li>
+								<li>Geo Media Entertainment; add build to properties</li>
+								<li>Triggering workflow</li>
+								<li>Installing, running app</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_geometrixx_media_screen.png" alt="Geometrixx Media Entertainment screen" />
+						<aside class="notes">
+							<p>Geometrixx Media Entertainment perfect target content for a newsreader application</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_phonegap_build_empty_screen.png" alt="PhoneGap Build list of apps" />
+						<aside class="notes">
+							<p>PhoneGap Build. Note only one app.</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_www_screen.png" alt="CRXDE Lite Geometrixx Media PhoneGap app" />
+						<aside class="notes">
+							<ul>
+								<li>Note phonegap-apps folder: hosting template app in CQ</li>
+								<li>www folder contains a complete phonegap app, consisting of html, css, js, and config.xml</li>
+								<li>you could have many of these template apps, each with the look and feel of the particular magazine or movie you were creating an app for</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/phonegap_build_config.png" alt="PhoneGap Build configuration screenshot" />
+						<aside class="notes">
+							<p>Start by configuring connection to PhoneGap Build in Cloud Services. In this case, connection "Evolve Demo".</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_geometrixx_media_cloud_screen.png" alt="Geometrixx Media properties PhoneGap config" />
+						<aside class="notes">
+							<p>Geometrixx Media Entertainment page properties, add cloud service "Evolve Demo"</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_geometrixx_media_workflow_screen.png" alt="Geometrixx Media trigger PhoneGap Build workflow" />
+						<aside class="notes">
+							<p>We can now trigger "PhoneGap Build" workflow. This will post our template app to PhoneGap Build.</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_geometrixx_media_workflow_subject_screen.png" alt="Geometrixx Media subject to workflow" />
+						<aside class="notes">
+							<p>Workflow status updates to reflect the app has been sent.</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_phonegap_build_newapp_screen.png" alt="PhoneGap Build new app" />
+						<aside class="notes">
+							<p>App now shows up in PhoneGap Build. Note:</p>
+							<ul>
+								<li>Built for (6) platforms out of the box</li>
+								<li>QR Code to scan and download for easy testing</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_qr_scanner.png" alt="QR scanning PhoneGap Build site" />
+						<aside class="notes">
+							<p>Scan the QR code in an iPad, iPhone, Android</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/newsreader_install_app.png" alt="Installing PhoneGap Build newsreader" />
+					</section>
+					<section>
+						<img src="images/newsreader_ipad_screen.png" alt="Newsreader iPad screenshot" />
+						<aside class="notes">
+							<ul>
+								<li>App contains all content (grabs on first load)</li>
+								<li>Content works great offline</li>
+								<li>Can be easily updated (manually or by app)</li>
+							</ul>
+					</section>
+				</section>
+
+				<!-- Fake summary -->
+				<section>
+					<section>
+						<h2>Summary</h2>
+						<ul>
+							<li>You can integrate mobile apps with CQ</li>
+							<li>You can re-use your content</li>
+							<li>You can re-use your workflows and integrations</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>With BlueSky we have shown how you can:</li>
+								<ul>
+									<li>use CQ as your app back-end platform</li>
+									<li>re-use existing content</li>
+									<li>build mobile experiences</li>
+								</ul>
+								<li>With Newsreader we have shown how you can:</li>
+								<ul>
+									<li>re-use existing content</li>
+									<li>maintain workflows</li>
+									<li>push a template app from CQ to PhoneGap Build</li>
+								</ul>
+							</ul>
+							<p>So Bruce, I think we're done here?</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- Mobile -->
+				<section>
+					<section>
+						<h2>One more thing</h2>
+						<h1>CQ Mobile</h1>
+						<aside class="notes">
+							<p>So far we've shown how to create compelling apps and re-use our CQ content. But:</p>
+							<ul>
+								<li>Not empowering marketers</li>
+								<li>Not mobile-first, mobile is an afterthought.</li>
+							</ul>
+							<p>How can we win back control of our mobile apps and make mobile apps first class citizens within CQ?</p>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/backup/1_evolve-app_begin.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/2_evolve-app_child-pages.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/3_evolve-app_menu-list.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/4_evolve-app_content.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/5_evolve-app_swipe-carousel.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/6_evolve-app_content-sync.png"/>
+					</section>
+
+					<section>
+						<img src="images/backup/7_evolve-app_phonegap-cli.png"/>
+					</section>
+
+					<section data-state="bg evolve-app-backup-8">
+						<img src="../../images/backup/8_evolve-app_device.png" alt="App running on device"/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Summary</h2>
+						<ul>
+							<li class="fragment">Mobile websites are easy (with CQ)</li>
+							<li class="fragment">Mobile apps are <strike>hard</strike> easy (with CQ)</li>
+						</ul>
+						<aside class="notes">
+							<p>build: websites easy ... then cover below ... then hard.</p>
+							<p>We've already shown:</p>
+							<ul>
+								<li>You can integrate mobile apps with CQ</li>
+								<li>You can re-use your content</li>
+								<li>You can re-use your workflows and integrations</li>
+							</ul>
+							<p>Now you can see:</p>
+							<ul>
+								<li>You can assemble your apps in CQ</li>
+								<li>You can see your content integrated in the app</li>
+								<li>CQ has empowered the marketers ... again.</li>
+							</ul>
+							<p>Started with mobile sites are easy. Ended with mobile apps are easy.</p>
+						</aside>
+					</section>
+				</section>
+
+				<!-- Resources & References -->
+				<section>
+					<section>
+						<h2>Thank You</h2>
+						<img style="border: none" width="30%" src="images/question speech.svg" alt="questions?"/>
+						<h2>Questions?</h2>
+					</section>
+					<section>
+						<h3>Resources</h3>
+						<ul>
+							<li><a href="http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/" target="_blank">PhoneGap Beliefs, Goals, and Philosophy</a> - Brian LeRoux</li>
+							<li><a href="http://dev.day.com/docs/en/cq/current/developing/mobile/contentsync.html">Mobile with Content Sync</a></li>
+						</ul>
+						<h3>References</h3>
+						<!-- Noun project credits etc -->
+						<ul>
+							<li><a href="http://thenounproject.com/noun/question/#icon-No2185" target="_blank">Question</a> designed by <a href="http://thenounproject.com/anasr" target="_blank">Anas Ramadan</a> from The Noun Project</li>
+							<li>
+								<a href="http://thenounproject.com/noun/package/#icon-No3048" target="_blank">Package</a> designed by <a href="http://thenounproject.com/hakan" target="_blank">Hakan Yalcin</a> from The Noun Project
+							</li>
+							<li><a href="http://thenounproject.com/noun/question/#icon-No2036" target="_blank">Question</a> designed by <a href="http://thenounproject.com/henryryder" target="_blank">Henry Ryder</a> from The Noun Project</li>
+						</ul>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/leap/leap.js', async: true }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

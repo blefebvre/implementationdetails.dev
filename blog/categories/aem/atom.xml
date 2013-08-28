@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AEM | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/aem/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2013-08-22T22:56:02-07:00</updated>
+  <updated>2013-08-28T16:42:47-07:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
+    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
+    <updated>2013-08-28T16:28:00-07:00</updated>
+    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
+    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up a Dispatcher on OS X]]></title>
@@ -180,6 +189,15 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
 <p>Configuring Dispatcher - <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html">http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html</a></p>
 
 <p>Security Checklist - <a href="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html">http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
+    <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
+    <updated>2013-06-20T08:10:00-07:00</updated>
+    <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
+    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>
   </entry>
   
