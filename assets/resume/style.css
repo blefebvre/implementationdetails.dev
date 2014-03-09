@@ -1,0 +1,44 @@
+body {
+	font-family: Georgia, Times, 'Times New Roman', serif;
+	color: #222;
+	line-height: 1.4em;
+}
+
+h1 {
+	margin-bottom: .25em;
+}
+
+h2 {
+	color: #999;
+	margin-top: .5em;
+	font-size: 1.2em;
+}
+
+header ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+h3 {
+	border-left: 1px solid #BBB;
+	border-bottom: 1px solid #BBB;
+	padding: 0 0 .4em .6em;
+	margin-top: 1.5em;
+	color: #666;
+}
+
+h4 {
+	margin-bottom: .5em;
+}
+
+h5 {
+	margin-top: .5em;
+}
+
+h5 .timeframe {
+	color: #999;
+}
+
+body>section>section {
+	margin: 0 .5em 0 .5em; 
+}
