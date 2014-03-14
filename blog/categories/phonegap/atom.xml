@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: apps | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/apps/atom.xml" rel="self"/>
+  <title><![CDATA[Category: PhoneGap | Bruce Lefebvre]]></title>
+  <link href="http://brucelefebvre.com/blog/categories/phonegap/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
   <updated>2014-03-14T14:25:38-04:00</updated>
   <id>http://brucelefebvre.com/</id>
@@ -30,15 +30,6 @@
 <p>As it stands, PhoneGap supports all the device operating systems &amp; versions that your team plans to target. Now, if only there was a way to repurpose your brand's most valuable asset: its content. Using Adobe's <a href="http://www.adobe.com/ca/solutions/web-experience-management/web-content-management.html">Experience Manager (formerly CQ)</a>, your team has worked tirelessly to ensure the workflows and business logic are in place to support a distributed team of content authors, marketing personnel, and IT users alike. Your authors have built a solid foundation in the solution, and have embraced the agility afforded by being able to contribute on their various devices via the touch-friendly user interface. If only there was a way...</p>
 
 <p>Well, there is. This spring I'm thrilled to be sharing the details of the AEM 6.0 and PhoneGap integration at both <a href="https://adobesummit.activeevents.com/2014/slc/connect/sessionDetail.ww?SESSION_ID=1211">Adobe SUMMIT</a> in Salt Lake City, and <a href="http://aemhub.cognifide.com/speakers.html#Bruce-Lefebvre">AEM Hub</a> - a brand new conference taking place in London. I hope you will join me.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
-    <updated>2013-08-28T16:28:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
 ]]></content>
   </entry>
   
