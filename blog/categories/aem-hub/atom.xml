@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AEM Hub | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/aem-hub/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-03-14T14:25:38-04:00</updated>
+  <updated>2014-03-14T14:38:33-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -27,7 +27,7 @@
 
 <p>Enter PhoneGap. A <a href="http://phonegap.com/2012/03/19/phonegap-cordova-and-what%E2%80%99s-in-a-name/">distribution of Apache Cordova</a>, PhoneGap is a project which describes itself as enabling cross-platform app development with web technologies you know and love. It sounds promising! You read on. Turns out PhoneGap is basically a web browser, augmented with a JavaScript bridge that provides direct access to device features including the file system, camera, accelerometer, geolocation, compass, contacts, <a href="http://docs.phonegap.com/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs">and more</a>. The plugin architecture is extensible, meaning any device feature that is not currently available can be implemented and added to your app, and even shared with the world if you feel so inclined. It has been around for about 5 years and <a href="http://phonegap.com/app/feature/">many successful apps</a> have been produced with it.</p>
 
-<p>As it stands, PhoneGap supports all the device operating systems &amp; versions that your team plans to target. Now, if only there was a way to repurpose your brand's most valuable asset: its content. Using Adobe's <a href="http://www.adobe.com/ca/solutions/web-experience-management/web-content-management.html">Experience Manager (formerly CQ)</a>, your team has worked tirelessly to ensure the workflows and business logic are in place to support a distributed team of content authors, marketing personnel, and IT users alike. Your authors have built a solid foundation in the solution, and have embraced the agility afforded by being able to contribute on their various devices via the touch-friendly user interface. If only there was a way...</p>
+<p>As it stands, PhoneGap supports all the device operating systems &amp; versions that your team plans to target. Now, if only there was a way to repurpose your brand's most valuable asset: its content. Using Adobe's <a href="http://www.adobe.com/ca/solutions/web-experience-management.html">Experience Manager</a> (formerly CQ), your team has worked tirelessly to ensure the workflows and business logic are in place to support a distributed team of content authors, marketing personnel, and IT users alike. Your authors have built a solid foundation in the solution, and have embraced the agility afforded by being able to contribute on their various devices via the touch-friendly user interface. If only there was a way...</p>
 
 <p>Well, there is. This spring I'm thrilled to be sharing the details of the AEM 6.0 and PhoneGap integration at both <a href="https://adobesummit.activeevents.com/2014/slc/connect/sessionDetail.ww?SESSION_ID=1211">Adobe SUMMIT</a> in Salt Lake City, and <a href="http://aemhub.cognifide.com/speakers.html#Bruce-Lefebvre">AEM Hub</a> - a brand new conference taking place in London. I hope you will join me.</p>
 ]]></content>
