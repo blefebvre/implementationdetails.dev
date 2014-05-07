@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rwd | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/rwd/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-03-14T14:38:33-04:00</updated>
+  <updated>2014-05-07T12:21:54-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
+    <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
+    <updated>2013-09-18T15:11:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
+    <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
+
+<p>Bonus: the source code of "CQCON Village" - the site I made responsive during the demo - is available on github including all the steps I went through to transform it.</p>
+
+<!-- more -->
+
+
+<p>Slides: <a href="/assets/cqcon-mobile-first/">CQCON mobile first</a> (resources start at <a href="/assets/cqcon-mobile-first/#/42">slide 42</a>)</p>
+
+<p>Demo source code: <a href="https://github.com/blefebvre/cqcon-rwd-demo">CQCON Village RWD Overhaul</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CQ | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/cq/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-03-14T14:38:33-04:00</updated>
+  <updated>2014-05-07T12:21:54-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
+    <updated>2014-04-10T11:32:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
+    <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
+
+<p>The code from my demo is available on github: <a href="http://bit.ly/aem-pg">github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
@@ -30,6 +41,24 @@
 <p>As it stands, PhoneGap supports all the device operating systems &amp; versions that your team plans to target. Now, if only there was a way to repurpose your brand's most valuable asset: its content. Using Adobe's <a href="http://www.adobe.com/ca/solutions/web-experience-management.html">Experience Manager</a> (formerly CQ), your team has worked tirelessly to ensure the workflows and business logic are in place to support a distributed team of content authors, marketing personnel, and IT users alike. Your authors have built a solid foundation in the solution, and have embraced the agility afforded by being able to contribute on their various devices via the touch-friendly user interface. If only there was a way...</p>
 
 <p>Well, there is. This spring I'm thrilled to be sharing the details of the AEM 6.0 and PhoneGap integration at both <a href="https://adobesummit.activeevents.com/2014/slc/connect/sessionDetail.ww?SESSION_ID=1211">Adobe SUMMIT</a> in Salt Lake City, and <a href="http://aemhub.cognifide.com/speakers.html#Bruce-Lefebvre">AEM Hub</a> - a brand new conference taking place in London. I hope you will join me.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
+    <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
+    <updated>2013-09-18T15:11:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
+    <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
+
+<p>Bonus: the source code of "CQCON Village" - the site I made responsive during the demo - is available on github including all the steps I went through to transform it.</p>
+
+<!-- more -->
+
+
+<p>Slides: <a href="/assets/cqcon-mobile-first/">CQCON mobile first</a> (resources start at <a href="/assets/cqcon-mobile-first/#/42">slide 42</a>)</p>
+
+<p>Demo source code: <a href="https://github.com/blefebvre/cqcon-rwd-demo">CQCON Village RWD Overhaul</a></p>
 ]]></content>
   </entry>
   
@@ -73,7 +102,7 @@
 
 <p>Download and extract the correct dispatcher version for your httpd:</p>
 
-<p><a href="https://dev.day.com/packageshare/packages/public/day/dispatcher.html">https://dev.day.com/packageshare/packages/public/day/dispatcher.html</a></p>
+<p><a href="https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html">https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html</a></p>
 
 <p>Inside the extracted directory you will find a file named 'dispatcher-apache&lt;version&gt;.so'. Copy this file to /usr/libexec/apache2. In my case:</p>
 
@@ -151,7 +180,7 @@
 $ sudo cp dispatcher.any /etc/apache2/conf/
 </code></pre>
 
-<p>Set the host name and port of your publish instance in dispatcher.any (search for the existing values):</p>
+<p>Open the copy of dispatcher.any with your editor of choice. Look for the '/renders' entry, and point the '/rend01' instance host name and port to your publish instance:</p>
 
 <pre><code>/hostname "127.0.0.1"
 /port "4503"
@@ -209,15 +238,6 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
 <p>Configuring Dispatcher - <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html">http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html</a></p>
 
 <p>Security Checklist - <a href="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html">http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
-    <updated>2013-06-20T08:10:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
-    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>
   </entry>
   

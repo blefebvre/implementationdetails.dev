@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-03-14T14:38:33-04:00</updated>
+  <updated>2014-05-07T12:21:54-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
+    <updated>2014-04-10T11:32:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
+    <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="http://brucelefebvre.com/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
+
+<p>The code from my demo is available on github: <a href="http://bit.ly/aem-pg">github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
@@ -91,7 +102,7 @@
 
 <p>Download and extract the correct dispatcher version for your httpd:</p>
 
-<p><a href="https://dev.day.com/packageshare/packages/public/day/dispatcher.html">https://dev.day.com/packageshare/packages/public/day/dispatcher.html</a></p>
+<p><a href="https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html">https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html</a></p>
 
 <p>Inside the extracted directory you will find a file named &#8216;dispatcher-apache&lt;version&gt;.so&#8217;. Copy this file to /usr/libexec/apache2. In my case:</p>
 
@@ -169,7 +180,7 @@
 $ sudo cp dispatcher.any /etc/apache2/conf/
 </code></pre>
 
-<p>Set the host name and port of your publish instance in dispatcher.any (search for the existing values):</p>
+<p>Open the copy of dispatcher.any with your editor of choice. Look for the &#8216;/renders&#8217; entry, and point the &#8216;/rend01&#8217; instance host name and port to your publish instance:</p>
 
 <pre><code>/hostname "127.0.0.1"
 /port "4503"

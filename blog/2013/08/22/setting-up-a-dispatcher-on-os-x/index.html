@@ -129,7 +129,7 @@
 
 <p>Download and extract the correct dispatcher version for your httpd:</p>
 
-<p><a href="https://dev.day.com/packageshare/packages/public/day/dispatcher.html">https://dev.day.com/packageshare/packages/public/day/dispatcher.html</a></p>
+<p><a href="https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html">https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html</a></p>
 
 <p>Inside the extracted directory you will find a file named &#8216;dispatcher-apache&lt;version&gt;.so&#8217;. Copy this file to /usr/libexec/apache2. In my case:</p>
 
@@ -207,7 +207,7 @@
 $ sudo cp dispatcher.any /etc/apache2/conf/
 </code></pre>
 
-<p>Set the host name and port of your publish instance in dispatcher.any (search for the existing values):</p>
+<p>Open the copy of dispatcher.any with your editor of choice. Look for the &#8216;/renders&#8217; entry, and point the &#8216;/rend01&#8217; instance host name and port to your publish instance:</p>
 
 <pre><code>/hostname "127.0.0.1"
 /port "4503"
@@ -334,6 +334,10 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub 2014: Mobile Apps in AEM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/14/so-you-want-to-build-an-app/">So, you want to build an app</a>
       </li>
     
@@ -347,10 +351,6 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
     
       <li class="post">
         <a href="/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/">Setting up a Dispatcher on OS X</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/20/cqcon-2013-mobile-first/">CQCON 2013: Mobile First</a>
       </li>
     
   </ul>

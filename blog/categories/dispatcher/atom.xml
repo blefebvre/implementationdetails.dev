@@ -4,7 +4,7 @@
   <title><![CDATA[Category: dispatcher | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/dispatcher/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-03-14T14:38:33-04:00</updated>
+  <updated>2014-05-07T12:21:54-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -44,7 +44,7 @@
 
 <p>Download and extract the correct dispatcher version for your httpd:</p>
 
-<p><a href="https://dev.day.com/packageshare/packages/public/day/dispatcher.html">https://dev.day.com/packageshare/packages/public/day/dispatcher.html</a></p>
+<p><a href="https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html">https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html</a></p>
 
 <p>Inside the extracted directory you will find a file named 'dispatcher-apache&lt;version&gt;.so'. Copy this file to /usr/libexec/apache2. In my case:</p>
 
@@ -122,7 +122,7 @@
 $ sudo cp dispatcher.any /etc/apache2/conf/
 </code></pre>
 
-<p>Set the host name and port of your publish instance in dispatcher.any (search for the existing values):</p>
+<p>Open the copy of dispatcher.any with your editor of choice. Look for the '/renders' entry, and point the '/rend01' instance host name and port to your publish instance:</p>
 
 <pre><code>/hostname "127.0.0.1"
 /port "4503"
