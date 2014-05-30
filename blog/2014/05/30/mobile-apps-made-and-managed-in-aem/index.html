@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>CQCON 2013: Mobile First - Bruce Lefebvre</title>
+  <title>Mobile Apps: Made and managed in AEM - Bruce Lefebvre</title>
   <meta name="author" content="Bruce Lefebvre">
 
   
-  <meta name="description" content="My slides from CQCON 2013 are available here: cqcon-mobile-first
-">
+  <meta name="description" content="I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: CONNECT Web Experience. This year I&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first">
+  <link rel="canonical" href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Bruce Lefebvre" type="application/atom+xml">
@@ -81,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">CQCON 2013: Mobile First</h1>
+      <h1 class="entry-title">Mobile Apps: Made and Managed in AEM</h1>
     
     
       <p class="meta">
@@ -97,14 +96,29 @@
   
 
 
-<time datetime="2013-06-20T08:10:00-04:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time>
+<time datetime="2014-05-30T00:07:00-04:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
+<div class="entry-content"><p>I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I&#8217;ll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
+
+<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I&#8217;ve had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
+
+<!-- more -->
+
+
+<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today&#8217;s web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we&#8217;re simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user&#8217;s pocket (&#8216;Note&#8217; users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regards to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I&#8217;ll dig into the libraries we&#8217;ve had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
+
+<p>Whether dealing with products in a commerce scenario or physical properties in hospitality, app content often involves a set of items that should be rendered in a similar fashion. This type of data lends itself nicely to a template based approach, one that is well supported by AngularJS. I&#8217;ll present one approach to structuring your data for consumption by AngularJS that results in a scalable - and maintainable - AEM app.</p>
+
+<p>PhoneGap&#8217;s Javascript to native bridge is a key piece of the framework, one that serves to distinguish your app from a traditional mobile website by exposing access to platform APIs through it&#8217;s pluggable architecture. Some of the functionality supported by featured Cordova plugins include capturing images via the device camera(s), access to the contact database, file system access, and <a href="http://plugins.cordova.io/#/">many more</a>. I&#8217;ll present the patterns we followed to expose this bridge to our app&#8217;s components, and share code samples that&#8217;ll have you up and running with your own project in no time.</p>
+
+<p>See you there.</p>
+
+<p><a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a></p>
 </div>
 
 
@@ -127,12 +141,12 @@
   
 
 
-<time datetime="2013-06-20T08:10:00-04:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time>
+<time datetime="2014-05-30T00:07:00-04:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/rwd/'>rwd</a>
+    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/connectwebex/'>ConnectWebex</a>, <a class='category' href='/blog/categories/phonegap/'>PhoneGap</a>, <a class='category' href='/blog/categories/apps/'>apps</a>
   
 </span>
 
@@ -141,7 +155,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/" >Tweet</a>
   
   
   
@@ -150,8 +164,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/" title="Previous Post: AEMHub 2014: Mobile Apps in AEM">&laquo; AEMHub 2014: Mobile Apps in AEM</a>
       
-        <a class="basic-alignment right" href="/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/" title="Next Post: Setting up a Dispatcher on OS X">Setting up a Dispatcher on OS X &raquo;</a>
       
     </p>
   </footer>
@@ -255,8 +269,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/';
-        var disqus_url = 'http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/';
+        var disqus_identifier = 'http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/';
+        var disqus_url = 'http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/';
         var disqus_script = 'embed.js';
       
     (function () {

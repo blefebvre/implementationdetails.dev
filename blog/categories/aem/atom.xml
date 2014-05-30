@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AEM | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/aem/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-05-07T12:21:54-04:00</updated>
+  <updated>2014-05-30T00:18:11-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
+    <updated>2014-05-30T00:07:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
+    <content type="html"><![CDATA[<p>I'm thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I'll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
+
+<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I've had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
+
+<!-- more -->
+
+
+<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today's web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we're simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user's pocket ('Note' users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regards to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I'll dig into the libraries we've had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
+
+<p>Whether dealing with products in a commerce scenario or physical properties in hospitality, app content often involves a set of items that should be rendered in a similar fashion. This type of data lends itself nicely to a template based approach, one that is well supported by AngularJS. I'll present one approach to structuring your data for consumption by AngularJS that results in a scalable - and maintainable - AEM app.</p>
+
+<p>PhoneGap's Javascript to native bridge is a key piece of the framework, one that serves to distinguish your app from a traditional mobile website by exposing access to platform APIs through it's pluggable architecture. Some of the functionality supported by featured Cordova plugins include capturing images via the device camera(s), access to the contact database, file system access, and <a href="http://plugins.cordova.io/#/">many more</a>. I'll present the patterns we followed to expose this bridge to our app's components, and share code samples that'll have you up and running with your own project in no time.</p>
+
+<p>See you there.</p>
+
+<p><a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
@@ -68,176 +92,6 @@
     <updated>2013-08-28T16:28:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
     <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setting up a Dispatcher on OS X]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
-    <updated>2013-08-22T22:40:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
-    <content type="html"><![CDATA[<p>The dispatcher is an important piece of a secure, stable, and solidly-performing AEM implementation. According to <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html">the documentation</a> it can provide caching, load balancing, as well as help to protect your publish instances from attack. For such a multifaceted tool it seems to receive very little attention during the dev process, typically called to action in the final stages of a deployment when most of the dev work has already been done. I propose that developers (including myself) could write better code if they had a deeper understanding of this tool, which is why I went through the process of setting one up on my Mac. What follows are my notes.</p>
-
-<p>Here's what you'll need to get started:</p>
-
-<!-- more -->
-
-
-<ul>
-<li>OS X machine with Apache installed and enabled</li>
-<li>AEM 5.6.1 quickstart
-
-<ul>
-<li>author on :4502</li>
-<li>publish on :4503</li>
-</ul>
-</li>
-</ul>
-
-
-<p>Figure out which version of Apache httpd you're working with:</p>
-
-<pre><code>$ httpd -v
-</code></pre>
-
-<p>Download and extract the correct dispatcher version for your httpd:</p>
-
-<p><a href="https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html">https://www.adobeaemcloud.com/content/companies/public/adobe/dispatcher/dispatcher.html</a></p>
-
-<p>Inside the extracted directory you will find a file named 'dispatcher-apache&lt;version&gt;.so'. Copy this file to /usr/libexec/apache2. In my case:</p>
-
-<pre><code>$ sudo cp dispatcher-apache2.2-4.1.4.so /usr/libexec/apache2
-</code></pre>
-
-<p>Head to the apache2 modules directory:</p>
-
-<pre><code>$ cd /usr/libexec/apache2/
-</code></pre>
-
-<p> Create a symlink to the dispatcher module you just copied over:</p>
-
-<pre><code>$ sudo ln -s dispatcher-apache2.2-4.1.4.so mod_dispatcher.so
-</code></pre>
-
-<p>Head to /etc/apache2 to configure it:</p>
-
-<pre><code>$ cd /etc/apache2
-</code></pre>
-
-<p>Open httpd.conf (as root) with your editor of choice and add the following line to the end of the LoadModule section (line 119 in my case):</p>
-
-<pre><code>LoadModule dispatcher_module libexec/apache2/mod_dispatcher.so
-</code></pre>
-
-<p>After this line, add the following configuration:</p>
-
-<pre><code># configure the minimal setting for the dispatcher
-# the main configuration is read from the 'DispatcherConfig' file.
-&lt;IfModule disp_apache2.c&gt;
-    # location of the configuration file. eg: 'conf/dispatcher.any'
-    DispatcherConfig /etc/apache2/conf/dispatcher.any
-
-    # location of the dispatcher log file. eg: 'logs/dispatcher.log'
-    DispatcherLog    /var/log/apache2/dispatcher.log
-
-    # log level for the dispatcher log
-    # 0 Errors
-    # 1 Warnings
-    # 2 Infos
-    # 3 Debug
-    DispatcherLogLevel 3
-
-    # if turned to 1, the dispatcher looks like a normal module
-    # since build 5210, this setting has no effect, since it used to crash
-    # apache if set to 0.
-    DispatcherNoServerHeader 1
-
-    # if turned to 1, request to / are not handled by the dispatcher
-    # use the mod_alias then for the correct mapping
-    DispatcherDeclineRoot 0
-&lt;/IfModule&gt;
-
-&lt;Directory /&gt;
-    &lt;IfModule disp_apache2.c&gt;
-        # enable dispatcher for ALL request. if this is too restrictive,
-        # move it to another location
-        SetHandler dispatcher-handler
-    &lt;/IfModule&gt;
-
-    Options FollowSymLinks
-    AllowOverride None
-&lt;/Directory&gt;
-</code></pre>
-
-<p>Create a directory named 'conf' in /etc/apache2</p>
-
-<pre><code>$ sudo mkdir /etc/apache2/conf
-</code></pre>
-
-<p>From the extracted dispatcher directory, copy the provided dispatcher.any to conf:</p>
-
-<pre><code>$ cd ~/Downloads/dispatcher-apache2.2-darwin-x86-64-4.1.4/conf/
-$ sudo cp dispatcher.any /etc/apache2/conf/
-</code></pre>
-
-<p>Open the copy of dispatcher.any with your editor of choice. Look for the '/renders' entry, and point the '/rend01' instance host name and port to your publish instance:</p>
-
-<pre><code>/hostname "127.0.0.1"
-/port "4503"
-</code></pre>
-
-<p>Allow requests with authorized header (uncomment and change value) in dispatcher.any:</p>
-
-<pre><code>/allowAuthorized "1"
-</code></pre>
-
-<p>Set the document root directory (search for the existing value):</p>
-
-<pre><code>/docroot "/Library/WebServer/Documents"
-</code></pre>
-
-<p>Check your config syntax:</p>
-
-<pre><code>$ sudo apachectl configtest
-</code></pre>
-
-<p>The previous command should have outputted 'Syntax OK'.</p>
-
-<p>Did it not? You may need to correct your configuration. 'apachectl configtest' should be able to tell you on which line your config is broken.</p>
-
-<p>Give your httpd document root directory to the _www user and group:</p>
-
-<pre><code>$ sudo chown _www:_www /Library/WebServer/Documents/
-</code></pre>
-
-<p>Stop Apache httpd:</p>
-
-<pre><code>$ sudo apachectl stop
-</code></pre>
-
-<p>In another terminal window (or tab), tail the following log files for errors:</p>
-
-<pre><code>$ tail -f /var/log/apache2/error_log /var/log/apache2/dispatcher.log
-</code></pre>
-
-<p>Start Apache httpd back up:</p>
-
-<pre><code>$ sudo apachectl start
-</code></pre>
-
-<p>Barring any errors in the logs you should now be able to browse your AEM publish content via the dispatcher:</p>
-
-<p><a href="http://localhost/content/geometrixx-media/en.html">http://localhost/content/geometrixx-media/en.html</a></p>
-
-<p>You can also poke around /Library/WebServer/Documents/ to see how the static content is stored on the file system.</p>
-
-<p>That's it! You've just configured your very own dispatcher. I've only scratched the surface here and really glazed over much of the configuration, so make sure to read the following resources before releasing this dispatcher into the wild:</p>
-
-<p>Dispatcher - <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html">http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html</a></p>
-
-<p>Configuring Dispatcher - <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html">http://dev.day.com/docs/en/cq/current/deploying/dispatcher/disp_config.html</a></p>
-
-<p>Security Checklist - <a href="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html">http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html</a></p>
 ]]></content>
   </entry>
   

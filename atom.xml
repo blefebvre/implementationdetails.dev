@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-05-07T12:21:54-04:00</updated>
+  <updated>2014-05-30T00:18:11-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
+    <updated>2014-05-30T00:07:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
+    <content type="html"><![CDATA[<p>I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I&#8217;ll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
+
+<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I&#8217;ve had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
+
+<!-- more -->
+
+
+<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today&#8217;s web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we&#8217;re simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user&#8217;s pocket (&#8216;Note&#8217; users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regards to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I&#8217;ll dig into the libraries we&#8217;ve had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
+
+<p>Whether dealing with products in a commerce scenario or physical properties in hospitality, app content often involves a set of items that should be rendered in a similar fashion. This type of data lends itself nicely to a template based approach, one that is well supported by AngularJS. I&#8217;ll present one approach to structuring your data for consumption by AngularJS that results in a scalable - and maintainable - AEM app.</p>
+
+<p>PhoneGap&#8217;s Javascript to native bridge is a key piece of the framework, one that serves to distinguish your app from a traditional mobile website by exposing access to platform APIs through it&#8217;s pluggable architecture. Some of the functionality supported by featured Cordova plugins include capturing images via the device camera(s), access to the contact database, file system access, and <a href="http://plugins.cordova.io/#/">many more</a>. I&#8217;ll present the patterns we followed to expose this bridge to our app&#8217;s components, and share code samples that&#8217;ll have you up and running with your own project in no time.</p>
+
+<p>See you there.</p>
+
+<p><a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
