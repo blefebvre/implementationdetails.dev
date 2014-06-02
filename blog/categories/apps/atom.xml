@@ -4,7 +4,7 @@
   <title><![CDATA[Category: apps | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/apps/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-06-02T16:26:37-04:00</updated>
+  <updated>2014-06-02T17:01:18-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -25,7 +25,7 @@
 <!-- more -->
 
 
-<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today's web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we're simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user's pocket ('Note' users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regards to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I'll dig into the libraries we've had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
+<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today's web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we're simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user's pocket ('Note' users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regard to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I'll dig into the libraries we've had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
 
 <p>Whether dealing with products in a commerce scenario or physical properties in hospitality, app content often involves a set of items that should be rendered in a similar fashion. This type of data lends itself nicely to a template based approach, one that is well supported by AngularJS. I'll present one approach to structuring your data for consumption by AngularJS that results in a scalable - and maintainable - AEM app.</p>
 
