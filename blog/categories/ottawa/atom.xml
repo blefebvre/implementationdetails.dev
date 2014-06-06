@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ottawa | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/ottawa/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-06-06T11:47:34-04:00</updated>
+  <updated>2014-06-06T11:56:08-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -41,7 +41,7 @@
 
 <p>When I'm not riding my bike or running I can usually be found in front of a monitor working primarily with web technology. As a web developer, I have benefited in a big way from the open nature of the www, and strongly believe that much of the success of the platform has been a result of this openness.</p>
 
-<p>Mike Milinkovich's message was that in order for the IoT industry to be truly disruptive, it must follow the open pattern of the web. He reminded us that no matter how much money is thrown at a technology it's still the developers who will <a href="http://thenewkingmakers.com/">choose with their feet</a> where they spend their time and energy. Like Linux, Apache, the www, and the w3c have demonstrated, 'less friction' is still the best model for getting your technology in the hands of developers.</p>
+<p>Speaking as the Executive Director of the <a href="http://www.eclipse.org/org/foundation/">Eclipse Foundation</a>, Mike Milinkovich's message was that in order for the IoT industry to be truly disruptive, it must follow the open pattern of the web. He reminded us that no matter how much money is thrown at a technology it's still the developers who will <a href="http://thenewkingmakers.com/">choose with their feet</a> where they spend their time and energy. Like Linux, Apache, the www, and the w3c have demonstrated, 'less friction' is still the best model for getting your technology in the hands of developers.</p>
 
 <p>There are many protocols emerging to support the IoT including <a href="http://www.eclipse.org/paho/">paho</a>, <a href="http://iot.eclipse.org/protocols.html#oma-lwm2m">OMA Lightweight M2M</a>, <a href="https://projects.eclipse.org/proposals/moquette-mqtt">Moquette MQTT</a>, and <a href="http://www.onem2m.org/">oneM2M</a>. Open frameworks are under development as well, including: <a href="http://www.eclipse.org/proposals/technology.kura/">Kura</a>, a Java &amp; OSGi based framework, and <a href="https://projects.eclipse.org/projects/technology.ponte">Ponte</a>, billed as a bridge from M2M to REST.</p>
 
