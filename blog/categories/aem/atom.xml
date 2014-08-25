@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AEM | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/aem/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-06-10T15:41:36-04:00</updated>
+  <updated>2014-08-24T21:46:25-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
+    <updated>2014-08-24T21:17:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
+    <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
+
+<p><img src="/images/ipad-table.jpg" title="'Writing on the road'" ></p>
+
+<!-- more -->
+
+
+<p>As I compose this post at a kitchen table 850 km from home I can't help but think about how much these shiny pocket computers have changed the way we work, play, and live. According to Apple's numbers there have been over 75 billion individual app downloads since the introduction of the platform. At roughly this point last year Android was poised to overtake that number, reporting a staggering 2.5 billion downloads per month. As web technologists, how can we leverage our skill set to get in on the action?</p>
+
+<p>In my talk at adaptTo() I'll delve into Apache Cordova, a project built to enable cross-platform app development with standards-based web technology. I'll explore how it can be used to interface directly with Apache Sling, and close with a demo of how the AEM + Cordova integration (affectionately known as PhoneGap Enterprise) can be used to empower your marketing personnel to keep your application's content relevant with tools they already love. Code samples will be included to get you started today - with or without an AEM license.</p>
+
+<p>If you have any questions that you'd like to see addressed during the talk, please feel free to reach out in the the comments section below. Hope to see you there.</p>
+
+<p><a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Mobile app development with Apache Cordova and AEM</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
@@ -83,15 +105,6 @@
 <p>Slides: <a href="/assets/cqcon-mobile-first/">CQCON mobile first</a> (resources start at <a href="/assets/cqcon-mobile-first/#/42">slide 42</a>)</p>
 
 <p>Demo source code: <a href="https://github.com/blefebvre/cqcon-rwd-demo">CQCON Village RWD Overhaul</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
-    <updated>2013-08-28T16:28:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
 ]]></content>
   </entry>
   
