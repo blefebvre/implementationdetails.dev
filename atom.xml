@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-08T22:56:32-04:00</updated>
+  <updated>2014-09-23T14:39:33+02:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -14,9 +14,38 @@
 
   
   <entry>
+    <title type="html"><![CDATA[adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/"/>
+    <updated>2014-09-23T14:17:00+02:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova</id>
+    <content type="html"><![CDATA[<p>I was thrilled to have the opportunity to present at this year&#8217;s <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">adaptTo() meetup</a> in Berlin. My slides have been included below, as well as all the sample code that I demonstrated during my session.</p>
+
+<p><img src="http://brucelefebvre.com/images/app_screenshot.png" title="'Sling blog app screenshot'" ></p>
+
+<!-- more -->
+
+
+<h3>Slides</h3>
+
+<iframe src="http://brucelefebvre.com//www.slideshare.net/slideshow/embed_code/39421014" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+
+
+<p>Also available <a href="http://www.slideshare.net/rbl002/adapt-to2014-mobileapps">on slideshare</a>.</p>
+
+<h3>Code</h3>
+
+<p>Sling blog sample: <a href="https://github.com/blefebvre/cordova-sling-blog-sample">https://github.com/blefebvre/cordova-sling-blog-sample</a></p>
+
+<p>AEM PhoneGap Kitchen Sink: <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">https://github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
+
+<p>Thanks to those in the audience for your attention. Hope to be back again next year!</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
     <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
-    <updated>2014-08-24T21:17:00-04:00</updated>
+    <updated>2014-08-24T21:17:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
     <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
 
@@ -38,7 +67,7 @@
   <entry>
     <title type="html"><![CDATA[IoT Day in Ottawa]]></title>
     <link href="http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/"/>
-    <updated>2014-06-06T11:40:00-04:00</updated>
+    <updated>2014-06-06T11:40:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa</id>
     <content type="html"><![CDATA[<p>The folks at <a href="http://www.meetup.com/iotottawa/events/184276702/">IoT Ottawa</a> hosted an all-day meetup on the subject of the Internet of Things, right here in the Adobe Ottawa office tower. As someone new to the IoT field I found the many short, to-the-point sessions served as both a nice introduction to possibilities in the industry and also as a glimpse into the innovation happening right here in our backyard. What follows are my personal highlights from the day.</p>
 
@@ -86,7 +115,7 @@
   <entry>
     <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
-    <updated>2014-05-30T00:07:00-04:00</updated>
+    <updated>2014-05-30T00:07:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
     <content type="html"><![CDATA[<p>I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I&#8217;ll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
 
@@ -110,7 +139,7 @@
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
-    <updated>2014-04-10T11:32:00-04:00</updated>
+    <updated>2014-04-10T11:32:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
     <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="http://brucelefebvre.com/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
 
@@ -121,7 +150,7 @@
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
     <link href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
-    <updated>2014-03-14T14:03:00-04:00</updated>
+    <updated>2014-03-14T14:03:00+01:00</updated>
     <id>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
     <content type="html"><![CDATA[<p>You&#8217;ve been approached by management and given orders to begin architecting a plan to get that ever-coveted place in the app store. Your peers at the office are devoted iOS fans - aside from that one guy, still touting the battery life of his flip phone - and expect to see your work in their preferred store, and soon. However, upon reviewing mobile browser analytics from your company&#8217;s site, you notice a trend: not all traffic is from mobile Safari. Hits seem to be originating from Android browsers at about half the rate of Safari, and Google&#8217;s Chrome browser is not far behind. Your office may be satisfied with an iPhone app, but how will your Android customers take it?</p>
 
@@ -141,7 +170,7 @@
   <entry>
     <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
     <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
-    <updated>2013-09-18T15:11:00-04:00</updated>
+    <updated>2013-09-18T15:11:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
     <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
 
@@ -159,7 +188,7 @@
   <entry>
     <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
     <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
-    <updated>2013-08-28T16:28:00-04:00</updated>
+    <updated>2013-08-28T16:28:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
     <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="http://brucelefebvre.com/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
 ]]></content>
@@ -168,7 +197,7 @@
   <entry>
     <title type="html"><![CDATA[Setting up a Dispatcher on OS X]]></title>
     <link href="http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
-    <updated>2013-08-22T22:40:00-04:00</updated>
+    <updated>2013-08-22T22:40:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
     <content type="html"><![CDATA[<p>The dispatcher is an important piece of a secure, stable, and solidly-performing AEM implementation. According to <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html">the documentation</a> it can provide caching, load balancing, as well as help to protect your publish instances from attack. For such a multifaceted tool it seems to receive very little attention during the dev process, typically called to action in the final stages of a deployment when most of the dev work has already been done. I propose that developers (including myself) could write better code if they had a deeper understanding of this tool, which is why I went through the process of setting one up on my Mac. What follows are my notes.</p>
 
@@ -338,7 +367,7 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
   <entry>
     <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
     <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
-    <updated>2013-06-20T08:10:00-04:00</updated>
+    <updated>2013-06-20T08:10:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
     <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>

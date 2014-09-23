@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cordova | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/cordova/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-08T22:56:32-04:00</updated>
+  <updated>2014-09-23T14:39:33+02:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -14,9 +14,38 @@
 
   
   <entry>
+    <title type="html"><![CDATA[adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/"/>
+    <updated>2014-09-23T14:17:00+02:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova</id>
+    <content type="html"><![CDATA[<p>I was thrilled to have the opportunity to present at this year's <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">adaptTo() meetup</a> in Berlin. My slides have been included below, as well as all the sample code that I demonstrated during my session.</p>
+
+<p><img src="/images/app_screenshot.png" title="'Sling blog app screenshot'" ></p>
+
+<!-- more -->
+
+
+<h3>Slides</h3>
+
+<iframe src="http://brucelefebvre.com//www.slideshare.net/slideshow/embed_code/39421014" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+
+
+<p>Also available <a href="http://www.slideshare.net/rbl002/adapt-to2014-mobileapps">on slideshare</a>.</p>
+
+<h3>Code</h3>
+
+<p>Sling blog sample: <a href="https://github.com/blefebvre/cordova-sling-blog-sample">https://github.com/blefebvre/cordova-sling-blog-sample</a></p>
+
+<p>AEM PhoneGap Kitchen Sink: <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">https://github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
+
+<p>Thanks to those in the audience for your attention. Hope to be back again next year!</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
     <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
-    <updated>2014-08-24T21:17:00-04:00</updated>
+    <updated>2014-08-24T21:17:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
     <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
 

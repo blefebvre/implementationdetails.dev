@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rwd | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/rwd/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-08T22:56:32-04:00</updated>
+  <updated>2014-09-23T14:39:33+02:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
     <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
-    <updated>2013-09-18T15:11:00-04:00</updated>
+    <updated>2013-09-18T15:11:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
     <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
 
@@ -34,7 +34,7 @@
   <entry>
     <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
     <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
-    <updated>2013-06-20T08:10:00-04:00</updated>
+    <updated>2013-06-20T08:10:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
     <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>

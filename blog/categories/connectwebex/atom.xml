@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ConnectWebex | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/connectwebex/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-08T22:56:32-04:00</updated>
+  <updated>2014-09-23T14:39:33+02:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
-    <updated>2014-05-30T00:07:00-04:00</updated>
+    <updated>2014-05-30T00:07:00+02:00</updated>
     <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
     <content type="html"><![CDATA[<p>I'm thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I'll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
 
