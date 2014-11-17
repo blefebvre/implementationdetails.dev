@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AEMHub | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/aemhub/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-23T14:39:33+02:00</updated>
+  <updated>2014-11-17T13:23:58-05:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
-    <updated>2014-04-10T11:32:00+02:00</updated>
+    <updated>2014-04-10T11:32:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
     <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
 
@@ -27,7 +27,7 @@
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
     <link href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
-    <updated>2014-03-14T14:03:00+01:00</updated>
+    <updated>2014-03-14T14:03:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
     <content type="html"><![CDATA[<p>You've been approached by management and given orders to begin architecting a plan to get that ever-coveted place in the app store. Your peers at the office are devoted iOS fans - aside from that one guy, still touting the battery life of his flip phone - and expect to see your work in their preferred store, and soon. However, upon reviewing mobile browser analytics from your company's site, you notice a trend: not all traffic is from mobile Safari. Hits seem to be originating from Android browsers at about half the rate of Safari, and Google's Chrome browser is not far behind. Your office may be satisfied with an iPhone app, but how will your Android customers take it?</p>
 

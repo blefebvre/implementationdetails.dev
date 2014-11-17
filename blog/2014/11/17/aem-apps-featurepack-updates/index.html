@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>AEM Apps Feature Pack Updates - Bruce Lefebvre</title>
+  <meta name="author" content="Bruce Lefebvre">
+
+  
+  <meta name="description" content="A keen observer of AEM&#8217;s Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Bruce Lefebvre" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41891145-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Bruce Lefebvre</a></h1>
+  
+    <h2>Content management meets mobile</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brucelefebvre.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">AEM Apps Feature Pack Updates</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-17T11:16:00-05:00" pubdate data-updated="true">Nov 17<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A keen observer of AEM&#8217;s Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is thrilled to announce the availability of the <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/featurepack/cq-6.0.0-featurepack-4558">AEM Apps feature pack 1</a>, and an updated <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq60/product/cq-geometrixx-outdoors-app-pkg">Geometrixx Outdoors App sample</a> which demonstrates the usage of these new features. Let&#8217;s take a quick tour.</p>
+
+<h3>Application Command Center</h3>
+
+<p>The feature pack includes a single user interface for managing all aspects of an app’s lifecycle. The Command Center enables you to keep app content fresh and relevant, while understanding how the app is performing in one intuitive view.</p>
+
+<p><img src="/images/sample-updates/apps-command-center.png" title="'AEM Apps Command Center'" ></p>
+
+<!-- more -->
+
+
+<p>Towards the top left of this screenshot is the Details pane which enables configuration of app metadata including name and description, screenshots for app store submission, and update server URL amongst others. Heading clockwise is the Metrics pane which provides a high-level overview of key analytics data and gives access to Adobe Mobile Services for those wishing to delve further into the details. Last but not least is the PhoneGap Build tile which seamlessly integrates with Adobe&#8217;s cloud build service, enabling users to compile apps across three platforms without installing an SDK or configuring a single environment variable (you&#8217;re welcome, Windows users).</p>
+
+<h3>App Update Management</h3>
+
+<p>Application content can be updated instantly without requiring a trip back to the platform&#8217;s app store. Updates are managed through a straightforward workflow and tools are provided to verify content changes in development, staging, and production environments.</p>
+
+<p><img src="/images/sample-updates/content-sync-update.jpg" title="'Content Sync Update Management'" ></p>
+
+<p>In this screenshot I&#8217;m naming my latest update - a straightforward change of business hours - to keep a log of each update that I push out to my customers.</p>
+
+<h3>App Content Authoring</h3>
+
+<p>Content authors (non-technical users) can easily create and update app content using a touch based, WYSIWYG, drag-and-drop interface. The feature pack includes new mobile-optimized components for easy content creation.</p>
+
+<p><img src="/images/sample-updates/apps-authoring.png" title="'Touch friendly authoring in action'" ></p>
+
+<p>Pictured here is an app I created for my talk at <a href="http://pgday.phonegap.com/us2014/">PhoneGap Day</a> which I updated over-the-air on stage to demonstrate some of the capabilities of AEM Apps. The source for my demo can be <a href="https://github.com/blefebvre/aem-pgday-talk-app">found here</a>.</p>
+
+<h3>Digital Publishing Suite Adobe Content Viewer Access</h3>
+
+<p>The latest release of the Adobe Content Viewer can connect directly to an AEM authoring environment. Now AEM generated DPS content can be tested and validated without having to upload to the DPS Folio Publisher Service, enabling you to iterate more quickly on your content.</p>
+
+<p><img src="/images/sample-updates/dps-acv.png" width="320" title="'Adobe Content Viewer'" ></p>
+
+<h3>But wait, there&#8217;s more!</h3>
+
+<p>To complement the feature pack release, we&#8217;ve updated our <a href="https://github.com/Adobe-Marketing-Cloud/aem-phonegap-starter-kit">AEM Apps Starter Kit</a> to take advantage of the state of the art in enterprise application development with AEM. Take a look at the README to see just how easy it is to bootstrap your own AEM Apps project today.</p>
+
+<p>I&#8217;ve also brought my <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">AEM Apps Kitchen Sink</a> project up to spec. If you haven&#8217;t tried it yet, the Kitchen Sink is an AEM App which demonstrates the usage of various Cordova/PhoneGap API&#8217;s, implemented as authorable components in an application that can be updated over-the-air.</p>
+
+<p><img src="/images/sample-updates/kitchen-sink-update.png" width="320" title="'Kitchen Sink OTA update'" ></p>
+
+<p>On the technical side, the Kitchen Sink&#8217;s AEM page component has been completely re-written using <a href="http://docs.adobe.com/docs/en/aem/6-0/develop/sightly.html">Sightly</a>, and we don&#8217;t think you&#8217;ll miss JSP <em>at all</em>. Performance junkies will be pleased to learn that every page transition in the Kitchen Sink is handled by the awesome <a href="http://plugins.telerik.com/plugin/native-page-transitions">NativePageTransitions</a> plugin.</p>
+
+<p>As always, feedback or questions on the above are welcome. Please feel free to reach out to me on <a href="https://twitter.com/brucelefebvre">twitter</a> or via the comments on this post.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Bruce Lefebvre</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-17T11:16:00-05:00" pubdate data-updated="true">Nov 17<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/apps/'>Apps</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/phonegap/'>PhoneGap</a>, <a class='category' href='/blog/categories/featurepack/'>featurepack</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/" title="Previous Post: adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM">&laquo; adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/17/aem-apps-featurepack-updates/">AEM Apps Feature Pack Updates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/">adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/24/adaptto-2014-mobile-apps/">adaptTo() 2014: Mobile Apps</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/06/iot-day-in-ottawa/">IoT Day in Ottawa</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/">Mobile Apps: Made and managed in AEM</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/blefebvre">@blefebvre</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'blefebvre',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/100979638670317262346?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Bruce Lefebvre -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brucelefebvre';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/';
+        var disqus_url = 'http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

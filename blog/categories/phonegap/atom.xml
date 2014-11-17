@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PhoneGap | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/phonegap/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-09-23T14:39:33+02:00</updated>
+  <updated>2014-11-17T13:23:58-05:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -14,9 +14,63 @@
 
   
   <entry>
+    <title type="html"><![CDATA[AEM Apps Feature Pack Updates]]></title>
+    <link href="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
+    <updated>2014-11-17T11:16:00-05:00</updated>
+    <id>http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
+    <content type="html"><![CDATA[<p>A keen observer of AEM's Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is thrilled to announce the availability of the <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/featurepack/cq-6.0.0-featurepack-4558">AEM Apps feature pack 1</a>, and an updated <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq60/product/cq-geometrixx-outdoors-app-pkg">Geometrixx Outdoors App sample</a> which demonstrates the usage of these new features. Let's take a quick tour.</p>
+
+<h3>Application Command Center</h3>
+
+<p>The feature pack includes a single user interface for managing all aspects of an app’s lifecycle. The Command Center enables you to keep app content fresh and relevant, while understanding how the app is performing in one intuitive view.</p>
+
+<p><img src="/images/sample-updates/apps-command-center.png" title="'AEM Apps Command Center'" ></p>
+
+<!-- more -->
+
+
+<p>Towards the top left of this screenshot is the Details pane which enables configuration of app metadata including name and description, screenshots for app store submission, and update server URL amongst others. Heading clockwise is the Metrics pane which provides a high-level overview of key analytics data and gives access to Adobe Mobile Services for those wishing to delve further into the details. Last but not least is the PhoneGap Build tile which seamlessly integrates with Adobe's cloud build service, enabling users to compile apps across three platforms without installing an SDK or configuring a single environment variable (you're welcome, Windows users).</p>
+
+<h3>App Update Management</h3>
+
+<p>Application content can be updated instantly without requiring a trip back to the platform's app store. Updates are managed through a straightforward workflow and tools are provided to verify content changes in development, staging, and production environments.</p>
+
+<p><img src="/images/sample-updates/content-sync-update.jpg" title="'Content Sync Update Management'" ></p>
+
+<p>In this screenshot I'm naming my latest update - a straightforward change of business hours - to keep a log of each update that I push out to my customers.</p>
+
+<h3>App Content Authoring</h3>
+
+<p>Content authors (non-technical users) can easily create and update app content using a touch based, WYSIWYG, drag-and-drop interface. The feature pack includes new mobile-optimized components for easy content creation.</p>
+
+<p><img src="/images/sample-updates/apps-authoring.png" title="'Touch friendly authoring in action'" ></p>
+
+<p>Pictured here is an app I created for my talk at <a href="http://pgday.phonegap.com/us2014/">PhoneGap Day</a> which I updated over-the-air on stage to demonstrate some of the capabilities of AEM Apps. The source for my demo can be <a href="https://github.com/blefebvre/aem-pgday-talk-app">found here</a>.</p>
+
+<h3>Digital Publishing Suite Adobe Content Viewer Access</h3>
+
+<p>The latest release of the Adobe Content Viewer can connect directly to an AEM authoring environment. Now AEM generated DPS content can be tested and validated without having to upload to the DPS Folio Publisher Service, enabling you to iterate more quickly on your content.</p>
+
+<p><img src="/images/sample-updates/dps-acv.png" width="320" title="'Adobe Content Viewer'" ></p>
+
+<h3>But wait, there's more!</h3>
+
+<p>To complement the feature pack release, we've updated our <a href="https://github.com/Adobe-Marketing-Cloud/aem-phonegap-starter-kit">AEM Apps Starter Kit</a> to take advantage of the state of the art in enterprise application development with AEM. Take a look at the README to see just how easy it is to bootstrap your own AEM Apps project today.</p>
+
+<p>I've also brought my <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">AEM Apps Kitchen Sink</a> project up to spec. If you haven't tried it yet, the Kitchen Sink is an AEM App which demonstrates the usage of various Cordova/PhoneGap API's, implemented as authorable components in an application that can be updated over-the-air.</p>
+
+<p><img src="/images/sample-updates/kitchen-sink-update.png" width="320" title="'Kitchen Sink OTA update'" ></p>
+
+<p>On the technical side, the Kitchen Sink's AEM page component has been completely re-written using <a href="http://docs.adobe.com/docs/en/aem/6-0/develop/sightly.html">Sightly</a>, and we don't think you'll miss JSP <em>at all</em>. Performance junkies will be pleased to learn that every page transition in the Kitchen Sink is handled by the awesome <a href="http://plugins.telerik.com/plugin/native-page-transitions">NativePageTransitions</a> plugin.</p>
+
+<p>As always, feedback or questions on the above are welcome. Please feel free to reach out to me on <a href="https://twitter.com/brucelefebvre">twitter</a> or via the comments on this post.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/"/>
-    <updated>2014-09-23T14:17:00+02:00</updated>
+    <updated>2014-09-23T14:17:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova</id>
     <content type="html"><![CDATA[<p>I was thrilled to have the opportunity to present at this year's <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">adaptTo() meetup</a> in Berlin. My slides have been included below, as well as all the sample code that I demonstrated during my session.</p>
 
@@ -45,7 +99,7 @@
   <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
     <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
-    <updated>2014-08-24T21:17:00+02:00</updated>
+    <updated>2014-08-24T21:17:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
     <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
 
@@ -67,7 +121,7 @@
   <entry>
     <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
-    <updated>2014-05-30T00:07:00+02:00</updated>
+    <updated>2014-05-30T00:07:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
     <content type="html"><![CDATA[<p>I'm thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I'll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
 
@@ -91,31 +145,11 @@
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
     <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
-    <updated>2014-04-10T11:32:00+02:00</updated>
+    <updated>2014-04-10T11:32:00-04:00</updated>
     <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
     <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
 
 <p>The code from my demo is available on github: <a href="http://bit.ly/aem-pg">github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[So, you want to build an app]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
-    <updated>2014-03-14T14:03:00+01:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
-    <content type="html"><![CDATA[<p>You've been approached by management and given orders to begin architecting a plan to get that ever-coveted place in the app store. Your peers at the office are devoted iOS fans - aside from that one guy, still touting the battery life of his flip phone - and expect to see your work in their preferred store, and soon. However, upon reviewing mobile browser analytics from your company's site, you notice a trend: not all traffic is from mobile Safari. Hits seem to be originating from Android browsers at about half the rate of Safari, and Google's Chrome browser is not far behind. Your office may be satisfied with an iPhone app, but how will your Android customers take it?</p>
-
-<!-- more -->
-
-
-<p>Being a primarily web-oriented shop your developers are well versed in the finer points of building a progressively enhanced, responsive site that renders fast and legibly on devices of varying form factors, taking advantage of features present on the latest models while not leaving anyone behind (right?). They don't have Objective-C experience, and their server side Java skills will only get them so far in Android or BlackBerry native development. There's always the option of outsourcing, but it comes with a price tag - one that does not soon disappear if you plan on keeping your app healthy and relevant on the latest hardware.</p>
-
-<p>Enter PhoneGap. A <a href="http://phonegap.com/2012/03/19/phonegap-cordova-and-what%E2%80%99s-in-a-name/">distribution of Apache Cordova</a>, PhoneGap is a project which describes itself as enabling cross-platform app development with web technologies you know and love. It sounds promising! You read on. Turns out PhoneGap is basically a web browser, augmented with a JavaScript bridge that provides direct access to device features including the file system, camera, accelerometer, geolocation, compass, contacts, <a href="http://docs.phonegap.com/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs">and more</a>. The plugin architecture is extensible, meaning any device feature that is not currently available can be implemented and added to your app, and even shared with the world if you feel so inclined. It has been around for about 5 years and <a href="http://phonegap.com/app/feature/">many successful apps</a> have been produced with it.</p>
-
-<p>As it stands, PhoneGap supports all the device operating systems &amp; versions that your team plans to target. Now, if only there was a way to repurpose your brand's most valuable asset: its content. Using Adobe's <a href="http://www.adobe.com/ca/solutions/web-experience-management.html">Experience Manager</a> (formerly CQ), your team has worked tirelessly to ensure the workflows and business logic are in place to support a distributed team of content authors, marketing personnel, and IT users alike. Your authors have built a solid foundation in the solution, and have embraced the agility afforded by being able to contribute on their various devices via the touch-friendly user interface. If only there was a way...</p>
-
-<p>Well, there is. This spring I'm thrilled to be sharing the details of the AEM 6.0 and PhoneGap integration at both <a href="https://adobesummit.activeevents.com/2014/slc/connect/sessionDetail.ww?SESSION_ID=1211">Adobe SUMMIT</a> in Salt Lake City, and <a href="http://aemhub.cognifide.com/speakers.html#Bruce-Lefebvre">AEM Hub</a> - a brand new conference taking place in London. I hope you will join me.</p>
 ]]></content>
   </entry>
   
