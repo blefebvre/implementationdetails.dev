@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PhoneGap | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/phonegap/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2014-11-29T15:39:11-05:00</updated>
+  <updated>2015-02-05T17:50:15-05:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM]]></title>
+    <link href="http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
+    <updated>2015-02-05T17:45:00-05:00</updated>
+    <id>http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
+    <content type="html"><![CDATA[<p>I'm thrilled to be returning to beautiful Salt Lake City this March to host a technical session on <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile App Development and Content Management with AEM</a> at Adobe SUMMIT 2015.</p>
+
+<p>Digging through my chicken scratch in an old notebook, I was able to locate what I suspect to be my notes from one of the first meetings about the potential of an integration between Adobe PhoneGap (then, version 1.9) and AEM - better known as CQ 5.5 at the time (circa July 2012):</p>
+
+<p><img src="/images/phonegap_cq_notes.jpeg" title="'First thoughts on Adobe PhoneGap and AEM'" ></p>
+
+<!-- more -->
+
+
+<p>Reflecting from nearly three years later reveals that while much has changed, many of our initial thoughts on the subject still hold true today. As the number of platforms in the mobile space keeps growing it's never been more important to be able to "write apps that behave as native apps without having to learn a new language". With all the improvements that have been made to the web since we began, there is still a "gap" in the device features available to sites we visit with our mobile browsers and the APIs available to apps installed on our home screens. Still, the proposition of building apps with web technology we know and love is as appealing as I thought it was in 2012.</p>
+
+<p>The integration of AEM and Adobe PhoneGap has come a long way in this time. Building on the feedback I received from my session at last year's SUMMIT, my talk - <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile app dev and content management with AEM</a> - will take a technical deep dive into PhoneGap Enterprise. We'll be covering as much as I can possibly fit into an hour: from creating your very first PhoneGap Enterprise app, to managing that app with the new and improved AEM Apps dashboard, to testing (from unit to integration to acceptance), and closing with a look at publishing content updates to your app - ensuring your customers will keep coming back for more. We'll accomplish all this without losing track of our goals: utilizing tools that your team already knows, simplifying your overall app management pain points, and putting your brand in pole position with a flexible platform to deliver the next generation of mobile experiences.</p>
+
+<p>After all this time, I still find it exciting.</p>
+
+<hr />
+
+<p>Wondering how you can deliver the next generation of mobile experiences? Attend Summit and join me at <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile app development and content management with AEM</a>.</p>
+
+<p>This isn’t the only great content on Adobe PhoneGap / AEM Apps; If you want hands-on experience check out <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2587">Introduction to Adobe PhoneGap Enterprise for Marketers</a> and <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2588">Introduction to Adobe PhoneGap Enterprise for Developers</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Feature Pack Updates]]></title>
@@ -139,17 +167,6 @@
 <p>See you there.</p>
 
 <p><a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
-    <updated>2014-04-10T11:32:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
-    <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
-
-<p>The code from my demo is available on github: <a href="http://bit.ly/aem-pg">github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
 ]]></content>
   </entry>
   

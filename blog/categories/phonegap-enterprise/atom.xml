@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mobile | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/mobile/atom.xml" rel="self"/>
+  <title><![CDATA[Category: PhoneGap Enterprise | Bruce Lefebvre]]></title>
+  <link href="http://brucelefebvre.com/blog/categories/phonegap-enterprise/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
   <updated>2015-02-05T17:50:15-05:00</updated>
   <id>http://brucelefebvre.com/</id>
@@ -38,15 +38,6 @@
 <p>Wondering how you can deliver the next generation of mobile experiences? Attend Summit and join me at <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile app development and content management with AEM</a>.</p>
 
 <p>This isn’t the only great content on Adobe PhoneGap / AEM Apps; If you want hands-on experience check out <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2587">Introduction to Adobe PhoneGap Enterprise for Marketers</a> and <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2588">Introduction to Adobe PhoneGap Enterprise for Developers</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
-    <updated>2013-08-28T16:28:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
 ]]></content>
   </entry>
   
