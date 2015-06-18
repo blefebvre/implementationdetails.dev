@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mobile Apps: Made and managed in AEM - Bruce Lefebvre</title>
+  <title>AEM Apps Starter Kit improvements - Bruce Lefebvre</title>
   <meta name="author" content="Bruce Lefebvre">
 
   
-  <meta name="description" content="I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: CONNECT Web Experience. This year I&# &hellip;">
+  <meta name="description" content="With AEM 6.1 out the door, we&#8217;ve pushed some commits to the Starter Kit repository to ensure that the apps you bootstrap with it are taking &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem">
+  <link rel="canonical" href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Bruce Lefebvre" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mobile Apps: Made and Managed in AEM</h1>
+      <h1 class="entry-title">AEM Apps Starter Kit Improvements</h1>
     
     
       <p class="meta">
@@ -96,29 +96,56 @@
   
 
 
-<time datetime="2014-05-30T00:07:00-04:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+<time datetime="2015-06-18T11:29:00-04:00" pubdate data-updated="true">Jun 18<span>th</span>, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I&#8217;ll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
+<div class="entry-content"><p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we&#8217;ve pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
 
-<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I&#8217;ve had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
+<h3>Native Page Transitions</h3>
+
+<p><img src="/images/starter-kit-improvements/transitions.gif" title="'App showcasing native transitions'" ></p>
+
+<p>Transitions between pages play such a big role in how your app&#8217;s performance is perceived, yet perfecting this animation with CSS can stump even the sharpest front-end dev. The Starter Kit now comes with the excellent <a href="https://github.com/Telerik-Verified-Plugins/NativePageTransitions">Native Page Transitions</a> plugin enabled by default, delivering buttery smooth transitions while offloading the tedious <code>translate3d</code> (or was it <code>transform</code>?) work to native hardware acceleration. Many thanks go to <a href="https://twitter.com/eddyverbruggen">@eddyverbruggen</a> for all the hard work that went into this plugin!</p>
 
 <!-- more -->
 
 
-<p>Build it yourself, or leverage an existing library? Lean on jQuery/Zepto/xui, or forge on alone? AngularJS, Ember or Backbone? Bacon, ham or sausage? Today&#8217;s web developer has options aplenty when it comes to building product - too many even, you might argue. As developers of mobile apps we must choose carefully to ensure we&#8217;re simplifying our code base while not restricting our options as the platform evolves. We need to be conscious that all the processing power and memory available to our app will fit into our user&#8217;s pocket (&#8216;Note&#8217; users excluded). We must recognize that expectations of a mobile app are very different from that of the web, especially with regard to offline availability of content. As such, the decision of which 3rd party libraries to depend and build upon must be deeper than simply picking the flavour of the week. I&#8217;ll dig into the libraries we&#8217;ve had success working with and describe the long (and somewhat bumpy) road that led us to them.</p>
+<h3>PhoneGap/Cordova CLI 5</h3>
 
-<p>Whether dealing with products in a commerce scenario or physical properties in hospitality, app content often involves a set of items that should be rendered in a similar fashion. This type of data lends itself nicely to a template based approach, one that is well supported by AngularJS. I&#8217;ll present one approach to structuring your data for consumption by AngularJS that results in a scalable - and maintainable - AEM app.</p>
+<p><img src="/images/starter-kit-improvements/phonegap_cli_5.gif" title="'PhoneGap CLI v5 in action'" ></p>
 
-<p>PhoneGap&#8217;s Javascript to native bridge is a key piece of the framework, one that serves to distinguish your app from a traditional mobile website by exposing access to platform APIs through it&#8217;s pluggable architecture. Some of the functionality supported by featured Cordova plugins include capturing images via the device camera(s), access to the contact database, file system access, and <a href="http://plugins.cordova.io/#/">many more</a>. I&#8217;ll present the patterns we followed to expose this bridge to our app&#8217;s components, and share code samples that&#8217;ll have you up and running with your own project in no time.</p>
+<p>The latest PhoneGap command line interface (CLI) release contains a <a href="http://phonegap.com/blog/2015/04/28/phonegap-cli-5.0.0-0.27.0/">bunch of improvements</a>, but is (unfortunately) not compatible with the Geometrixx sample that shipped with 6.1. Not to fear: we will be releasing a rev of the sample shortly. In the meantime our Starter Kit is all set to take advantage of the new CLI, including:</p>
 
-<p>See you there.</p>
+<ul>
+<li>Cordova Android v4, which introduces support for <a href="https://crosswalk-project.org/">Crosswalk</a>!</li>
+<li>The use of config.xml to manage platforms and plugins - a tidy alternative to writing custom hooks</li>
+<li>Latest versions of all core plugins, including PhoneGap&#8217;s brand new <a href="https://github.com/phonegap/phonegap-plugin-contentsync">Content Sync plugin</a></li>
+<li>Analytics instrumentation with Adobe&#8217;s Mobile Services plugin</li>
+</ul>
 
-<p><a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a></p>
+
+<h3>Separation of code from authorable content</h3>
+
+<p><img src="/images/starter-kit-improvements/separation.png" title="'content-dev and content-author have split'" ></p>
+
+<p>The code you write and the content your authors manage has been separated into two content packages to facilitate management as your AEM Apps project grows. With this model, you can continue to iterate on the code while authors work on the content without stepping on one another&#8217;s changes.</p>
+
+<h3>&#8230; And more!</h3>
+
+<p><img src="/images/starter-kit-improvements/responsive_sim.gif" title="'Responsive simulator in action'" ></p>
+
+<ul>
+<li>Responsive Simulator in the touch optimized editor is enabled by default</li>
+<li>Starter Kit no longer includes a dependency on Geometrixx app code</li>
+<li>Cordova splash page now sticks around until app initialization is complete</li>
+</ul>
+
+
+<p>We hope you find the new and improved <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit</a> helpful for bootstrapping your next AEM Apps project! Please feel free to reach out in the comments below if you have any issues making it work for you, or have any other questions on AEM Apps.</p>
 </div>
 
 
@@ -141,12 +168,12 @@
   
 
 
-<time datetime="2014-05-30T00:07:00-04:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+<time datetime="2015-06-18T11:29:00-04:00" pubdate data-updated="true">Jun 18<span>th</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/connectwebex/'>ConnectWebex</a>, <a class='category' href='/blog/categories/phonegap/'>PhoneGap</a>, <a class='category' href='/blog/categories/apps/'>apps</a>
+    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/aem-apps/'>AEM Apps</a>, <a class='category' href='/blog/categories/apps/'>Apps</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/phonegap/'>PhoneGap</a>, <a class='category' href='/blog/categories/starter-kit/'>Starter Kit</a>, <a class='category' href='/blog/categories/mobile/'>mobile</a>
   
 </span>
 
@@ -155,7 +182,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/" >Tweet</a>
   
   
   
@@ -164,10 +191,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/04/10/aemhub-mobile-apps-in-aem/" title="Previous Post: AEMHub 2014: Mobile Apps in AEM">&laquo; AEMHub 2014: Mobile Apps in AEM</a>
+        <a class="basic-alignment left" href="/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/" title="Previous Post: SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM">&laquo; SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/06/06/iot-day-in-ottawa/" title="Next Post: IoT Day in Ottawa">IoT Day in Ottawa &raquo;</a>
       
     </p>
   </footer>
@@ -271,8 +296,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/';
-        var disqus_url = 'http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/';
+        var disqus_identifier = 'http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/';
+        var disqus_url = 'http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/';
         var disqus_script = 'embed.js';
       
     (function () {
