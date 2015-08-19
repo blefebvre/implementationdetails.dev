@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: AEM, | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/aem/atom.xml" rel="self"/>
+  <title><![CDATA[Category: https | Bruce Lefebvre]]></title>
+  <link href="http://brucelefebvre.com/blog/categories/https/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
   <updated>2015-08-19T00:01:35-04:00</updated>
   <id>http://brucelefebvre.com/</id>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AEM Apps Starter Kit improvements - Bruce Lefebvre</title>
+  <title>Using SSL locally for AEM dev - Bruce Lefebvre</title>
   <meta name="author" content="Bruce Lefebvre">
 
   
-  <meta name="description" content="With AEM 6.1 out the door, we&#8217;ve pushed some commits to the Starter Kit repository to ensure that the apps you bootstrap with it are taking &hellip;">
+  <meta name="description" content="Goal Set up an AEM publish instance with SSL to enable local, OS X-based development on :8443. These instructions are deliberately concise and not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements">
+  <link rel="canonical" href="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Bruce Lefebvre" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">AEM Apps Starter Kit Improvements</h1>
+      <h1 class="entry-title">Using SSL Locally for AEM Dev</h1>
     
     
       <p class="meta">
@@ -96,56 +96,75 @@
   
 
 
-<time datetime="2015-06-18T11:29:00-04:00" pubdate data-updated="true">Jun 18<span>th</span>, 2015</time>
+<time datetime="2015-08-19T00:02:00-04:00" pubdate data-updated="true">Aug 19<span>th</span>, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we&#8217;ve pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
+<div class="entry-content"><h3>Goal</h3>
 
-<h3>Native Page Transitions</h3>
+<p><img src="/images/ssl-pub/ssl-geo.png" title="'Publish instance with an untrusted cert in action'" ></p>
 
-<p><img src="/images/starter-kit-improvements/transitions.gif" title="'App showcasing native transitions'" ></p>
+<p>Set up an AEM publish instance with SSL to enable local, OS X-based development on <code>:8443</code>. These instructions are deliberately concise and not designed to be used in prod (refer to the <a href="https://docs.adobe.com/docs/en/aem/6-0/deploy/configuring/config-ssl.html">official docs</a> for that).</p>
 
-<p>Transitions between pages play such a big role in how your app&#8217;s performance is perceived, yet perfecting this animation with CSS can stump even the sharpest front-end dev. The Starter Kit now comes with the excellent <a href="https://github.com/Telerik-Verified-Plugins/NativePageTransitions">Native Page Transitions</a> plugin enabled by default, delivering buttery smooth transitions while offloading the tedious <code>translate3d</code> (or was it <code>transform</code>?) work to native hardware acceleration. Many thanks go to <a href="https://twitter.com/eddyverbruggen">@eddyverbruggen</a> for all the hard work that went into this plugin!</p>
+<h3>You will need</h3>
+
+<ul>
+<li>An AEM publish instance (accessible - for the moment - on <code>:4503</code>)</li>
+<li>A machine running OS X (the following was tested on Yosemite)</li>
+</ul>
+
 
 <!-- more -->
 
 
-<h3>PhoneGap/Cordova CLI 5</h3>
+<h3>Generate keys</h3>
 
-<p><img src="/images/starter-kit-improvements/phonegap_cli_5.gif" title="'PhoneGap CLI v5 in action'" ></p>
+<p>Navigate to your publish instance&#8217;s <code>crx-quickstart</code> directory:</p>
 
-<p>The latest PhoneGap command line interface (CLI) release contains a <a href="http://phonegap.com/blog/2015/04/28/phonegap-cli-5.0.0-0.27.0/">bunch of improvements</a>, but is (unfortunately) not compatible with the Geometrixx sample that shipped with 6.1. Not to fear: we will be releasing a rev of the sample shortly. In the meantime our Starter Kit is all set to take advantage of the new CLI, including:</p>
+<pre><code>$ cd crx-quickstart/
+</code></pre>
 
-<ul>
-<li>Cordova Android v4, which introduces support for <a href="https://crosswalk-project.org/">Crosswalk</a>!</li>
-<li>The use of config.xml to manage platforms and plugins - a tidy alternative to writing custom hooks</li>
-<li>Latest versions of all core plugins, including PhoneGap&#8217;s brand new <a href="https://github.com/phonegap/phonegap-plugin-contentsync">Content Sync plugin</a></li>
-<li>Analytics instrumentation with Adobe&#8217;s Mobile Services plugin</li>
-</ul>
+<p>Create an <code>ssl/</code> directory, and use <code>keytool</code> to generate your keystore file (replacing &#8216;password&#8217; below, if desired):</p>
 
+<pre><code>$ mkdir ssl
+$ cd ssl/
+$ keytool -genkeypair -keyalg RSA -validity 3650 -alias cqse -keystore cqkeystore.keystore -keypass password -storepass password
+&lt;enter cert details as prompted&gt;
+</code></pre>
 
-<h3>Separation of code from authorable content</h3>
+<p>A file named &#8216;cqkeystore.keystore&#8217; will be created in your current working directory.</p>
 
-<p><img src="/images/starter-kit-improvements/separation.png" title="'content-dev and content-author have split'" ></p>
+<h3>AEM configuration</h3>
 
-<p>The code you write and the content your authors manage has been separated into two content packages to facilitate management as your AEM Apps project grows. With this model, you can continue to iterate on the code while authors work on the content without stepping on one another&#8217;s changes.</p>
+<p>Navigate to CRX/de on your publish instance (<a href="http://localhost:4503/crx/de/index.jsp">http://localhost:4503/crx/de/index.jsp</a>) and log in with an administrator account.</p>
 
-<h3>&#8230; And more!</h3>
+<p>Using the content browser, navigate to <code>/apps/</code>. Right click and create a folder called &#8216;system&#8217;, and inside this new folder create another called &#8216;config&#8217;.</p>
 
-<p><img src="/images/starter-kit-improvements/responsive_sim.gif" title="'Responsive simulator in action'" ></p>
+<p><img src="/images/ssl-pub/create-folder.png" title="'Create folders using CRXde'" ></p>
 
-<ul>
-<li>Responsive Simulator in the touch optimized editor is enabled by default</li>
-<li>Starter Kit no longer includes a dependency on Geometrixx app code</li>
-<li>Cordova splash page now sticks around until app initialization is complete</li>
-</ul>
+<p>Tap &#8216;Save All&#8217; to persist your new folders.</p>
 
+<p>Create a new file in <code>/apps/system/config/</code> named &#8216;org.apache.felix.http.config&#8217;. For the contents of the file, paste in the following:</p>
 
-<p>We hope you find the new and improved <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit</a> helpful for bootstrapping your next AEM Apps project! Please feel free to reach out in the comments below if you have any issues making it work for you, or have any other questions on AEM Apps.</p>
+<pre><code>org.apache.felix.https.enable=B"true"
+org.apache.felix.https.keystore="crx-quickstart/ssl/cqkeystore.keystore"
+org.apache.felix.https.keystore.key.password="password"
+org.apache.felix.https.truststore="crx-quickstart/ssl/cqkeystore.keystore"
+org.apache.felix.https.truststore.password="password"
+org.apache.felix.http.nio=B"true"
+org.osgi.service.http.port.secure=I"8443"
+</code></pre>
+
+<p>If you replaced &#8216;password&#8217; for the <code>keytool</code> command, make sure you use the same value in the above. Tap &#8216;Save All&#8217; to persist your new config file.</p>
+
+<h3>Try it out</h3>
+
+<p><img src="/images/ssl-pub/ssl-unsafe.png" title="'Unsafe!'" ></p>
+
+<p>With any luck, your https-capable publisher should now be available at <a href="https://localhost:8443/">https://localhost:8443/</a>. You may see a page warning you against servers that use untrusted certificates, but for development purposes you can hit (on Chrome) &#8216;Advanced&#8217;, and &#8216;Proceed to localhost (unsafe)&#8217;.</p>
 </div>
 
 
@@ -168,12 +187,12 @@
   
 
 
-<time datetime="2015-06-18T11:29:00-04:00" pubdate data-updated="true">Jun 18<span>th</span>, 2015</time>
+<time datetime="2015-08-19T00:02:00-04:00" pubdate data-updated="true">Aug 19<span>th</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/aem/'>AEM</a>, <a class='category' href='/blog/categories/aem-apps/'>AEM Apps</a>, <a class='category' href='/blog/categories/apps/'>Apps</a>, <a class='category' href='/blog/categories/cq/'>CQ</a>, <a class='category' href='/blog/categories/phonegap/'>PhoneGap</a>, <a class='category' href='/blog/categories/starter-kit/'>Starter Kit</a>, <a class='category' href='/blog/categories/mobile/'>mobile</a>
+    <a class='category' href='/blog/categories/aem/'>AEM,</a>, <a class='category' href='/blog/categories/ssl/'>SSL,</a>, <a class='category' href='/blog/categories/https/'>https</a>
   
 </span>
 
@@ -182,7 +201,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/" data-via="brucelefebvre" data-counturl="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/" >Tweet</a>
   
   
   
@@ -191,10 +210,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/" title="Previous Post: SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM">&laquo; SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM</a>
+        <a class="basic-alignment left" href="/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/" title="Previous Post: AEM Apps Starter Kit improvements">&laquo; AEM Apps Starter Kit improvements</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/08/19/using-ssl-locally-for-aem-development/" title="Next Post: Using SSL locally for AEM dev">Using SSL locally for AEM dev &raquo;</a>
       
     </p>
   </footer>
@@ -298,8 +315,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/';
-        var disqus_url = 'http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/';
+        var disqus_identifier = 'http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/';
+        var disqus_url = 'http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/';
         var disqus_script = 'embed.js';
       
     (function () {

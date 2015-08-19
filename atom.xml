@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-06-18T12:05:58-04:00</updated>
+  <updated>2015-08-19T00:01:35-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using SSL locally for AEM dev]]></title>
+    <link href="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/"/>
+    <updated>2015-08-19T00:02:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development</id>
+    <content type="html"><![CDATA[<h3>Goal</h3>
+
+<p><img src="http://brucelefebvre.com/images/ssl-pub/ssl-geo.png" title="'Publish instance with an untrusted cert in action'" ></p>
+
+<p>Set up an AEM publish instance with SSL to enable local, OS X-based development on <code>:8443</code>. These instructions are deliberately concise and not designed to be used in prod (refer to the <a href="https://docs.adobe.com/docs/en/aem/6-0/deploy/configuring/config-ssl.html">official docs</a> for that).</p>
+
+<h3>You will need</h3>
+
+<ul>
+<li>An AEM publish instance (accessible - for the moment - on <code>:4503</code>)</li>
+<li>A machine running OS X (the following was tested on Yosemite)</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Generate keys</h3>
+
+<p>Navigate to your publish instance&#8217;s <code>crx-quickstart</code> directory:</p>
+
+<pre><code>$ cd crx-quickstart/
+</code></pre>
+
+<p>Create an <code>ssl/</code> directory, and use <code>keytool</code> to generate your keystore file (replacing &#8216;password&#8217; below, if desired):</p>
+
+<pre><code>$ mkdir ssl
+$ cd ssl/
+$ keytool -genkeypair -keyalg RSA -validity 3650 -alias cqse -keystore cqkeystore.keystore -keypass password -storepass password
+&lt;enter cert details as prompted&gt;
+</code></pre>
+
+<p>A file named &#8216;cqkeystore.keystore&#8217; will be created in your current working directory.</p>
+
+<h3>AEM configuration</h3>
+
+<p>Navigate to CRX/de on your publish instance (<a href="http://localhost:4503/crx/de/index.jsp">http://localhost:4503/crx/de/index.jsp</a>) and log in with an administrator account.</p>
+
+<p>Using the content browser, navigate to <code>/apps/</code>. Right click and create a folder called &#8216;system&#8217;, and inside this new folder create another called &#8216;config&#8217;.</p>
+
+<p><img src="http://brucelefebvre.com/images/ssl-pub/create-folder.png" title="'Create folders using CRXde'" ></p>
+
+<p>Tap &#8216;Save All&#8217; to persist your new folders.</p>
+
+<p>Create a new file in <code>/apps/system/config/</code> named &#8216;org.apache.felix.http.config&#8217;. For the contents of the file, paste in the following:</p>
+
+<pre><code>org.apache.felix.https.enable=B"true"
+org.apache.felix.https.keystore="crx-quickstart/ssl/cqkeystore.keystore"
+org.apache.felix.https.keystore.key.password="password"
+org.apache.felix.https.truststore="crx-quickstart/ssl/cqkeystore.keystore"
+org.apache.felix.https.truststore.password="password"
+org.apache.felix.http.nio=B"true"
+org.osgi.service.http.port.secure=I"8443"
+</code></pre>
+
+<p>If you replaced &#8216;password&#8217; for the <code>keytool</code> command, make sure you use the same value in the above. Tap &#8216;Save All&#8217; to persist your new config file.</p>
+
+<h3>Try it out</h3>
+
+<p><img src="http://brucelefebvre.com/images/ssl-pub/ssl-unsafe.png" title="'Unsafe!'" ></p>
+
+<p>With any luck, your https-capable publisher should now be available at <a href="https://localhost:8443/">https://localhost:8443/</a>. You may see a page warning you against servers that use untrusted certificates, but for development purposes you can hit (on Chrome) &#8216;Advanced&#8217;, and &#8216;Proceed to localhost (unsafe)&#8217;.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
