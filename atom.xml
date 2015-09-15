@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-08-19T00:01:35-04:00</updated>
+  <updated>2015-09-15T12:11:46-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -488,6 +488,7 @@ org.osgi.service.http.port.secure=I"8443"
         # enable dispatcher for ALL request. if this is too restrictive,
         # move it to another location
         SetHandler dispatcher-handler
+        ModMimeUsePathInfo On
     &lt;/IfModule&gt;
 
     Options FollowSymLinks

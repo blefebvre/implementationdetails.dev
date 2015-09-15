@@ -4,7 +4,7 @@
   <title><![CDATA[Category: dispatcher | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/dispatcher/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-08-19T00:01:35-04:00</updated>
+  <updated>2015-09-15T12:11:46-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -104,6 +104,7 @@
         # enable dispatcher for ALL request. if this is too restrictive,
         # move it to another location
         SetHandler dispatcher-handler
+        ModMimeUsePathInfo On
     &lt;/IfModule&gt;
 
     Options FollowSymLinks
