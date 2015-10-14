@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CQ | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/cq/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-09-15T12:11:46-04:00</updated>
+  <updated>2015-10-14T11:23:28-04:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging an AEM App]]></title>
+    <link href="http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
+    <updated>2015-10-14T11:20:00-04:00</updated>
+    <id>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
+    <content type="html"><![CDATA[<p>Does your AEM App get stuck at a blank screen when you run it via the Cordova CLI?</p>
+
+<p><img src="/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>
+
+<p>The following steps will help you get to the root of the error on both iOS and Android.</p>
+
+<!-- more -->
+
+
+<h2>iOS</h2>
+
+<p>These steps assume you have a functional Cordova build toolchain (including Xcode and the iOS Simulator), and are able to run <code>cordova platform add ios &amp;&amp; cordova emulate ios</code> without any CLI related errors.</p>
+
+<h4>Enable Develop menu in Safari</h4>
+
+<p>From Safari's menu, open "Preferences...", and navigate to the "Advanced" tab.</p>
+
+<p>Make sure the checkbox labeled "Show develop menu in menu bar" is checked:</p>
+
+<p><img src="/images/debug-apps/dev.png" title="'Develop mode checkbox'" ></p>
+
+<h4>Connect the web inspector to your broken app</h4>
+
+<p>From the freshly enabled Develop menu, initiate a connection to your app running on the iOS Simulator (I'll be using the <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">kitchen-sink</a> app for this post):</p>
+
+<p><img src="/images/debug-apps/develop_menu.png" title="'Develop mode checkbox'" ></p>
+
+<p>You will be greeted by a new Web Inspector Safari window that is connected to the AEM App running on your iOS Simulator.</p>
+
+<h4>Refresh to see initialization errors</h4>
+
+<p>Navigate to the Console tab. You shouldn't see any errors, aside from perhaps Safari attempting to load source maps that have not been provided. In order to see any errors which occurred during the initialization of the app, you will need to refresh the app. Locate the 'Reload page' button and give it a click (or: hit ⌘ + R on your keyboard):</p>
+
+<p><img src="/images/debug-apps/reload_app.png" title="'Reload app'" ></p>
+
+<p>You should now see a few lines of debug logging, along with an error!</p>
+
+<p><img src="/images/debug-apps/console_output.png" title="'Console output'" ></p>
+
+<p>In my case it appears that the ContentSync variable is missing. This variable is exported by the PhoneGap ContentSync plugin, so I would begin my bug investigation by seeing if this plugin has been successfully installed.</p>
+
+<p>If this issue is occurring on an app obtained from an open source repo, the console output is extremely valuable and should be included in your bug report.</p>
+
+<h2>Android</h2>
+
+<p>Like above, ensure that you are able to run <code>cordova platform add android &amp;&amp; cordova emulate android</code> without any CLI related errors before continuing.</p>
+
+<h4>Connect Chrome's web inspector to the app</h4>
+
+<p>In Chrome, navigate to <a href="chrome://inspect">chrome://inspect</a>, and locate your app's WebView. Click the blue "inspect" link to open the remote web inspector connected to your Android emulator.</p>
+
+<p><img src="/images/debug-apps/chrome_inspect.png" title="'Chrome inspect'" ></p>
+
+<h4>Refresh to view initialization errors</h4>
+
+<p>Open the console tab and hit ⌘ + R on OS X, or Ctrl + R on Windows to refresh the current page of the application. In the screenshot below, I don't have any errors in the console but I can still view the output of console.log statements in my code, such as navigation between pages:</p>
+
+<p><img src="/images/debug-apps/chrome_console.png" title="'Remote app Web Inspector console'" ></p>
+
+<p>Happy debugging!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
@@ -172,28 +240,6 @@
 <p>AEM PhoneGap Kitchen Sink: <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">https://github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
 
 <p>Thanks to those in the audience for your attention. Hope to be back again next year!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
-    <updated>2014-08-24T21:17:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
-    <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
-
-<p><img src="/images/ipad-table.jpg" title="'Writing on the road'" ></p>
-
-<!-- more -->
-
-
-<p>As I compose this post at a kitchen table 850 km from home I can't help but think about how much these shiny pocket computers have changed the way we work, play, and live. According to Apple's numbers there have been over 75 billion individual app downloads since the introduction of the platform. At roughly this point last year Android was poised to overtake that number, reporting a staggering 2.5 billion downloads per month. As web technologists, how can we leverage our skill set to get in on the action?</p>
-
-<p>In my talk at adaptTo() I'll delve into Apache Cordova, a project built to enable cross-platform app development with standards-based web technology. I'll explore how it can be used to interface directly with Apache Sling, and close with a demo of how the AEM + Cordova integration (affectionately known as PhoneGap Enterprise) can be used to empower your marketing personnel to keep your application's content relevant with tools they already love. Code samples will be included to get you started today - with or without an AEM license.</p>
-
-<p>If you have any questions that you'd like to see addressed during the talk, please feel free to reach out in the comments section below. Hope to see you there.</p>
-
-<p><a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Mobile app development with Apache Cordova and AEM</a></p>
 ]]></content>
   </entry>
   
