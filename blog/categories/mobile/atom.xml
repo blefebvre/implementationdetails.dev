@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mobile | Bruce Lefebvre]]></title>
+  <title><![CDATA[Category: Mobile | Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/blog/categories/mobile/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-10-14T11:23:28-04:00</updated>
+  <updated>2017-03-10T16:21:46-05:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -14,158 +14,30 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Debugging an AEM App]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
-    <updated>2015-10-14T11:20:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
-    <content type="html"><![CDATA[<p>Does your AEM App get stuck at a blank screen when you run it via the Cordova CLI?</p>
+    <title type="html"><![CDATA[Build an app with Content Services at Adobe SUMMIT 2017]]></title>
+    <link href="http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
+    <updated>2017-03-10T16:12:00-05:00</updated>
+    <id>http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
+    <content type="html"><![CDATA[<p><img src="http://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
 
-<p><img src="/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>
-
-<p>The following steps will help you get to the root of the error on both iOS and Android.</p>
+<p>Are you curious about how the next generation of apps will be built with Adobe's Experience Manager Content Services solution? Have a free hour and a half on Wednesday, March 22nd at 2PM? Join John Fait and I (AEM Mobile engineering) for an action-packed lab, "Unleash your app experience with AEM developer customizations" (Lab 3847), where we'll cover:</p>
 
 <!-- more -->
 
-
-<h2>iOS</h2>
-
-<p>These steps assume you have a functional Cordova build toolchain (including Xcode and the iOS Simulator), and are able to run <code>cordova platform add ios &amp;&amp; cordova emulate ios</code> without any CLI related errors.</p>
-
-<h4>Enable Develop menu in Safari</h4>
-
-<p>From Safari's menu, open "Preferences...", and navigate to the "Advanced" tab.</p>
-
-<p>Make sure the checkbox labeled "Show develop menu in menu bar" is checked:</p>
-
-<p><img src="/images/debug-apps/dev.png" title="'Develop mode checkbox'" ></p>
-
-<h4>Connect the web inspector to your broken app</h4>
-
-<p>From the freshly enabled Develop menu, initiate a connection to your app running on the iOS Simulator (I'll be using the <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">kitchen-sink</a> app for this post):</p>
-
-<p><img src="/images/debug-apps/develop_menu.png" title="'Develop mode checkbox'" ></p>
-
-<p>You will be greeted by a new Web Inspector Safari window that is connected to the AEM App running on your iOS Simulator.</p>
-
-<h4>Refresh to see initialization errors</h4>
-
-<p>Navigate to the Console tab. You shouldn't see any errors, aside from perhaps Safari attempting to load source maps that have not been provided. In order to see any errors which occurred during the initialization of the app, you will need to refresh the app. Locate the 'Reload page' button and give it a click (or: hit ⌘ + R on your keyboard):</p>
-
-<p><img src="/images/debug-apps/reload_app.png" title="'Reload app'" ></p>
-
-<p>You should now see a few lines of debug logging, along with an error!</p>
-
-<p><img src="/images/debug-apps/console_output.png" title="'Console output'" ></p>
-
-<p>In my case it appears that the ContentSync variable is missing. This variable is exported by the PhoneGap ContentSync plugin, so I would begin my bug investigation by seeing if this plugin has been successfully installed.</p>
-
-<p>If this issue is occurring on an app obtained from an open source repo, the console output is extremely valuable and should be included in your bug report.</p>
-
-<h2>Android</h2>
-
-<p>Like above, ensure that you are able to run <code>cordova platform add android &amp;&amp; cordova emulate android</code> without any CLI related errors before continuing.</p>
-
-<h4>Connect Chrome's web inspector to the app</h4>
-
-<p>In Chrome, navigate to <a href="chrome://inspect">chrome://inspect</a>, and locate your app's WebView. Click the blue "inspect" link to open the remote web inspector connected to your Android emulator.</p>
-
-<p><img src="/images/debug-apps/chrome_inspect.png" title="'Chrome inspect'" ></p>
-
-<h4>Refresh to view initialization errors</h4>
-
-<p>Open the console tab and hit ⌘ + R on OS X, or Ctrl + R on Windows to refresh the current page of the application. In the screenshot below, I don't have any errors in the console but I can still view the output of console.log statements in my code, such as navigation between pages:</p>
-
-<p><img src="/images/debug-apps/chrome_console.png" title="'Remote app Web Inspector console'" ></p>
-
-<p>Happy debugging!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
-    <updated>2015-06-18T11:29:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
-    <content type="html"><![CDATA[<p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we've pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
-
-<h3>Native Page Transitions</h3>
-
-<p><img src="/images/starter-kit-improvements/transitions.gif" title="'App showcasing native transitions'" ></p>
-
-<p>Transitions between pages play such a big role in how your app's performance is perceived, yet perfecting this animation with CSS can stump even the sharpest front-end dev. The Starter Kit now comes with the excellent <a href="https://github.com/Telerik-Verified-Plugins/NativePageTransitions">Native Page Transitions</a> plugin enabled by default, delivering buttery smooth transitions while offloading the tedious <code>translate3d</code> (or was it <code>transform</code>?) work to native hardware acceleration. Many thanks go to <a href="https://twitter.com/eddyverbruggen">@eddyverbruggen</a> for all the hard work that went into this plugin!</p>
-
-<!-- more -->
-
-
-<h3>PhoneGap/Cordova CLI 5</h3>
-
-<p><img src="/images/starter-kit-improvements/phonegap_cli_5.gif" title="'PhoneGap CLI v5 in action'" ></p>
-
-<p>The latest PhoneGap command line interface (CLI) release contains a <a href="http://phonegap.com/blog/2015/04/28/phonegap-cli-5.0.0-0.27.0/">bunch of improvements</a>, but is (unfortunately) not compatible with the Geometrixx sample that shipped with 6.1. Not to fear: we will be releasing a rev of the sample shortly. In the meantime our Starter Kit is all set to take advantage of the new CLI, including:</p>
 
 <ul>
-<li>Cordova Android v4, which introduces support for <a href="https://crosswalk-project.org/">Crosswalk</a>!</li>
-<li>The use of config.xml to manage platforms and plugins - a tidy alternative to writing custom hooks</li>
-<li>Latest versions of all core plugins, including PhoneGap's brand new <a href="https://github.com/phonegap/phonegap-plugin-contentsync">Content Sync plugin</a></li>
-<li>Analytics instrumentation with Adobe's Mobile Services plugin</li>
+<li>An introduction to AEM and the PhoneGap developer toolchain</li>
+<li>Modeling data in Content Services, and pushing that data live to your user's screens</li>
+<li>Wiring up Content Services data to an existing mobile app</li>
+<li>Using Content Sync to export AEM content for offline use, and delivering delta updates</li>
+<li>Reusing Content Services data across web channels</li>
+<li>Extending the AEM Mobile app dashboard with custom tiles</li>
 </ul>
 
 
-<h3>Separation of code from authorable content</h3>
+<p>If you're at all technically inclined and looking to skill up on one of the most highly anticipated features of AEM 6.3, sign up now to avoid missing out: <a href="https://adobesummit.lanyonevents.com/2017/connect/sessionDetail.ww?SESSION_ID=3847" target="_blank">Unleash your app experience with AEM developer customizations</a></p>
 
-<p><img src="/images/starter-kit-improvements/separation.png" title="'content-dev and content-author have split'" ></p>
-
-<p>The code you write and the content your authors manage has been separated into two content packages to facilitate management as your AEM Apps project grows. With this model, you can continue to iterate on the code while authors work on the content without stepping on one another's changes.</p>
-
-<h3>... And more!</h3>
-
-<p><img src="/images/starter-kit-improvements/responsive_sim.gif" title="'Responsive simulator in action'" ></p>
-
-<ul>
-<li>Responsive Simulator in the touch optimized editor is enabled by default</li>
-<li>Starter Kit no longer includes a dependency on Geometrixx app code</li>
-<li>Cordova splash page now sticks around until app initialization is complete</li>
-</ul>
-
-
-<p>We hope you find the new and improved <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit</a> helpful for bootstrapping your next AEM Apps project! Please feel free to reach out in the comments below if you have any issues making it work for you, or have any other questions on AEM Apps.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
-    <updated>2015-02-05T17:45:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
-    <content type="html"><![CDATA[<p>I'm thrilled to be returning to beautiful Salt Lake City this March to host a technical session on <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile App Development and Content Management with AEM</a> at Adobe SUMMIT 2015.</p>
-
-<p>Digging through my chicken scratch in an old notebook, I was able to locate what I suspect to be my notes from one of the first meetings about the potential of an integration between Adobe PhoneGap (then, version 1.9) and AEM - better known as CQ 5.5 at the time (circa July 2012):</p>
-
-<p><img src="/images/phonegap_cq_notes.jpeg" title="'First thoughts on Adobe PhoneGap and AEM'" ></p>
-
-<!-- more -->
-
-
-<p>Reflecting from nearly three years later reveals that while much has changed, many of our initial thoughts on the subject still hold true today. As the number of platforms in the mobile space keeps growing it's never been more important to be able to "write apps that behave as native apps without having to learn a new language". With all the improvements that have been made to the web since we began, there is still a "gap" in the device features available to sites we visit with our mobile browsers and the APIs available to apps installed on our home screens. Still, the proposition of building apps with web technology we know and love is as appealing as I thought it was in 2012.</p>
-
-<p>The integration of AEM and Adobe PhoneGap has come a long way in this time. Building on the feedback I received from my session at last year's SUMMIT, my talk - <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile app dev and content management with AEM</a> - will take a technical deep dive into PhoneGap Enterprise. We'll be covering as much as I can possibly fit into an hour: from creating your very first PhoneGap Enterprise app, to managing that app with the new and improved AEM Apps dashboard, to testing (from unit to integration to acceptance), and closing with a look at publishing content updates to your app - ensuring your customers will keep coming back for more. We'll accomplish all this without losing track of our goals: utilizing tools that your team already knows, simplifying your overall app management pain points, and putting your brand in pole position with a flexible platform to deliver the next generation of mobile experiences.</p>
-
-<p>After all this time, I still find it exciting.</p>
-
-<hr />
-
-<p>Wondering how you can deliver the next generation of mobile experiences? Attend Summit and join me at <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile app development and content management with AEM</a>.</p>
-
-<p>This isn’t the only great content on Adobe PhoneGap / AEM Apps; If you want hands-on experience check out <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2587">Introduction to Adobe PhoneGap Enterprise for Marketers</a> and <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2588">Introduction to Adobe PhoneGap Enterprise for Developers</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
-    <updated>2013-08-28T16:28:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
+<p>See you in Vegas!</p>
 ]]></content>
   </entry>
   

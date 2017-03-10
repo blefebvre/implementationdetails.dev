@@ -4,7 +4,7 @@
   <title><![CDATA[Bruce Lefebvre]]></title>
   <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
   <link href="http://brucelefebvre.com/"/>
-  <updated>2015-10-14T11:23:28-04:00</updated>
+  <updated>2017-03-10T16:21:46-05:00</updated>
   <id>http://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Build an app with Content Services at Adobe SUMMIT 2017]]></title>
+    <link href="http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
+    <updated>2017-03-10T16:12:00-05:00</updated>
+    <id>http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
+    <content type="html"><![CDATA[<p><img src="http://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
+
+<p>Are you curious about how the next generation of apps will be built with Adobe&#8217;s Experience Manager Content Services solution? Have a free hour and a half on Wednesday, March 22nd at 2PM? Join John Fait and I (AEM Mobile engineering) for an action-packed lab, &#8220;Unleash your app experience with AEM developer customizations&#8221; (Lab 3847), where we&#8217;ll cover:</p>
+
+<!-- more -->
+
+
+<ul>
+<li>An introduction to AEM and the PhoneGap developer toolchain</li>
+<li>Modeling data in Content Services, and pushing that data live to your user&#8217;s screens</li>
+<li>Wiring up Content Services data to an existing mobile app</li>
+<li>Using Content Sync to export AEM content for offline use, and delivering delta updates</li>
+<li>Reusing Content Services data across web channels</li>
+<li>Extending the AEM Mobile app dashboard with custom tiles</li>
+</ul>
+
+
+<p>If you&#8217;re at all technically inclined and looking to skill up on one of the most highly anticipated features of AEM 6.3, sign up now to avoid missing out: <a href="https://adobesummit.lanyonevents.com/2017/connect/sessionDetail.ww?SESSION_ID=3847" target="_blank">Unleash your app experience with AEM developer customizations</a></p>
+
+<p>See you in Vegas!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Debugging an AEM App]]></title>

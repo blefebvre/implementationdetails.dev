@@ -2,80 +2,86 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/</loc>
-        <lastmod>2015-09-15T12:08:28-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/</loc>
-        <lastmod>2014-11-14T11:26:34-05:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/
         </loc>
-        <lastmod>2014-11-17T12:23:58-05:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/</loc>
-        <lastmod>2014-11-17T13:17:07-05:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/
         </loc>
-        <lastmod>2015-06-18T10:42:42-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/
         </loc>
-        <lastmod>2015-06-18T11:59:13-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/</loc>
-        <lastmod>2015-09-15T12:03:36-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/</loc>
-        <lastmod>2015-10-14T11:22:50-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:54-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/
+        </loc>
+        <lastmod>2017-03-10T16:17:13-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/blog/archives/</loc>
-        <lastmod>2015-10-14T11:22:50-04:00</lastmod>
+        <lastmod>2017-03-10T16:17:13-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/</loc>
-        <lastmod>2015-10-14T11:22:50-04:00</lastmod>
+        <lastmod>2017-03-10T16:17:13-05:00</lastmod>
     </url>
     <url>
         <loc>http://brucelefebvre.com/robots.txt</loc>
-        <lastmod>2014-09-08T10:53:33-04:00</lastmod>
+        <lastmod>2017-03-10T15:35:55-05:00</lastmod>
     </url>
 </urlset>
