@@ -77,15 +77,16 @@ div.page {
 }
 
 .skill {
-	background-color: #ddd;
-	padding: .4em;
+	background-color: #FFF;
+	border: 1px solid #DDD;
+	padding: .3em;
     line-height: 2.2em;
     white-space: nowrap;
 }
 
 .category {
 	/* border: 1px solid #ddd; */
-	background: #bbb;
+	background: #DDD;
 	font-weight: bold;
 }
 
