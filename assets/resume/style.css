@@ -37,11 +37,13 @@ h3 {
 }
 
 h4 {
-	margin-bottom: .5em;
+	margin-bottom: 1em;
+	font-size: 110%;
 }
 
 h5 {
-	margin-top: .5em;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 h5 .timeframe {
@@ -92,4 +94,12 @@ div.page {
 
 .skillSection {
 	padding-top: 8px;
+}
+
+h4 .address {
+	color: #999;
+}
+
+section>ul {
+	margin-top: .5em;
 }
