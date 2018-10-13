@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: SSL, | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/ssl/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/ssl/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using SSL locally for AEM dev]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/"/>
+    <link href="https://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/"/>
     <updated>2015-08-19T00:02:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development</id>
+    <id>https://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development</id>
     <content type="html"><![CDATA[<h3>Goal</h3>
 
 <p><img src="/images/ssl-pub/ssl-geo.png" title="'Publish instance with an untrusted cert in action'" ></p>

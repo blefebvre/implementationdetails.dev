@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: SUMMIT | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/summit/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/summit/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
+    <link href="https://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
     <updated>2014-03-14T14:03:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
+    <id>https://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
     <content type="html"><![CDATA[<p>You've been approached by management and given orders to begin architecting a plan to get that ever-coveted place in the app store. Your peers at the office are devoted iOS fans - aside from that one guy, still touting the battery life of his flip phone - and expect to see your work in their preferred store, and soon. However, upon reviewing mobile browser analytics from your company's site, you notice a trend: not all traffic is from mobile Safari. Hits seem to be originating from Android browsers at about half the rate of Safari, and Google's Chrome browser is not far behind. Your office may be satisfied with an iPhone app, but how will your Android customers take it?</p>
 
 <!-- more -->

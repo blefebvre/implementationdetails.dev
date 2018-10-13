@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PhoneGap Enterprise | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/phonegap-enterprise/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/phonegap-enterprise/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
+    <link href="https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
     <updated>2015-02-05T17:45:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
+    <id>https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
     <content type="html"><![CDATA[<p>I'm thrilled to be returning to beautiful Salt Lake City this March to host a technical session on <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile App Development and Content Management with AEM</a> at Adobe SUMMIT 2015.</p>
 
 <p>Digging through my chicken scratch in an old notebook, I was able to locate what I suspect to be my notes from one of the first meetings about the potential of an integration between Adobe PhoneGap (then, version 1.9) and AEM - better known as CQ 5.5 at the time (circa July 2012):</p>

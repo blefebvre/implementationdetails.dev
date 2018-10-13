@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PhoneGap | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/phonegap/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/phonegap/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Build an app with Content Services at Adobe SUMMIT 2017]]></title>
-    <link href="http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
+    <link href="https://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
     <updated>2017-03-10T16:12:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
-    <content type="html"><![CDATA[<p><img src="http://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
+    <id>https://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
+    <content type="html"><![CDATA[<p><img src="https://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
 
 <p>Are you curious about how the next generation of apps will be built with Adobe's Experience Manager Content Services solution? Have a free hour and a half on Wednesday, March 22nd at 2PM? Join John Fait and I (AEM Mobile engineering) for an action-packed lab, "Unleash your app experience with AEM developer customizations" (<a href="http://bit.ly/summit-lab-3847" target="_blank">Lab 3847</a>), where we'll cover:</p>
 
@@ -43,9 +43,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debugging an AEM App]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
+    <link href="https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
     <updated>2015-10-14T11:20:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
+    <id>https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
     <content type="html"><![CDATA[<p>Does your AEM App get stuck at a blank screen when you run it via the Cordova CLI?</p>
 
 <p><img src="/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>
@@ -111,9 +111,9 @@
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
+    <link href="https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
     <updated>2015-06-18T11:29:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
+    <id>https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
     <content type="html"><![CDATA[<p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we've pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
 
 <h3>Native Page Transitions</h3>
@@ -162,9 +162,9 @@
   
   <entry>
     <title type="html"><![CDATA[SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
+    <link href="https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
     <updated>2015-02-05T17:45:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
+    <id>https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
     <content type="html"><![CDATA[<p>I'm thrilled to be returning to beautiful Salt Lake City this March to host a technical session on <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile App Development and Content Management with AEM</a> at Adobe SUMMIT 2015.</p>
 
 <p>Digging through my chicken scratch in an old notebook, I was able to locate what I suspect to be my notes from one of the first meetings about the potential of an integration between Adobe PhoneGap (then, version 1.9) and AEM - better known as CQ 5.5 at the time (circa July 2012):</p>
@@ -190,9 +190,9 @@
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Feature Pack Updates]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
+    <link href="https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
     <updated>2014-11-17T11:16:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
+    <id>https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
     <content type="html"><![CDATA[<p>A keen observer of AEM's Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is thrilled to announce the availability of the <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/featurepack/cq-6.0.0-featurepack-4558">AEM Apps feature pack 1</a>, and an updated <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq60/product/cq-geometrixx-outdoors-app-pkg">Geometrixx Outdoors App sample</a> which demonstrates the usage of these new features. Let's take a quick tour.</p>
 
 <h3>Application Command Center</h3>

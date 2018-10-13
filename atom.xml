@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Get started with React Native, TypeScript, and CocoaPods]]></title>
-    <link href="http://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods/"/>
+    <link href="https://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods/"/>
     <updated>2018-10-12T22:34:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods</id>
+    <id>https://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods</id>
     <content type="html"><![CDATA[<p>This article gives an introduction to my preferred development setup of 2018 for building mobile applications: React Native with TypeScript and CocoaPods, coded in the awesome Visual Studio Code editor.</p>
 
 <p>Over the past 8 months I&#8217;ve had the pleasure of working on a side project with a very special customer: my Dad. His idea was to create an iOS app to give users a consolidated view of the investments they hold across multiple accounts. I suggested that such a thing must surely already exist &#8211; which it did, but none of the existing offerings suited him, primarily due to his comfort level in trusting the app developer to store and manage his investment data in a secure manner. With the seemingly constant stream of news covering large corporations being hacked, I couldn&#8217;t blame him for this concern.</p>
 
-<p><img src="http://brucelefebvre.com/images/react-native/5-spec.jpg" title="The original spec." ></p>
+<p><img src="https://brucelefebvre.com/images/react-native/5-spec.jpg" title="The original spec." ></p>
 
 <p>With the delivery of the app&#8217;s spec accompanied by a hand-written cover letter, the project was on.</p>
 
@@ -72,7 +72,7 @@ node setup.js
 
 <p>Annnnd we&#8217;re done! With TypeScript support, anyways. You should now have a terminal window open that is displaying something to the effect of:</p>
 
-<p><img src="http://brucelefebvre.com/images/react-native/2-tsc.png" title="TypeScript CLI watching the source. No errors detected." ></p>
+<p><img src="https://brucelefebvre.com/images/react-native/2-tsc.png" title="TypeScript CLI watching the source. No errors detected." ></p>
 
 <p>At this point I&#8217;d recommend opening up the directory you&#8217;ve initialized your app into with the <a href="">Visual Studio Code</a> editor. It is free, has excellent support for TypeScript (both are built by Microsoft), and a big community behind it. You may need to install the <code>code</code> <a href="https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line">command in your path</a> before running this:</p>
 
@@ -193,7 +193,7 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 
 <p>In Xcode, select a simulator to target and tap the Play button to build and run your app. With any luck, you should see the Metro Bundler open in a Terminal window, and the iOS simulator should show your app running alongside it. This could take a few minutes during the first run of the app since there&#8217;s lots of native code to be compiled:</p>
 
-<p><img src="http://brucelefebvre.com/images/react-native/1-app-running.png" title="'App running on the iOS simulator'" ></p>
+<p><img src="https://brucelefebvre.com/images/react-native/1-app-running.png" title="'App running on the iOS simulator'" ></p>
 
 <p>Did you have an issue starting up the app? Try clearing the Metro cache, and running the app again from Xcode:</p>
 
@@ -206,11 +206,11 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 
 <p>Did that not do anything? Sometimes this happens to me as well. Try triggering a &#8220;shake gesture&#8221; via the Hardware menu:</p>
 
-<p><img src="http://brucelefebvre.com/images/react-native/3-shake.png" title="'Triggering a shake gesture'" ></p>
+<p><img src="https://brucelefebvre.com/images/react-native/3-shake.png" title="'Triggering a shake gesture'" ></p>
 
 <p>With the developer menu open, make sure Live Reload is <em>disabled</em> and Hot Reload is <em>enabled</em>. Your menu should look like this:</p>
 
-<p><img src="http://brucelefebvre.com/images/react-native/4-dev-menu.png" title="'Triggering a shake gesture'" ></p>
+<p><img src="https://brucelefebvre.com/images/react-native/4-dev-menu.png" title="'Triggering a shake gesture'" ></p>
 
 <p>We&#8217;re now ready to make a change to the code. Open App.tsx with VS Code, and make a change to some of the text in the JSX of the App component&#8217;s <code>render()</code> function, such as changing &#8220;Welcome to React Native!&#8221; to &#8220;THIS IS AWESOME!&#8221;. Save the file. Observe the iOS simulator&#8230;</p>
 
@@ -230,10 +230,10 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
   
   <entry>
     <title type="html"><![CDATA[Build an app with Content Services at Adobe SUMMIT 2017]]></title>
-    <link href="http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
+    <link href="https://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017/"/>
     <updated>2017-03-10T16:12:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
-    <content type="html"><![CDATA[<p><img src="http://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
+    <id>https://brucelefebvre.com/blog/2017/03/10/build-an-app-with-content-services-at-adobe-summit-2017</id>
+    <content type="html"><![CDATA[<p><img src="https://brucelefebvre.com/images/mixology.jpeg" alt="Image of the app that you'll build during our SUMMIT lab" title="You'll build this app! Yes, YOU!"/></p>
 
 <p>Are you curious about how the next generation of apps will be built with Adobe&#8217;s Experience Manager Content Services solution? Have a free hour and a half on Wednesday, March 22nd at 2PM? Join John Fait and I (AEM Mobile engineering) for an action-packed lab, &#8220;Unleash your app experience with AEM developer customizations&#8221; (<a href="http://bit.ly/summit-lab-3847" target="_blank">Lab 3847</a>), where we&#8217;ll cover:</p>
 
@@ -258,12 +258,12 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
   
   <entry>
     <title type="html"><![CDATA[Debugging an AEM App]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
+    <link href="https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
     <updated>2015-10-14T11:20:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
+    <id>https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
     <content type="html"><![CDATA[<p>Does your AEM App get stuck at a blank screen when you run it via the Cordova CLI?</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>
 
 <p>The following steps will help you get to the root of the error on both iOS and Android.</p>
 
@@ -280,13 +280,13 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 
 <p>Make sure the checkbox labeled &#8220;Show develop menu in menu bar&#8221; is checked:</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/dev.png" title="'Develop mode checkbox'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/dev.png" title="'Develop mode checkbox'" ></p>
 
 <h4>Connect the web inspector to your broken app</h4>
 
 <p>From the freshly enabled Develop menu, initiate a connection to your app running on the iOS Simulator (I&#8217;ll be using the <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">kitchen-sink</a> app for this post):</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/develop_menu.png" title="'Develop mode checkbox'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/develop_menu.png" title="'Develop mode checkbox'" ></p>
 
 <p>You will be greeted by a new Web Inspector Safari window that is connected to the AEM App running on your iOS Simulator.</p>
 
@@ -294,11 +294,11 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 
 <p>Navigate to the Console tab. You shouldn&#8217;t see any errors, aside from perhaps Safari attempting to load source maps that have not been provided. In order to see any errors which occurred during the initialization of the app, you will need to refresh the app. Locate the &#8216;Reload page&#8217; button and give it a click (or: hit ⌘ + R on your keyboard):</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/reload_app.png" title="'Reload app'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/reload_app.png" title="'Reload app'" ></p>
 
 <p>You should now see a few lines of debug logging, along with an error!</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/console_output.png" title="'Console output'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/console_output.png" title="'Console output'" ></p>
 
 <p>In my case it appears that the ContentSync variable is missing. This variable is exported by the PhoneGap ContentSync plugin, so I would begin my bug investigation by seeing if this plugin has been successfully installed.</p>
 
@@ -312,13 +312,13 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 
 <p>In Chrome, navigate to <a href="chrome://inspect">chrome://inspect</a>, and locate your app&#8217;s WebView. Click the blue &#8220;inspect&#8221; link to open the remote web inspector connected to your Android emulator.</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/chrome_inspect.png" title="'Chrome inspect'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/chrome_inspect.png" title="'Chrome inspect'" ></p>
 
 <h4>Refresh to view initialization errors</h4>
 
 <p>Open the console tab and hit ⌘ + R on OS X, or Ctrl + R on Windows to refresh the current page of the application. In the screenshot below, I don&#8217;t have any errors in the console but I can still view the output of console.log statements in my code, such as navigation between pages:</p>
 
-<p><img src="http://brucelefebvre.com/images/debug-apps/chrome_console.png" title="'Remote app Web Inspector console'" ></p>
+<p><img src="https://brucelefebvre.com/images/debug-apps/chrome_console.png" title="'Remote app Web Inspector console'" ></p>
 
 <p>Happy debugging!</p>
 ]]></content>
@@ -326,12 +326,12 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
   
   <entry>
     <title type="html"><![CDATA[Using SSL locally for AEM dev]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/"/>
+    <link href="https://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development/"/>
     <updated>2015-08-19T00:02:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development</id>
+    <id>https://brucelefebvre.com/blog/2015/08/19/using-ssl-locally-for-aem-development</id>
     <content type="html"><![CDATA[<h3>Goal</h3>
 
-<p><img src="http://brucelefebvre.com/images/ssl-pub/ssl-geo.png" title="'Publish instance with an untrusted cert in action'" ></p>
+<p><img src="https://brucelefebvre.com/images/ssl-pub/ssl-geo.png" title="'Publish instance with an untrusted cert in action'" ></p>
 
 <p>Set up an AEM publish instance with SSL to enable local, OS X-based development on <code>:8443</code>. These instructions are deliberately concise and not designed to be used in prod (refer to the <a href="https://docs.adobe.com/docs/en/aem/6-0/deploy/configuring/config-ssl.html">official docs</a> for that).</p>
 
@@ -369,7 +369,7 @@ $ keytool -genkeypair -keyalg RSA -validity 3650 -alias cqse -keystore cqkeystor
 
 <p>Using the content browser, navigate to <code>/apps/</code>. Right click and create a folder called &#8216;system&#8217;, and inside this new folder create another called &#8216;config&#8217;.</p>
 
-<p><img src="http://brucelefebvre.com/images/ssl-pub/create-folder.png" title="'Create folders using CRXde'" ></p>
+<p><img src="https://brucelefebvre.com/images/ssl-pub/create-folder.png" title="'Create folders using CRXde'" ></p>
 
 <p>Tap &#8216;Save All&#8217; to persist your new folders.</p>
 
@@ -388,7 +388,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <h3>Try it out</h3>
 
-<p><img src="http://brucelefebvre.com/images/ssl-pub/ssl-unsafe.png" title="'Unsafe!'" ></p>
+<p><img src="https://brucelefebvre.com/images/ssl-pub/ssl-unsafe.png" title="'Unsafe!'" ></p>
 
 <p>With any luck, your https-capable publisher should now be available at <a href="https://localhost:8443/">https://localhost:8443/</a>. You may see a page warning you against servers that use untrusted certificates, but for development purposes you can hit (on Chrome) &#8216;Advanced&#8217;, and &#8216;Proceed to localhost (unsafe)&#8217;.</p>
 ]]></content>
@@ -396,14 +396,14 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
+    <link href="https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
     <updated>2015-06-18T11:29:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
+    <id>https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
     <content type="html"><![CDATA[<p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we&#8217;ve pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
 
 <h3>Native Page Transitions</h3>
 
-<p><img src="http://brucelefebvre.com/images/starter-kit-improvements/transitions.gif" title="'App showcasing native transitions'" ></p>
+<p><img src="https://brucelefebvre.com/images/starter-kit-improvements/transitions.gif" title="'App showcasing native transitions'" ></p>
 
 <p>Transitions between pages play such a big role in how your app&#8217;s performance is perceived, yet perfecting this animation with CSS can stump even the sharpest front-end dev. The Starter Kit now comes with the excellent <a href="https://github.com/Telerik-Verified-Plugins/NativePageTransitions">Native Page Transitions</a> plugin enabled by default, delivering buttery smooth transitions while offloading the tedious <code>translate3d</code> (or was it <code>transform</code>?) work to native hardware acceleration. Many thanks go to <a href="https://twitter.com/eddyverbruggen">@eddyverbruggen</a> for all the hard work that went into this plugin!</p>
 
@@ -412,7 +412,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <h3>PhoneGap/Cordova CLI 5</h3>
 
-<p><img src="http://brucelefebvre.com/images/starter-kit-improvements/phonegap_cli_5.gif" title="'PhoneGap CLI v5 in action'" ></p>
+<p><img src="https://brucelefebvre.com/images/starter-kit-improvements/phonegap_cli_5.gif" title="'PhoneGap CLI v5 in action'" ></p>
 
 <p>The latest PhoneGap command line interface (CLI) release contains a <a href="http://phonegap.com/blog/2015/04/28/phonegap-cli-5.0.0-0.27.0/">bunch of improvements</a>, but is (unfortunately) not compatible with the Geometrixx sample that shipped with 6.1. Not to fear: we will be releasing a rev of the sample shortly. In the meantime our Starter Kit is all set to take advantage of the new CLI, including:</p>
 
@@ -426,13 +426,13 @@ org.osgi.service.http.port.secure=I"8443"
 
 <h3>Separation of code from authorable content</h3>
 
-<p><img src="http://brucelefebvre.com/images/starter-kit-improvements/separation.png" title="'content-dev and content-author have split'" ></p>
+<p><img src="https://brucelefebvre.com/images/starter-kit-improvements/separation.png" title="'content-dev and content-author have split'" ></p>
 
 <p>The code you write and the content your authors manage has been separated into two content packages to facilitate management as your AEM Apps project grows. With this model, you can continue to iterate on the code while authors work on the content without stepping on one another&#8217;s changes.</p>
 
 <h3>&#8230; And more!</h3>
 
-<p><img src="http://brucelefebvre.com/images/starter-kit-improvements/responsive_sim.gif" title="'Responsive simulator in action'" ></p>
+<p><img src="https://brucelefebvre.com/images/starter-kit-improvements/responsive_sim.gif" title="'Responsive simulator in action'" ></p>
 
 <ul>
 <li>Responsive Simulator in the touch optimized editor is enabled by default</li>
@@ -447,14 +447,14 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[SUMMIT 2015: Mobile App Dev &amp; Content Management with AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
+    <link href="https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem/"/>
     <updated>2015-02-05T17:45:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
+    <id>https://brucelefebvre.com/blog/2015/02/05/summit-2015-mobile-app-dev-and-content-management-with-aem</id>
     <content type="html"><![CDATA[<p>I&#8217;m thrilled to be returning to beautiful Salt Lake City this March to host a technical session on <a href="https://adobesummit.lanyonevents.com/2015/slc/connect/sessionDetail.ww?SESSION_ID=2586">Mobile App Development and Content Management with AEM</a> at Adobe SUMMIT 2015.</p>
 
 <p>Digging through my chicken scratch in an old notebook, I was able to locate what I suspect to be my notes from one of the first meetings about the potential of an integration between Adobe PhoneGap (then, version 1.9) and AEM - better known as CQ 5.5 at the time (circa July 2012):</p>
 
-<p><img src="http://brucelefebvre.com/images/phonegap_cq_notes.jpeg" title="'First thoughts on Adobe PhoneGap and AEM'" ></p>
+<p><img src="https://brucelefebvre.com/images/phonegap_cq_notes.jpeg" title="'First thoughts on Adobe PhoneGap and AEM'" ></p>
 
 <!-- more -->
 
@@ -475,16 +475,16 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Feature Pack Updates]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
+    <link href="https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
     <updated>2014-11-17T11:16:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
+    <id>https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
     <content type="html"><![CDATA[<p>A keen observer of AEM&#8217;s Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is thrilled to announce the availability of the <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/featurepack/cq-6.0.0-featurepack-4558">AEM Apps feature pack 1</a>, and an updated <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq60/product/cq-geometrixx-outdoors-app-pkg">Geometrixx Outdoors App sample</a> which demonstrates the usage of these new features. Let&#8217;s take a quick tour.</p>
 
 <h3>Application Command Center</h3>
 
 <p>The feature pack includes a single user interface for managing all aspects of an app’s lifecycle. The Command Center enables you to keep app content fresh and relevant, while understanding how the app is performing in one intuitive view.</p>
 
-<p><img src="http://brucelefebvre.com/images/sample-updates/apps-command-center.png" title="'AEM Apps Command Center'" ></p>
+<p><img src="https://brucelefebvre.com/images/sample-updates/apps-command-center.png" title="'AEM Apps Command Center'" ></p>
 
 <!-- more -->
 
@@ -495,7 +495,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <p>Application content can be updated instantly without requiring a trip back to the platform&#8217;s app store. Updates are managed through a straightforward workflow and tools are provided to verify content changes in development, staging, and production environments.</p>
 
-<p><img src="http://brucelefebvre.com/images/sample-updates/content-sync-update.jpg" title="'Content Sync Update Management'" ></p>
+<p><img src="https://brucelefebvre.com/images/sample-updates/content-sync-update.jpg" title="'Content Sync Update Management'" ></p>
 
 <p>In this screenshot I&#8217;m naming my latest update - a straightforward change of business hours - to keep a log of each update that I push out to my customers.</p>
 
@@ -503,7 +503,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <p>Content authors (non-technical users) can easily create and update app content using a touch based, WYSIWYG, drag-and-drop interface. The feature pack includes new mobile-optimized components for easy content creation.</p>
 
-<p><img src="http://brucelefebvre.com/images/sample-updates/apps-authoring.png" title="'Touch friendly authoring in action'" ></p>
+<p><img src="https://brucelefebvre.com/images/sample-updates/apps-authoring.png" title="'Touch friendly authoring in action'" ></p>
 
 <p>Pictured here is an app I created for my talk at <a href="http://pgday.phonegap.com/us2014/">PhoneGap Day</a> which I updated over-the-air on stage to demonstrate some of the capabilities of AEM Apps. The source for my demo can be <a href="https://github.com/blefebvre/aem-pgday-talk-app">found here</a>.</p>
 
@@ -511,7 +511,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <p>The latest release of the Adobe Content Viewer can connect directly to an AEM authoring environment. Now AEM generated DPS content can be tested and validated without having to upload to the DPS Folio Publisher Service, enabling you to iterate more quickly on your content.</p>
 
-<p><img src="http://brucelefebvre.com/images/sample-updates/dps-acv.png" width="320" title="'Adobe Content Viewer'" ></p>
+<p><img src="https://brucelefebvre.com/images/sample-updates/dps-acv.png" width="320" title="'Adobe Content Viewer'" ></p>
 
 <h3>But wait, there&#8217;s more!</h3>
 
@@ -519,7 +519,7 @@ org.osgi.service.http.port.secure=I"8443"
 
 <p>I&#8217;ve also brought my <a href="https://github.com/blefebvre/aem-phonegap-kitchen-sink">AEM Apps Kitchen Sink</a> project up to spec. If you haven&#8217;t tried it yet, the Kitchen Sink is an AEM App which demonstrates the usage of various Cordova/PhoneGap API&#8217;s, implemented as authorable components in an application that can be updated over-the-air.</p>
 
-<p><img src="http://brucelefebvre.com/images/sample-updates/kitchen-sink-update.png" width="320" title="'Kitchen Sink OTA update'" ></p>
+<p><img src="https://brucelefebvre.com/images/sample-updates/kitchen-sink-update.png" width="320" title="'Kitchen Sink OTA update'" ></p>
 
 <p>On the technical side, the Kitchen Sink&#8217;s AEM page component has been completely re-written using <a href="http://docs.adobe.com/docs/en/aem/6-0/develop/sightly.html">Sightly</a>, and we don&#8217;t think you&#8217;ll miss JSP <em>at all</em>. Performance junkies will be pleased to learn that every page transition in the Kitchen Sink is handled by the awesome <a href="http://plugins.telerik.com/plugin/native-page-transitions">NativePageTransitions</a> plugin.</p>
 
@@ -529,19 +529,19 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile app dev with Cordova, Sling, and AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/"/>
+    <link href="https://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova/"/>
     <updated>2014-09-23T14:17:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova</id>
+    <id>https://brucelefebvre.com/blog/2014/09/23/adaptto-2014-mobile-app-dev-with-cordova</id>
     <content type="html"><![CDATA[<p>I was thrilled to have the opportunity to present at this year&#8217;s <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">adaptTo() meetup</a> in Berlin. My slides have been included below, as well as all the sample code that I demonstrated during my session.</p>
 
-<p><img src="http://brucelefebvre.com/images/app_screenshot.png" title="'Sling blog app screenshot'" ></p>
+<p><img src="https://brucelefebvre.com/images/app_screenshot.png" title="'Sling blog app screenshot'" ></p>
 
 <!-- more -->
 
 
 <h3>Slides</h3>
 
-<iframe src="http://brucelefebvre.com//www.slideshare.net/slideshow/embed_code/39421014" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<iframe src="https://brucelefebvre.com//www.slideshare.net/slideshow/embed_code/39421014" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 
 
 <p>Also available <a href="http://www.slideshare.net/rbl002/adapt-to2014-mobileapps">on slideshare</a>.</p>
@@ -558,12 +558,12 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[adaptTo() 2014: Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
+    <link href="https://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps/"/>
     <updated>2014-08-24T21:17:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
+    <id>https://brucelefebvre.com/blog/2014/08/24/adaptto-2014-mobile-apps</id>
     <content type="html"><![CDATA[<p>In just under a month, I will be speaking at my first adaptTo() on the subject of <a href="http://adapt.to/2014/en/schedule/mobile-app-development-with-apache-cordova-and-aem.html">Building Mobile Applications with Apache Cordova and AEM</a>.</p>
 
-<p><img src="http://brucelefebvre.com/images/ipad-table.jpg" title="'Writing on the road'" ></p>
+<p><img src="https://brucelefebvre.com/images/ipad-table.jpg" title="'Writing on the road'" ></p>
 
 <!-- more -->
 
@@ -580,12 +580,12 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[IoT Day in Ottawa]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/"/>
+    <link href="https://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/"/>
     <updated>2014-06-06T11:40:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa</id>
+    <id>https://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa</id>
     <content type="html"><![CDATA[<p>The folks at <a href="http://www.meetup.com/iotottawa/events/184276702/">IoT Ottawa</a> hosted an all-day meetup on the subject of the Internet of Things, right here in the Adobe Ottawa office tower. As someone new to the IoT field I found the many short, to-the-point sessions served as both a nice introduction to possibilities in the industry and also as a glimpse into the innovation happening right here in our backyard. What follows are my personal highlights from the day.</p>
 
-<p><img src="http://brucelefebvre.com/images/iot-ottawa.jpg" title="Dr. Ghods on Smart Buildings" alt="Dr. Ghods on Smart Buildings"></p>
+<p><img src="https://brucelefebvre.com/images/iot-ottawa.jpg" title="Dr. Ghods on Smart Buildings" alt="Dr. Ghods on Smart Buildings"></p>
 
 <p>(thanks to <a href="https://twitter.com/_Aali">Aali R. Alizadeh</a> for sharing this picture)</p>
 
@@ -628,12 +628,12 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[Mobile Apps: Made and managed in AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
+    <link href="https://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem/"/>
     <updated>2014-05-30T00:07:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
+    <id>https://brucelefebvre.com/blog/2014/05/30/mobile-apps-made-and-managed-in-aem</id>
     <content type="html"><![CDATA[<p>I&#8217;m thrilled to be returning to Basel this summer to present at the conference formerly known as CQCON: <a href="http://www.connectcon.ch/2014/en.html">CONNECT Web Experience</a>. This year I&#8217;ll be speaking about building and managing mobile applications within AEM, with a focus on the technical details of the solution.</p>
 
-<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I&#8217;ve had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
+<p>To frame the context of the integration between AEM and PhoneGap, I told a story of a hypothetical company looking to extend the reach of their content by <a href="https://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/">building a mobile app</a>. Since presenting at both <a href="http://tv.adobe.com/watch/adobe-summit-2014/technical-session-mobile-app-development-and-content-management-with-aem/">Adobe SUMMIT</a> and <a href="https://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/">AEMHub</a>, I&#8217;ve had a chance to work with some real, non-hypothetical customers, and have selected a few themes from these experiences to highlight for an audience of highly-technical AEM pros.</p>
 
 <!-- more -->
 
@@ -652,10 +652,10 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[AEMHub 2014: Mobile Apps in AEM]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
+    <link href="https://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem/"/>
     <updated>2014-04-10T11:32:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
-    <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="http://brucelefebvre.com/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
+    <id>https://brucelefebvre.com/blog/2014/04/10/aemhub-mobile-apps-in-aem</id>
+    <content type="html"><![CDATA[<p>My slides from AEMHub are available here: <a href="https://brucelefebvre.com/assets/mobile-apps-m-and-m-in-aem/">Mobile apps: Made and managed in AEM</a></p>
 
 <p>The code from my demo is available on github: <a href="http://bit.ly/aem-pg">github.com/blefebvre/aem-phonegap-kitchen-sink</a></p>
 ]]></content>
@@ -663,9 +663,9 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[So, you want to build an app]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
+    <link href="https://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app/"/>
     <updated>2014-03-14T14:03:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
+    <id>https://brucelefebvre.com/blog/2014/03/14/so-you-want-to-build-an-app</id>
     <content type="html"><![CDATA[<p>You&#8217;ve been approached by management and given orders to begin architecting a plan to get that ever-coveted place in the app store. Your peers at the office are devoted iOS fans - aside from that one guy, still touting the battery life of his flip phone - and expect to see your work in their preferred store, and soon. However, upon reviewing mobile browser analytics from your company&#8217;s site, you notice a trend: not all traffic is from mobile Safari. Hits seem to be originating from Android browsers at about half the rate of Safari, and Google&#8217;s Chrome browser is not far behind. Your office may be satisfied with an iPhone app, but how will your Android customers take it?</p>
 
 <!-- more -->
@@ -683,9 +683,9 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
+    <link href="https://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
     <updated>2013-09-18T15:11:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
+    <id>https://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
     <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
 
 <p>Bonus: the source code of &#8220;CQCON Village&#8221; - the site I made responsive during the demo - is available on github including all the steps I went through to transform it.</p>
@@ -693,7 +693,7 @@ org.osgi.service.http.port.secure=I"8443"
 <!-- more -->
 
 
-<p>Slides: <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/">CQCON mobile first</a> (resources start at <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/#/42">slide 42</a>)</p>
+<p>Slides: <a href="https://brucelefebvre.com/assets/cqcon-mobile-first/">CQCON mobile first</a> (resources start at <a href="https://brucelefebvre.com/assets/cqcon-mobile-first/#/42">slide 42</a>)</p>
 
 <p>Demo source code: <a href="https://github.com/blefebvre/cqcon-rwd-demo">CQCON Village RWD Overhaul</a></p>
 ]]></content>
@@ -701,18 +701,18 @@ org.osgi.service.http.port.secure=I"8443"
   
   <entry>
     <title type="html"><![CDATA[Evolve 2013: CQ Mobile Apps]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
+    <link href="https://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps/"/>
     <updated>2013-08-28T16:28:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
-    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="http://brucelefebvre.com/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
+    <id>https://brucelefebvre.com/blog/2013/08/28/evolve-2013-cq-mobile-apps</id>
+    <content type="html"><![CDATA[<p><a href="https://twitter.com/savs">Andrew Savory</a> and I talked about building mobile applications with CQ at <a href="http://www.evolve13.com/">Evolve13</a>. Our slides are available here: <a href="https://brucelefebvre.com/assets/evolve13-cq-mobile-apps/">evolve13-cq-mobile-apps</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up a Dispatcher on OS X]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
+    <link href="https://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
     <updated>2013-08-22T22:40:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
+    <id>https://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
     <content type="html"><![CDATA[<p>The dispatcher is an important piece of a secure, stable, and solidly-performing AEM implementation. According to <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html">the documentation</a> it can provide caching, load balancing, as well as help to protect your publish instances from attack. For such a multifaceted tool it seems to receive very little attention during the dev process, typically called to action in the final stages of a deployment when most of the dev work has already been done. I propose that developers (including myself) could write better code if they had a deeper understanding of this tool, which is why I went through the process of setting one up on my Mac. What follows are my notes.</p>
 
 <p>Here&#8217;s what you&#8217;ll need to get started:</p>
@@ -881,10 +881,10 @@ $ sudo cp dispatcher.any /etc/apache2/conf/
   
   <entry>
     <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
+    <link href="https://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
     <updated>2013-06-20T08:10:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
-    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="http://brucelefebvre.com/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
+    <id>https://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
+    <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="https://brucelefebvre.com/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>
   </entry>
   

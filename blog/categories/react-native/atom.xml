@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: React Native | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/react-native/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/react-native/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Get started with React Native, TypeScript, and CocoaPods]]></title>
-    <link href="http://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods/"/>
+    <link href="https://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods/"/>
     <updated>2018-10-12T22:34:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods</id>
+    <id>https://brucelefebvre.com/blog/2018/10/12/react-native-typescript-cocoapods</id>
     <content type="html"><![CDATA[<p>This article gives an introduction to my preferred development setup of 2018 for building mobile applications: React Native with TypeScript and CocoaPods, coded in the awesome Visual Studio Code editor.</p>
 
 <p>Over the past 8 months I've had the pleasure of working on a side project with a very special customer: my Dad. His idea was to create an iOS app to give users a consolidated view of the investments they hold across multiple accounts. I suggested that such a thing must surely already exist -- which it did, but none of the existing offerings suited him, primarily due to his comfort level in trusting the app developer to store and manage his investment data in a secure manner. With the seemingly constant stream of news covering large corporations being hacked, I couldn't blame him for this concern.</p>

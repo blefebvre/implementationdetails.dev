@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Starter Kit | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/starter-kit/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/starter-kit/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Starter Kit improvements]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
+    <link href="https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements/"/>
     <updated>2015-06-18T11:29:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
+    <id>https://brucelefebvre.com/blog/2015/06/18/aem-6-dot-1-apps-starter-kit-improvements</id>
     <content type="html"><![CDATA[<p>With <a href="https://docs.adobe.com/docs/en/aem/6-1/release-notes.html">AEM 6.1 out the door</a>, we've pushed some commits to the <a href="https://github.com/Adobe-Marketing-Cloud-Apps/aem-phonegap-starter-kit">Starter Kit repository</a> to ensure that the apps you bootstrap with it are taking advantage of the present state of the art. What follows is a visual tour of a few of those improvements.</p>
 
 <h3>Native Page Transitions</h3>

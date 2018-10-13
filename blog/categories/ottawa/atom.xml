@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ottawa | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/ottawa/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/ottawa/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[IoT Day in Ottawa]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/"/>
+    <link href="https://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa/"/>
     <updated>2014-06-06T11:40:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa</id>
+    <id>https://brucelefebvre.com/blog/2014/06/06/iot-day-in-ottawa</id>
     <content type="html"><![CDATA[<p>The folks at <a href="http://www.meetup.com/iotottawa/events/184276702/">IoT Ottawa</a> hosted an all-day meetup on the subject of the Internet of Things, right here in the Adobe Ottawa office tower. As someone new to the IoT field I found the many short, to-the-point sessions served as both a nice introduction to possibilities in the industry and also as a glimpse into the innovation happening right here in our backyard. What follows are my personal highlights from the day.</p>
 
 <p><img src="/images/iot-ottawa.jpg" title="Dr. Ghods on Smart Buildings" alt="Dr. Ghods on Smart Buildings"></p>

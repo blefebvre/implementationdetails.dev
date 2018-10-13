@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: debugging | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/debugging/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/debugging/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debugging an AEM App]]></title>
-    <link href="http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
+    <link href="https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app/"/>
     <updated>2015-10-14T11:20:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
+    <id>https://brucelefebvre.com/blog/2015/10/14/debugging-an-aem-app</id>
     <content type="html"><![CDATA[<p>Does your AEM App get stuck at a blank screen when you run it via the Cordova CLI?</p>
 
 <p><img src="/images/debug-apps/app_init_fail.png" title="'Failure to initialize'" ></p>

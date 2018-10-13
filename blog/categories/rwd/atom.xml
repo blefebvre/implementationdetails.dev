@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rwd | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/rwd/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/rwd/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CQ Gems: Mobile First Development]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
+    <link href="https://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development/"/>
     <updated>2013-09-18T15:11:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
+    <id>https://brucelefebvre.com/blog/2013/09/18/cq-gems-mobile-first-development</id>
     <content type="html"><![CDATA[<p>I presented a talk on <a href="http://dev.day.com/content/ddc/en/gems/mobile-first-development-with-cq-made-easy0.html">Mobile First Development with CQ Made Easy</a> as part of the <a href="http://dev.day.com/gems">CQ Gems</a> technical series. My slides from CQCON were updated to include a more complete list of resources.</p>
 
 <p>Bonus: the source code of "CQCON Village" - the site I made responsive during the demo - is available on github including all the steps I went through to transform it.</p>
@@ -33,9 +33,9 @@
   
   <entry>
     <title type="html"><![CDATA[CQCON 2013: Mobile First]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
+    <link href="https://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first/"/>
     <updated>2013-06-20T08:10:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
+    <id>https://brucelefebvre.com/blog/2013/06/20/cqcon-2013-mobile-first</id>
     <content type="html"><![CDATA[<p>My slides from <a href="http://www.cqcon.eu/2013/en.html">CQCON 2013</a> are available here: <a href="/assets/cqcon-mobile-first/">cqcon-mobile-first</a></p>
 ]]></content>
   </entry>

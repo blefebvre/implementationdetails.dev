@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: dispatcher | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/dispatcher/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/dispatcher/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting up a Dispatcher on OS X]]></title>
-    <link href="http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
+    <link href="https://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x/"/>
     <updated>2013-08-22T22:40:00-04:00</updated>
-    <id>http://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
+    <id>https://brucelefebvre.com/blog/2013/08/22/setting-up-a-dispatcher-on-os-x</id>
     <content type="html"><![CDATA[<p>The dispatcher is an important piece of a secure, stable, and solidly-performing AEM implementation. According to <a href="http://dev.day.com/docs/en/cq/current/deploying/dispatcher.html">the documentation</a> it can provide caching, load balancing, as well as help to protect your publish instances from attack. For such a multifaceted tool it seems to receive very little attention during the dev process, typically called to action in the final stages of a deployment when most of the dev work has already been done. I propose that developers (including myself) could write better code if they had a deeper understanding of this tool, which is why I went through the process of setting one up on my Mac. What follows are my notes.</p>
 
 <p>Here's what you'll need to get started:</p>

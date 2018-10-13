@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: featurepack | Bruce Lefebvre]]></title>
-  <link href="http://brucelefebvre.com/blog/categories/featurepack/atom.xml" rel="self"/>
-  <link href="http://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:39:03-04:00</updated>
-  <id>http://brucelefebvre.com/</id>
+  <link href="https://brucelefebvre.com/blog/categories/featurepack/atom.xml" rel="self"/>
+  <link href="https://brucelefebvre.com/"/>
+  <updated>2018-10-12T22:48:08-04:00</updated>
+  <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[AEM Apps Feature Pack Updates]]></title>
-    <link href="http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
+    <link href="https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates/"/>
     <updated>2014-11-17T11:16:00-05:00</updated>
-    <id>http://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
+    <id>https://brucelefebvre.com/blog/2014/11/17/aem-apps-featurepack-updates</id>
     <content type="html"><![CDATA[<p>A keen observer of AEM's Package Share may have noticed two new offerings show up in the past couple of weeks. In particular, our team is thrilled to announce the availability of the <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/featurepack/cq-6.0.0-featurepack-4558">AEM Apps feature pack 1</a>, and an updated <a href="https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq60/product/cq-geometrixx-outdoors-app-pkg">Geometrixx Outdoors App sample</a> which demonstrates the usage of these new features. Let's take a quick tour.</p>
 
 <h3>Application Command Center</h3>
