@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React Native | Bruce Lefebvre]]></title>
   <link href="https://brucelefebvre.com/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="https://brucelefebvre.com/"/>
-  <updated>2018-10-12T22:54:58-04:00</updated>
+  <updated>2018-10-12T23:14:04-04:00</updated>
   <id>https://brucelefebvre.com/</id>
   <author>
     <name><![CDATA[Bruce Lefebvre]]></name>
@@ -54,7 +54,9 @@ We were sold on the approach, and I began looking into options for storing relat
 
 <p>To follow along with this article you will need a Mac, and the tools indicated in the "Installing dependencies" section of the <a href="https://facebook.github.io/react-native/docs/getting-started.html#installing-dependencies">Getting Started page of the React Native docs</a>. Please work through this section of the linked doc before moving on!</p>
 
-<h2>Getting started</h2>
+<h2>TypeScript</h2>
+
+<p>TypeScript is a tool to enable type support in JavaScript projects which I intend to use on every one of my JS projects going forward. I encourage you to give it a try -- for me, it felt like the piece that JS was missing. I am a huge fan of using it for both React Native as well as web development.</p>
 
 <p>I had initially written a medium-length novel on setting up TypeScript to work in a React Native app (RN going forward), but discovered an extremely helpful little project that offers a template to quickly bootstrap an RN app with built-in TypeScript support. Big thanks to GitHub user <a href="https://github.com/emin93">emin93</a> for building and supporting the very handy <a href="https://github.com/emin93/react-native-template-typescript">react-native-template-typescript</a> repo! I sure wish that I'd known about this when I initially bootstrapped my app.</p>
 
@@ -177,7 +179,7 @@ At the time of writing, [facebook/react-native/issues/21310](https://github.com/
 <pre><code>react-native start --reset-cache
 </code></pre>
 
-<h2>Make a code change</h2>
+<h2>Hot Reload</h2>
 
 <p>You've made it this far. Finally, let's make a change to the code to see it reflected <em>immediately</em> in the iOS simulator. To enable this super-slick workflow, we will need to enable Hot Reloading. In the iOS simulator, tap Command+D to open the development menu.</p>
 
