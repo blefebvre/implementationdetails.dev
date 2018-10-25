@@ -6,8 +6,8 @@ description: "My personal blog with a focus on web tech and mobile"
 baseurl:     ""
 url:         "https://brucelefebvre.com"
 date_format: "%b %-d, %Y"
-header_pages:
- - contact.html
+header_pages: 
+- 
 
 # Google services
 google_verification:
@@ -58,7 +58,7 @@ twitter_username: brucelefebvre
 skype_username:
 steam_nickname:
 google_plus_id:
-linkedin_username:
+linkedin_username: brucelefebvre
 angellist_username:
 medium_id:
 bitcoin_url:
