@@ -47,5 +47,43 @@ You should see a line printed to the terminal that indicates that the Pod was be
 
 Installation complete! _Did CocoaPods really save us any work, here_? I [think it did](https://github.com/andpor/react-native-sqlite-storage#without-cocoapods)!
 
+## Don't forget the Types
+
+To reap the full benefits of writing JS with TypeScript, we need to install a TypeScript type declaration for the SQLite plugin we just added. This will enable Visual Studio Code (or any other TypeScript-capable code editor) to perform static analysis on our code while we write, provide hints at what functions and properties are available for us (also known as intellisense), and let us know if we've provided an incompatible type as a parameter to one of those functions. I'm a huge fan and highly recommend trying it out, if you are at all skeptical.
+
+To install the type declaration for the react-native-sqlite-storage plugin (make sure you are in the root directory of the app, as opposed to the ios/ dir):
+
+    npm install --save-dev @types/react-native-sqlite-storage
+
+Let's take a moment to test that everything is working so far. If you have not done so already, open up the app in Visual Studio Code, or another code editor that works well with TypeScript:
+
+    code .
+
+Locate and open App.tsx. Add the react-native-sqlite-storage import toward the top of the file, just below the 'react-native' import line.
+
+    import SQLite from "react-native-sqlite-storage";
+
+Still in App.tsx, add the following `componentDidMount` block as a method in the App class:
+
+    public componentDidMount() {
+        SQLite.DEBUG(true);
+        SQLite.enablePromise(true);
+        
+        SQLite.openDatabase({
+            name: "TestDatabase",
+            location: "default"
+        }).then((db) => {
+            console.log("Database open!");
+        });
+    }
+
+Ensure the TypeScript compiler is currently running in watch mode. In my case, this is a matter of keeping a terminal tab/window open with the following command running:
+
+    npm run tsc -- -w
+
+From Xcode, run your app targeting a simulator of your choice.
+
+
+
 ## Accessing it from JavaScript
 
