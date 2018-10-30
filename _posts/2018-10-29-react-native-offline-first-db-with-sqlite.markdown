@@ -4,7 +4,6 @@ title: "Building an offline first app with React Native and SQLite"
 date: 2018-10-12 22:34
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps]
-published: false
 ---
 This article will get you started with an offline first, Promise based, device-local SQLite database in a React Native app running on iOS. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
@@ -68,7 +67,7 @@ Still in App.tsx, add the following `componentDidMount` block as a method in the
     public componentDidMount() {
         SQLite.DEBUG(true);
         SQLite.enablePromise(true);
-        
+
         SQLite.openDatabase({
             name: "TestDatabase",
             location: "default"
@@ -77,11 +76,23 @@ Still in App.tsx, add the following `componentDidMount` block as a method in the
         });
     }
 
+What's that? You don't like putting database code directly in your main App component? Don't worry! This is just temporary to make sure things are wired up correctly. We'll remove it shortly.
+
+If you were to type the above code into App.tsx instead of copy/pasting it, you would notice something magical happening:
+
+![TypeScript Intellisense in action]({{ site.baseurl }}/images/react-native/sqlite-offline/typescript-in-action.png)
+
+VS Code is able to give us intelligent tooltips about the SQLite native plugin because we installed it's type declaration file above - which is amazing, and super handy. We also installed the React and React Native types as part of the [previous article](/blog/2018/10/12/react-native-typescript-cocoapods/), so you will also have access to this same functionality for the entire React and RN APIs.
+
 Ensure the TypeScript compiler is currently running in watch mode. In my case, this is a matter of keeping a terminal tab/window open with the following command running:
 
     npm run tsc -- -w
 
-From Xcode, run your app targeting a simulator of your choice.
+From Xcode, run your app targeting a simulator of your choice. From the RN developer menu, "Start JS Debugging" to open up a Chrome window attached to your app. With the debugger attached, devtools open, and everything wired up correctly, you will be able to see the "Database open!" log that we added above in the `SQLite.openDatabase().then()` block:
+
+![SQLite plugin installed and functional!]({{ site.baseurl }}/images/react-native/sqlite-offline/database-opened-console-output.png)
+
+
 
 
 
