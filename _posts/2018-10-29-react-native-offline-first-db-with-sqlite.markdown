@@ -10,7 +10,7 @@ This article will get you started with an offline first, Promise based, device-l
 - There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
 - There would be no server-side code to develop, debug, load test, and monitor
 - The app would work offline out-of-the-box, since this would be the primary use case
-- If our users' wished to sync their data with another device, the app could be integrated with a service like Dropbox (a pattern we'd seen work well in other apps, such as [1Password](https://1password.com/))
+- If our users' wished to sync their data with another device, the app could be integrated with a service like [Dropbox](https://www.dropbox.com) (a pattern we'd seen work well in other apps, such as [1Password](https://1password.com/))
 
 We were sold on the approach, and I began looking into options for storing relational data device-side with minimal overhead. SQLite quickly became the natural choice: it's fast, rock solid, and has been battle tested for years across a huge array of platforms and devices. Let's work through adding SQLite to an existing React Native app (RN going forward) that's built with the killer productivity combo of TypeScript and CocoaPods.
 
@@ -33,7 +33,7 @@ Add the following line to your `ios/Podfile`:
 
     pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
 
-If you used the instructions from the last post to bootstrap your app, you will see a helpful comment in the Podfile, which is exactly where you should put the above line (almost like I planned this!):
+If you used the instructions from my last post to bootstrap your app, you will see a helpful comment in the Podfile, which is exactly where you should put the above line (almost like I planned this!):
 
     # We'll add the react-native-sqlite-storage package during a later post here
 
@@ -42,15 +42,15 @@ cd into the ios/ directory, and tell CocoaPods to process your Podfile:
     cd ios/
     pod install
 
-You should see a line printed to the terminal that indicates that the Pod was being installed: "Installing react-native-sqlite-storage (3.3.7)".
+You should see a line printed to the terminal that indicates that the Pod is being installed: "Installing react-native-sqlite-storage (3.3.7)".
 
 Installation complete! _Did CocoaPods really save us any work, here_? I [think it did](https://github.com/andpor/react-native-sqlite-storage#without-cocoapods)!
 
 ## Don't forget the Types
 
-To reap the full benefits of writing JS with TypeScript, we need to install a TypeScript type declaration for the SQLite plugin we just added. This will enable Visual Studio Code (or any other TypeScript-capable code editor) to perform static analysis on our code while we write, provide hints at what functions and properties are available for us (also known as intellisense), and let us know if we've provided an incompatible type as a parameter to one of those functions. I'm a huge fan and highly recommend trying it out, if you are at all skeptical.
+To reap the full benefits of writing JS with TypeScript, we need to install a TypeScript type declaration for the SQLite plugin we just added. This will enable Visual Studio Code (or any other TypeScript-capable code editor) to perform static analysis on our code while we write, provide hints at what functions and properties are available for us (also known as intellisense), and let us know if we've provided an incompatible type as a parameter to one of those functions. I'm a huge fan and highly recommend trying it out if you are at all skeptical.
 
-To install the type declaration for the react-native-sqlite-storage plugin (make sure you are in the root directory of the app, as opposed to the ios/ dir):
+To install the [type declaration](https://www.npmjs.com/package/@types/react-native-sqlite-storage) for the react-native-sqlite-storage plugin (make sure you are in the root directory of the app, as opposed to the ios/ dir):
 
     npm install --save-dev @types/react-native-sqlite-storage
 
@@ -82,19 +82,33 @@ If you were to type the above code into App.tsx instead of copy/pasting it, you 
 
 ![TypeScript Intellisense in action]({{ site.baseurl }}/images/react-native/sqlite-offline/typescript-in-action.png)
 
-VS Code is able to give us intelligent tooltips about the SQLite native plugin because we installed it's type declaration file above - which is amazing, and super handy. We also installed the React and React Native types as part of the [previous article](/blog/2018/10/12/react-native-typescript-cocoapods/), so you will also have access to this same functionality for the entire React and RN APIs.
+VS Code is able to give us intelligent tooltips about the SQLite native plugin because we installed it's type declaration file above - which is amazing, and super handy. We also installed the React and React Native types as part of the [previous article](/blog/2018/10/12/react-native-typescript-cocoapods/), so you will have access to this same intellisense for the entire React and RN APIs.
+
+## Build and Run the app
 
 Ensure the TypeScript compiler is currently running in watch mode. In my case, this is a matter of keeping a terminal tab/window open with the following command running:
 
     npm run tsc -- -w
 
-From Xcode, run your app targeting a simulator of your choice. From the RN developer menu, "Start JS Debugging" to open up a Chrome window attached to your app. With the debugger attached, devtools open, and everything wired up correctly, you will be able to see the "Database open!" log that we added above in the `SQLite.openDatabase().then()` block:
+From Xcode, run your app targeting a simulator of your choice. Once it's running, open up the RN developer menu from the app and toggle "Start JS Debugging" to open up a Chrome window attached to your app. With the debugger attached, devtools open, and everything wired up correctly, you will be able to see the `Database open!` log that we added above in the `SQLite.openDatabase().then()` block:
 
 ![SQLite plugin installed and functional!]({{ site.baseurl }}/images/react-native/sqlite-offline/database-opened-console-output.png)
 
+Alright! This indicates to us that the native SQLite plugin has been installed correctly. It also means that we've installed all the native code that we need for this article, so we will not have to build and run the app from Xcode again. Instead, make sure to toggle "Enable Hot Reloading" from the app's developer menu, and the app will reload to show your latest changes as soon as you've saved a file in your code editor. 
 
+☝️ this is one of my favourite features of building apps with RN. Make sure this is all working as described before moving on (you can try making a change to App.tsx to verify)!
 
+## Project architecture
 
+What follows is the way that I have architected my production RN app that uses SQLite. Is it the best way? Perhaps not, but I've found it maintainable and easy to work with, even as your schema evolves. If you know of a better/simpler way I'd love to hear about it in the comments! 
 
-## Accessing it from JavaScript
+Key notes about this approach:
+
+1. My Database class exports a single instance of itself to ensure that there is only one open connection to the DB at a time. 
+2. The connection is opened when the app comes to the foreground (`active`) and disconnected when the app goes to the background.
+3. All CRUD operation code is contained in a Database class, which is written in TypeScript and does not expose anything about the underlying SQLite datastore.
+4. There is an additional DatabaseInitialization class which is used initially to create the SQL tables for the schema, and handles any additional `alter`s once the app has been shipped.
+
+Let's start by stubbing in Database.ts. You can find the complete class [on GitHub here]().
+
 

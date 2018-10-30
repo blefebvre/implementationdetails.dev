@@ -13,21 +13,6 @@ Over the past 8 months I've had the pleasure of working on a side project with a
 
 With the delivery of the app's spec accompanied by a hand-written cover letter, the project was on.
 
-<!-- more -->
-
-<!-- 
-The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
-
-- There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
-- There would be no server-side code to develop, debug, load test, and monitor
-- The app would work offline out-of-the-box, since this would be the primary use case
-- If our users' wished to sync their data with another device, the app could be integrated with a service like Dropbox (a pattern we'd seen work well in other apps, such as [1Password](https://1password.com/))
--->
-
-<!--
-We were sold on the approach, and I began looking into options for storing relational data device-side with minimal overhead. SQLite quickly became the natural choice: it's fast, rock solid, and has been battle tested for years across a huge array of platforms and devices. 
--->
-
 In an effort to use this side project as a learning opportunity, I picked a technology that I'd been interested in for ages but had yet to find a use case for: React Native. As a huge React fan for building web UIs I was instantly hooked. There were a few gotchas along the way but my experience was almost entirely positive. I intend to cover a few interesting aspects of building this app over the next few blog posts -- including SQLite, Dropbox integration, syncing data between devices, and testing -- but this one will focus on simply bootstrapping the React Native project that I'll build upon in future posts. 
 
 
