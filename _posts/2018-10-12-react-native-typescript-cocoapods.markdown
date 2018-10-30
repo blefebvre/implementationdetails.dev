@@ -116,7 +116,7 @@ end
 
 ```
 
-Tell CocoaPods to process your Podfile and install the Pods you've included above (still in the `ios/` dir):
+Tell CocoaPods to process your Podfile and install the Pods you've included above (still in the `ios/` dir). NOTE! It is advised to close Xcode when running `pod` commands:
 
     pod install
 
