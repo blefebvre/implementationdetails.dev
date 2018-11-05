@@ -123,6 +123,7 @@ Let's start by stubbing in our Database class. You can find the complete class [
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
+import { DatabaseInitialization } from "./DatabaseInitialization";
 
 export interface Database {
     open(): Promise<SQLite.SQLiteDatabase>;
@@ -149,4 +150,102 @@ class DatabaseImpl implements Database {
 
 // Export a single instance of DatabaseImpl
 export let database: Database = new DatabaseImpl();
+{% endhighlight %}
+
+There's a few interesting features of TypeScript at work in this file which I wanted to point out. First, there is a `Database` interface exported at the top, which `DatabaseImpl` implements. A keen eye will notice that DatabaseImpl itself is not exported. Instead, at the bottom of the file, a single instance of DatabaseImpl is initialized and then exported.
+
+Why do it this way? Had I exported `DatabaseImpl` instead (or more likely, simply named it `Database` and skipped the interface altogether), consumers of this API would still have the ability to instantiate their own Database object. This could then result in more than one connection to the database being open at a time -- not a bad thing in and of itself, but does require some additional work to close all the open connections when the app becomes inactive. 
+
+## Connection management
+
+Speaking of connection management brings me to the next piece of the puzzle: opening and closing our database connection at the right time during the app's lifecycle. I'll highlight key aspects of App.tsx below, but the complete file should be referenced [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/App.tsx):
+
+{% highlight js %}
+import React, { Component } from "react";
+import { AppState, StyleSheet, SafeAreaView } from "react-native";
+import { database } from "./database/Database";
+import { AllLists } from "./components/AllLists";
+
+interface State {
+  appState: string;
+  databaseIsReady: boolean;
+}
+
+export default class App extends Component<any, State> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      appState: AppState.currentState,
+      databaseIsReady: false
+    };
+    this.handleAppStateChange = this.handleAppStateChange.bind(this);
+  }
+
+  public componentDidMount() {
+    // App is starting up
+    this.appIsNowRunningInForeground();
+    this.setState({
+      appState: "active"
+    });
+    // Listen for app state changes
+    AppState.addEventListener("change", this.handleAppStateChange);
+  }
+
+  public componentWillUnmount() {
+    // Remove app state change listener
+    AppState.removeEventListener("change", this.handleAppStateChange);
+  }
+
+  public render() {
+    // Once the database is ready, show the Lists
+    if (this.state.databaseIsReady) {
+      return (
+        <SafeAreaView style={styles.container}>
+          <AllLists />
+        </SafeAreaView>
+      );
+    }
+    // Else, show nothing. TODO: show a loading spinner
+    return null;
+  }
+
+  // Handle the app going from foreground to background, and vice versa.
+  private handleAppStateChange(nextAppState: string) {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      // App has moved from the background (or inactive) into the foreground
+      this.appIsNowRunningInForeground();
+    } else if (
+      this.state.appState === "active" &&
+      nextAppState.match(/inactive|background/)
+    ) {
+      // App has moved from the foreground into the background (or become inactive)
+      this.appHasGoneToTheBackground();
+    }
+    this.setState({ appState: nextAppState });
+  }
+
+  // Code to run when app is brought to the foreground
+  private appIsNowRunningInForeground() {
+    console.log("App is now running in the foreground!");
+    return database.open().then(() =>
+      this.setState({
+        databaseIsReady: true
+      })
+    );
+  }
+
+  // Code to run when app is sent to the background
+  private appHasGoneToTheBackground() {
+    console.log("App has gone to the background.");
+    database.close();
+  }
+}
+
+const styles = StyleSheet.create({
+  ...
+});
+
 {% endhighlight %}
