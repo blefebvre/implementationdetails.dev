@@ -6,7 +6,7 @@ comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps]
 ---
 
-This article will get you started with an offline first, Promise-based, device-local SQLite database running in a React Native app on iOS. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
+This article details how I built an offline-first React Native app using a device-local SQLite database. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
 - There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
 - There would be no server-side code to develop, debug, load test, and monitor
@@ -256,7 +256,145 @@ Two key functions to point out in this class are `appIsNowRunningInForeground()`
 - `inactive`: the app is in the process of moving between `active` and `background`
 - `background`: the app has either been closed, or another app has taken it's place in the foreground
 
-Taking a closer look at the `handleAppStateChange()` function, you will notice how the code treats `inactive` and `background` as the same state. This means that as soon as the app enters either of these states the connection to the database will be closed. As soon as the app enters the `active` state a connection to the database will be opened, and that connection will be managed by an implementation of the `Database` interface (`DatabaseImpl` above) for the duration of time that the app spends in the foreground.
+Taking a closer look at the `handleAppStateChange()` function, you will notice how the code treats `inactive` and `background` as the same state. This means that as soon as the app enters either of these states the connection to the database will be closed. As soon as the app enters the `active` state a connection to the database will be opened, and that connection will be managed by an implementation of the Database interface (DatabaseImpl above) for the duration of time that the app spends in the foreground.
 
-Are there other ways that this could be done? Yes. For example, a connection could be opened each time the database is hit. I suspect there would be a performance hit to this approach, so I opted for the single-connection approach described above.
+Are there other ways that this could be done? Yes. For example, a connection could be opened each time a database operation is started. I suspected there would be a performance hit to this method, so I opted for the single-connection approach described above which has been solid for me so far.
 
+## A TypeScript + React sidebar
+
+You may have noticed the `State` interface in App.tsx above. A nice feature of writing React code with TypeScript is that you can precisely define the shape of the object you expect to receive as `props`, as well as the composition of the object that will be stored as `state`. I find this a much more straightforward approach than the previous React-specific solution of using PropTypes (now available on npm as `prop-types`). Let's take a closer look at the App class declaration to explain how this works:
+
+{% highlight js %}
+export default class App extends Component<object, State> {
+{% endhighlight %}
+
+By passing two type arguments (`<object, State>`) to Component, we are stating that we do not expect any specific `props` to this component via `object`, but will be storing an object in state that matches the shape of the `State` interface, defined a few lines above. This same approach works just as well with stateless functional components (for props only, of course). Let's take a look at the [Checkbox component](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/components/Checkbox.tsx) to see how this works within a SFC:
+
+{% highlight js %}
+interface Props {
+  checked: boolean;
+}
+
+export const Checkbox = (props: Props) => {
+  const { checked } = props;
+  return <Text style={styles.check}>{checked ? "☑" : "⬜"}</Text>;
+};
+{% endhighlight %}
+
+This little component is expecting a props object with only 1 property: `checked`, a boolean. The best part: if you use this component without specifying a `checked` prop, the TypeScript integration in VS Code will tell you about your mistake _before you even hit save_! 
+
+![Props intellisense in VS Code]({{ site.baseurl }}/images/react-native/sqlite-offline/props-in-SFC.png)
+
+## Initializing your database
+
+OK! Back to the database.
+
+Since we are using an SQLite database under the hood, we have to define our schema before we can store anything in it. Additionally we will need to provide a way to update this schema as our app evolves, and enable the app to update itself once the user has applied an update from the App Store or Google Play.
+
+To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts)):
+
+{% highlight js %}
+import SQLite from "react-native-sqlite-storage";
+
+export class DatabaseInitialization {
+
+  // Perform updates to the database schema
+  public updateDatabaseTables(database: SQLite.SQLiteDatabase): Promise<void> {
+    let dbVersion: number = 0;
+
+    // First: create tables if they do not already exist
+    return database
+      .transaction(this.createTables)
+      .then(() => {
+        // Get the current database version
+        return this.getDatabaseVersion(database);
+      })
+      .then(version => {
+        dbVersion = version;
+        console.log("Current database version is: " + dbVersion);
+
+        // Perform DB updates based on this version
+        if (dbVersion < 1) {
+          // Uncomment the next line, and include the referenced function below, to enable this
+          // return database.transaction(this.preVersion1Inserts);
+        }
+        // otherwise,
+        return;
+      });
+  }
+
+  // Perform initial setup of the database tables
+  private createTables(transaction: SQLite.Transaction) {
+    // List table
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS List( " +
+        "list_id INTEGER PRIMARY KEY NOT NULL, " +
+        "title TEXT" +
+        ");"
+    );
+
+    // ListItem table
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS ListItem( " +
+        "item_id INTEGER PRIMARY KEY NOT NULL, " +
+        "list_id INTEGER, " +
+        "text TEXT, " +
+        "done INTEGER DEFAULT 0, " +
+        "FOREIGN KEY ( list_id ) REFERENCES List ( list_id )" +
+        ");"
+    );
+
+    // Version table
+    transaction.executeSql(
+      "CREATE TABLE IF NOT EXISTS Version( " +
+        "version_id INTEGER PRIMARY KEY NOT NULL, " +
+        "version INTEGER" +
+        ");"
+    );
+  }
+
+  // Get the version of the database, as specified in the Version table
+  private getDatabaseVersion(database: SQLite.SQLiteDatabase): Promise<number> {
+    return database
+      .executeSql("SELECT version FROM Version ORDER BY version DESC LIMIT 1;")
+      .then(([results]) => {
+        // return the DB version
+      });
+  }
+{% endhighlight %}
+
+The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
+
+1. SQL tables, as described in `createTables`, are created in a single transaction _if they do not already exist_. This is not the place for schema updates once your app has shipped, unless that update is a fresh new table!
+1. The version table is then queried to determine what version the app's local database is at. This version is then used to determine if schema changes are needed, for example if the schema has been changed during a recent app store update.
+1. (optional, when schema updates are required of a live app) The version number found in the `Version` table is then compared to a hardcoded version number. For example, if the version is less than `1`, the `preVersion1Inserts` function is called which executes any number of database changes in a single transaction, getting the database set up to match version 1.
+1. (optional, when additional schema changes are needed) Once the `preVersion1Inserts` are complete -- or in the case where the database version was at `1` already -- the database version can be checked again as many times as needed, to get the schema up-to-date with the code contained in the newly-updated app binary.
+
+## CRUD operations
+
+All the Create, Read, Update and Delete code for dealing with Lists and ListItems in my [RN SQLite Demo app](https://github.com/blefebvre/react-native-sqlite-demo) is contained within the Database.ts class. I like this approach because the rest of my app can be completely ignorant about how data is being persisted, and I have the option to cleanly swap out the DatabaseImpl class for another implementation using a completely different persistence mechanism in the future, should the need arise.
+
+What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts) for creating a new List with a given name:
+
+{% highlight js %}
+  public createList(newListTitle: string): Promise<void> {
+    return this.getDatabase()
+      .then(db =>
+        db.executeSql("INSERT INTO List (title) VALUES (?);", [newListTitle])
+      )
+      .then(([results]) => {
+        const { insertId } = results;
+        console.log(
+          `[db] Added list with title: "${newListTitle}"! InsertId: ${insertId}`
+        );
+      });
+  }
+{% endhighlight %}
+
+## In conclusion
+
+Well, that got longer than expected. Kudos to you if you've stuck with me to this point!
+
+In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, especially when combined with TypeScript. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I used in my side project app which is currently live in the App Store. 
+
+What's next? I plan on going into detail on how you can use the Dropbox API to sync this database file between devices, giving you some of the benefits of having a server (backup + sync, namely), with very few of the headaches!
