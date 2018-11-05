@@ -171,7 +171,7 @@ interface State {
   databaseIsReady: boolean;
 }
 
-export default class App extends Component<any, State> {
+export default class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -249,3 +249,14 @@ const styles = StyleSheet.create({
 });
 
 {% endhighlight %}
+
+Two key functions to point out in this class are `appIsNowRunningInForeground()` and `appHasGoneToTheBackground()` which, as their names would suggest, are intended to be called when the app's running state changes. To support calling these functions at the right time, I am using the React Native `AppState` component to trigger an event when the app moves between states. The 3 states that we are concerned with to support opening and closing our database connection are:
+
+- `active`: the app is open and running on device
+- `inactive`: the app is in the process of moving between `active` and `background`
+- `background`: the app has either been closed, or another app has taken it's place in the foreground
+
+Taking a closer look at the `handleAppStateChange()` function, you will notice how the code treats `inactive` and `background` as the same state. This means that as soon as the app enters either of these states the connection to the database will be closed. As soon as the app enters the `active` state a connection to the database will be opened, and that connection will be managed by an implementation of the `Database` interface (`DatabaseImpl` above) for the duration of time that the app spends in the foreground.
+
+Are there other ways that this could be done? Yes. For example, a connection could be opened each time the database is hit. I suspect there would be a performance hit to this approach, so I opted for the single-connection approach described above.
+
