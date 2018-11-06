@@ -3,35 +3,37 @@ layout: post
 title: "Building an offline first app with React Native and SQLite"
 date: 2018-10-12 22:34
 comments: true
-tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps]
+tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps, offline first]
 ---
 
-This article details how I built an offline-first React Native app using a device-local SQLite database. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
+This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
 - There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
 - There would be no server-side code to develop, debug, load test, and monitor
-- The app would work offline out-of-the-box, since the entire datastore would be contained in the app's <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html" target="_blank">sandbox directory</a>
+- The app would work offline without any extra effort, since the entire datastore would be contained in the app's <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html" target="_blank">sandbox directory</a>
 - If our users' wished to sync their data with another device, the app could be integrated with a service like <a href="https://www.dropbox.com" target="_blank">Dropbox</a> (a pattern we'd seen work well in other apps, such as <a href="https://1password.com/" target="_blank">1Password</a>)
 
-We were sold on the approach, and I began looking into options for storing relational data on-device with minimal overhead. SQLite quickly became the natural choice: it's fast, rock solid, and has been battle tested for years across a huge array of platforms and devices.
+We were sold on the approach, and began looking into options for storing relational data on-device with minimal overhead. <a href="https://www.sqlite.org/index.html" target="_blank">SQLite</a> quickly became the natural choice: it's fast, rock solid, and has been battle tested for years across a huge array of platforms and devices.
 
-Let's work through adding SQLite to an existing React Native app (RN going forward) that's built with the killer productivity combo of TypeScript and CocoaPods. Looking for steps to bootstrap an app like this? Take 10 minutes and work through these instructions first: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/). Or, skip right to [the code](https://github.com/blefebvre/react-native-with-typescript-and-cocoapods-demo), but note that the dependencies will be more up-to-date if you follow the steps yourself.
+Let's start by working through adding SQLite to an existing React Native app (RN going forward) that's built with the excellent productivity combo of TypeScript and CocoaPods. Looking for steps to bootstrap an app like this? Take 10 minutes and work through these instructions first: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/). Or, skip right to [the code](https://github.com/blefebvre/react-native-with-typescript-and-cocoapods-demo) from the last post, but note that the dependencies will be more up-to-date if you follow the steps yourself.
 
 ## What are we building?
 
-I created a demo List app using the approach outlined below so I could share a working example of these concepts (and code) in action. It can be found here:
+I created a basic List app using the approach outlined below so I could share a working example of these concepts (and code) in action. It can be found here:
 
 Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo) on GitHub.
 
 ![Demo List app running on an iPhone X sim]({{ site.baseurl }}/images/react-native/sqlite-offline/list-app-demo.png)
 
-I'll be referencing this codebase in the details below. Please do let me know if you run into any issues with the demo!
+It's only been tested on iOS at this time, but the JS code and concepts should work on Android as well.
+
+I'll be referencing this codebase plenty in the details below. Please do let me know if you run into any issues with the demo!
 
 ## Installing the SQLite Native Plugin
 
 My RN SQLite plugin of choice was built by GitHub user [andpor](https://github.com/andpor) and is called [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, critical pull requests are still being merged, so I am optimistic that it will continue to live on.
 
-Follow the [README](https://github.com/andpor/react-native-sqlite-storage) instructions for details on installation of the plugin. To keep this article from getting too long I am going to focus on iOS and only document the exact steps that I took, but I can confirm that the plugin works on Android as well.
+To keep this article from getting too long I am going to focus on iOS and only document the steps that I took, but I can confirm that the plugin works on Android as well. Refer to the [README](https://github.com/andpor/react-native-sqlite-storage) instructions for further details on plugin installation.
 
 From the root directory of your RN app, install the plugin using npm:
 
@@ -43,7 +45,7 @@ Add the following line to your `ios/Podfile`:
 
     pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
 
-If you used the instructions from my last post to bootstrap your app, you will see a helpful comment in the Podfile, which is exactly where you should put the above line (almost like I planned this!):
+If you used the instructions from my last post to bootstrap your app, you will see a helpful comment in the [Podfile](https://github.com/blefebvre/react-native-with-typescript-and-cocoapods-demo/blob/master/ios/Podfile#L12), which is exactly where you should put the above line (almost like I planned this!):
 
     # We'll add the react-native-sqlite-storage package during a later post here
 
@@ -58,7 +60,7 @@ Installation complete! _Did CocoaPods really save us any work, here_? I [think i
 
 ## Don't forget the Types
 
-To reap the full benefits of writing JS with TypeScript, we need to install a TypeScript type declaration for the SQLite plugin we just added. This will enable Visual Studio Code (or any other TypeScript-capable code editor) to perform static analysis on our code while we write, provide hints at what functions and properties are available for us (also known as intellisense), and let us know if we've provided an incompatible type as a parameter to one of those functions. I'm a huge fan and highly recommend trying it out if you are at all skeptical.
+To reap the full benefits of writing JS with TypeScript, we need to install a TypeScript type declaration for the SQLite plugin we just added. This will enable Visual Studio Code (or any other TypeScript-capable code editor) to perform static analysis on our code while we write, provide hints at what functions and properties are available to us (also known as intellisense), and let us know if we've provided an incompatible type as a parameter to one of those functions. I'm a huge fan and highly recommend trying it out if you are at all skeptical.
 
 To install the [type declaration](https://www.npmjs.com/package/@types/react-native-sqlite-storage) for the react-native-sqlite-storage plugin (make sure you are in the root directory of the app, as opposed to the ios/ dir):
 
@@ -397,4 +399,4 @@ Well, that got longer than expected. Kudos to you if you've stuck with me to thi
 
 In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, especially when combined with TypeScript. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I used in my side project app which is currently live in the App Store. 
 
-What's next? I plan on going into detail on how you can use the Dropbox API to sync this database file between devices, giving you some of the benefits of having a server (backup + sync, namely), with very few of the headaches!
+But Bruce, is this not an "offline only" app, as opposed to offline first? Indeed it is. Stay tuned for the next article where I will go into detail on how you can use the Dropbox API to sync your app's database file between devices, giving you some of the benefits of having a server (backup and sync, namely), with very few of the headaches!
