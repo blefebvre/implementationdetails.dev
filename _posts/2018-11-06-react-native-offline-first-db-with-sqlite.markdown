@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building an offline first app with React Native and SQLite"
-date: 2018-10-12 22:34
+date: 2018-11-06 7:32
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps, offline first]
 ---
