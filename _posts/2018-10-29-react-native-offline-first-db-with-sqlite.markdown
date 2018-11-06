@@ -29,7 +29,7 @@ It's only been tested on iOS at this time, but the JS code and concepts should w
 
 I'll be referencing this codebase plenty in the details below. Please do let me know if you run into any issues with the demo!
 
-## Installing the SQLite Native Plugin
+## Installing the SQLite plugin
 
 My RN SQLite plugin of choice was built by GitHub user [andpor](https://github.com/andpor) and is called [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, critical pull requests are still being merged, so I am optimistic that it will continue to live on.
 
@@ -112,16 +112,16 @@ Alright! This indicates to us that the native SQLite plugin has been installed c
 
 ## Project architecture
 
-What follows is the way that I have architected my production RN app that uses SQLite. Is it the best way? Perhaps not, but I've found it maintainable and easy to work with, even as your schema evolves over time. If you know of a better/simpler way I'd love to hear about it in the comments!
+What follows is the way that I have architected my production RN app that uses SQLite. Is it the best way? Perhaps not, but I've found it maintainable and easy to work with, even as your schema evolves over time. If you know of a better/simpler way I'd love to hear about it in the comments.
 
-Key notes about this approach:
+Key points about this approach:
 
-1. My Database class exports a single instance of itself to ensure that there is only one open connection to the DB at a time.
+1. The `Database` TypeScript class exports a single instance of its implementation to ensure that there is only one open connection to the DB at a time.
 2. The connection is opened when the app comes to the foreground (`active`) and disconnected when the app goes to the background.
-3. All CRUD operation code is contained in a Database class, which is written in TypeScript and does not expose anything about the underlying SQLite datastore.
-4. There is an additional DatabaseInitialization class which is used initially to create the SQL tables for the schema, and handles any additional `alter`s once the app has been shipped.
+3. All CRUD operation code is contained in the Database class, which does not expose anything about the underlying SQLite datastore.
+4. There is an additional `DatabaseInitialization` class which is used initially to create the SQL tables for the schema, and handles any ongoing schema changes after the app has been shipped.
 
-Let's start by stubbing in our Database class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts):
+Let's take a look at an outline of the `Database` class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -151,12 +151,12 @@ class DatabaseImpl implements Database {
 }
 
 // Export a single instance of DatabaseImpl
-export let database: Database = new DatabaseImpl();
+export const database: Database = new DatabaseImpl();
 {% endhighlight %}
 
 There's a few interesting features of TypeScript at work in this file which I wanted to point out. First, there is a `Database` interface exported at the top, which `DatabaseImpl` implements. A keen eye will notice that DatabaseImpl itself is not exported. Instead, at the bottom of the file, a single instance of DatabaseImpl is initialized and then exported.
 
-Why do it this way? Had I exported `DatabaseImpl` instead (or more likely, simply named it `Database` and skipped the interface altogether), consumers of this API would still have the ability to instantiate their own Database object. This could then result in more than one connection to the database being open at a time -- not a bad thing in and of itself, but does require some additional work to close all the open connections when the app becomes inactive. 
+Why do it this way? Had I exported `DatabaseImpl` instead (or more likely, simply named it `Database` and skipped the interface altogether), consumers of this API would still have the ability to instantiate their own Database object. This could then result in more than one connection to the database being open at a time -- not a bad thing in itself, but would require some additional work to close all the open connections when the app becomes inactive. 
 
 ## Connection management
 
@@ -260,7 +260,7 @@ Two key functions to point out in this class are `appIsNowRunningInForeground()`
 
 Taking a closer look at the `handleAppStateChange()` function, you will notice how the code treats `inactive` and `background` as the same state. This means that as soon as the app enters either of these states the connection to the database will be closed. As soon as the app enters the `active` state a connection to the database will be opened, and that connection will be managed by an implementation of the Database interface (DatabaseImpl above) for the duration of time that the app spends in the foreground.
 
-Are there other ways that this could be done? Yes. For example, a connection could be opened each time a database operation is started. I suspected there would be a performance hit to this method, so I opted for the single-connection approach described above which has been solid for me so far.
+Are there other ways that this could be done? Yes. For example, a connection could be opened each time a database operation is started. I suspected there would be a performance hit to this method, so I opted for the single-connection approach described above which has worked well for me so far.
 
 ## A TypeScript + React sidebar
 
@@ -291,9 +291,9 @@ This little component is expecting a props object with only 1 property: `checked
 
 OK! Back to the database.
 
-Since we are using an SQLite database under the hood, we have to define our schema before we can store anything in it. Additionally we will need to provide a way to update this schema as our app evolves, and enable the app to update itself once the user has applied an update from the App Store or Google Play.
+Since we are using an SQLite database under the hood, we have to define our schema before we can store anything in it. Additionally we will need to provide a way to update this schema as our app evolves, and enable the database to update itself once the user has applied an update from the App Store or Google Play.
 
-To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts)):
+To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts)):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -368,8 +368,8 @@ export class DatabaseInitialization {
 The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
 
 1. SQL tables, as described in `createTables`, are created in a single transaction _if they do not already exist_. This is not the place for schema updates once your app has shipped, unless that update is a fresh new table!
-1. The version table is then queried to determine what version the app's local database is at. This version is then used to determine if schema changes are needed, for example if the schema has been changed during a recent app store update.
-1. (optional, when schema updates are required of a live app) The version number found in the `Version` table is then compared to a hardcoded version number. For example, if the version is less than `1`, the `preVersion1Inserts` function is called which executes any number of database changes in a single transaction, getting the database set up to match version 1.
+1. The `Version` table is then queried to determine what version the app's local database is at. This version is then used to determine if schema changes are needed, for example if the schema has been changed during a recent app store update.
+1. (optional, when schema updates are required of a live app) The version number found in the `Version` table is then compared to a hardcoded version number. For example, if the version is less than `1`, the `preVersion1Inserts` function is called which executes any number of database changes in a single transaction, getting the database set up to match version `1`.
 1. (optional, when additional schema changes are needed) Once the `preVersion1Inserts` are complete -- or in the case where the database version was at `1` already -- the database version can be checked again as many times as needed, to get the schema up-to-date with the code contained in the newly-updated app binary.
 
 ## CRUD operations
@@ -397,6 +397,6 @@ What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-
 
 Well, that got longer than expected. Kudos to you if you've stuck with me to this point!
 
-In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, especially when combined with TypeScript. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I used in my side project app which is currently live in the App Store. 
+In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, and it's truly an enjoyable development experience when combined with TypeScript. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I used in my side project app which is currently live in the App Store. 
 
-But Bruce, is this not an "offline only" app, as opposed to offline first? Indeed it is. Stay tuned for the next article where I will go into detail on how you can use the Dropbox API to sync your app's database file between devices, giving you some of the benefits of having a server (backup and sync, namely), with very few of the headaches!
+_But Bruce, is this not an "offline only" app, as opposed to offline first_? Indeed it is. Stay tuned for the next article where I will go into detail on how you can use the Dropbox API to sync your app's database file between devices, giving you some of the benefits of having a server (backup and sync, namely), with very few of the headaches!
