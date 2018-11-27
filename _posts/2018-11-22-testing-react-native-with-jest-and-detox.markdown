@@ -73,3 +73,15 @@ Outline:
     expect(tree).toMatchSnapshot();
   });
 
+4. Run the Jest tests!
+
+  npm test
+
+- to run in watch mode, you can use `npm test -- --watch`
+
+
+## Detox!
+
+Next, follow the Detox Getting Started guide:
+
+https://github.com/wix/Detox/blob/master/docs/Introduction.GettingStarted.md
