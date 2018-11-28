@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Syncing an SQLite DB with Dropbox"
+title: "Syncing an SQLite Database with Dropbox"
 date: 2018-11-27 6:42
 comments: true
 tags: [React Native, SQLite, TypeScript, Dropbox, mobile, apps]
@@ -10,7 +10,7 @@ In the last two posts we have set up a React Native project [with TypeScript and
 
 ## Goal
 
-When I began looking into this topic, my initial goal was to provide a way to backup my user's data _without_ storing it on a server of my own. Additionally, I envisioned a use case where a user would install my app on two devices (say, and iPhone and iPad), and would like to have their data available on both devices. While the app would depend on an internet connection to support backup and sync, it was still important to me that the app continue to work "offline first" in the absence of connectivity. At a high level, my design for the user experience looked like this:
+When I started looking into this topic my goal was to provide a way to backup my user's data _without_ storing it on a server that I would need to implement (and maintain). As stretch goal, I envisioned a use case where my app could be installed on two devices (say, a user's iPhone and iPad), and up-to-date data would be available on both devices. While the app would depend on an internet connection to support backup and sync, it was important to me that the app continue to work "offline first" in the absence of connectivity. At a high level, my design for the user experience looked like this:
 
 1. User installs my app on their iPhone.
 1. User inputs their data into the app, and wishes to have a backup of their work.
@@ -67,21 +67,35 @@ That's all we need to do for now on the Dropbox app console side! Before going l
 
 There are a number of ways that Dropbox could be integrated in a React Native app; what follows is merely my suggestion. This approach has worked well for me in the small side project app I shipped earlier this year. That said, I'd be happy to hear any thoughts you have on this approach in the comments.
 
-Let's begin be creating a TypeScript class to contain our Dropbox-related logic: `DropboxIntegration.ts`
+Let's start by looking at the TypeScript class which contains our Dropbox integration code: `DatabaseSync.ts`
 
-The interface for this class will look as follows:
+The interface for this class looks like so:
 
-    interface DropboxIntegration {
-      // Authentication related
-      authenticateWithDropboxOAuth(): Promise<void>;
-      forgetUsersDropboxAccessToken(): Promise<void>;
-      hasUserAuthenticatedWithDropbox(): Promise<boolean>;
-      // Backup related
-      getDropboxBackupState(): Promise<DropboxBackupState>;
-      queueDatabaseBackup(): Promise<void>;
-      downloadDatabaseFromDropbox(): Promise<void>;
-      hasThisDatabaseBeenBackedUpYet(): Promise<boolean>;
-      doesDatabaseUpdateExist(): Promise<boolean>;
-      wasLastBackupCompleted(): Promise<boolean>;
+    interface DatabaseSync {
+      // Authorization related
+      authorize(): Promise<void>;
+      revokeAuthorization(): Promise<void>;
+      // Sync related
+      getDatabaseSyncState(): Promise<DatabaseSyncState>;
+      queueDatabaseUpload(): Promise<void>;
+      downloadDatabase(): Promise<void>;
+      // Inspect the state of synchronization
+      hasUserAuthorized(): Promise<boolean>;
+      hasDatabaseBeenSynced(): Promise<boolean>;
+      isRemoteDatabaseNewer(): Promise<boolean>;
+      wasLastUploadCompleted(): Promise<boolean>;
     }
 
+There are a few 3rd party dependencies that I've added to help dealing with the filesystem on React Native ([react-native-fs](https://www.npmjs.com/package/react-native-fs)), fetching blobs ([rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob)), working with timestamps ([moment](https://www.npmjs.com/package/moment)), and parsing querystrings ([shitty-qs](https://www.npmjs.com/package/shitty-qs)). These can all be added with the following:
+
+    npm install --save react-native-fs rn-fetch-blob moment shitty-qs
+
+The libraries that deal with the filesystem need to be linked up, so we'll add two lines to our `ios/Podfile`:
+
+    pod 'RNFS', :path => '../node_modules/react-native-fs'
+    pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
+Next, install the new pods:
+
+    cd ios/
+    pod install
