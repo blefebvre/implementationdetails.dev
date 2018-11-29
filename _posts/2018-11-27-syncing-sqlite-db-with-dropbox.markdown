@@ -4,7 +4,7 @@ title: "Syncing an SQLite Database with Dropbox"
 date: 2018-11-27 6:42
 comments: true
 tags: [React Native, SQLite, TypeScript, Dropbox, mobile, apps]
-published: false
+published: true
 ---
 In the last two posts we have set up a React Native project [with TypeScript and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/), and then integrated an SQLite plugin to enable [storing relational data on-device](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/). Next, let's take a look at using the Dropbox REST API to backup our database, and enable synchronization across devices. We'll begin by implementing support for the Dropbox API v2 authentication flow in our app.
 
@@ -90,12 +90,33 @@ There are a few 3rd party dependencies that I've added to help dealing with the 
 
     npm install --save react-native-fs rn-fetch-blob moment shitty-qs
 
-The libraries that deal with the filesystem need to be linked up, so we'll add two lines to our `ios/Podfile`:
+The libraries that deal with the filesystem need to have native code linked up to our Xcode project, so we'll add two lines to our `ios/Podfile`:
 
     pod 'RNFS', :path => '../node_modules/react-native-fs'
     pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
 
-Next, install the new pods:
+Next, install the new Pods:
 
     cd ios/
     pod install
+
+For the complete TypeScript experience, let's install type definitions for the dependencies we just added:
+
+    npm install --save @types/react-native-fs
+
+A keen eye will note that we're only installing types for 1 of the 4 dependencies we installed above. Well, lucky for us, `moment` includes TypeScript support in it's main npm package. `rn-fetch-blob` has a merged [pull req](https://github.com/joltup/rn-fetch-blob/pull/184) to include a type def in it's package, but it's not been released to npm at the time of writing. 
+
+If you're _really_ a TypeScript keener, as I am, you can take the not-yet-released index.d.ts [from master](https://github.com/joltup/rn-fetch-blob/blob/master/index.d.ts) and create the corresponding file in your project's `node_modules/rn-fetch-blob/`. Note that since this directory should be ignored by source control, taking this action will not benefit anyone else on your team, and will get overwritten if you install a new version of `rn-fetch-blob` later on.
+
+Are you new to Cocoapods or TypeScript? I wrote a little post on bootstrapping a React Native project with both tools wired up: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/)
+
+And with that, we're ready to get into the code.
+
+
+## Authorizing with Dropbox
+
+For lots of details on Dropbox's OAuth2 authorization flow take a look at their [official API docs](https://www.dropbox.com/developers/documentation/http/documentation#authorization).
+
+On the iOS project side, we need to ensure we have the RCTLinkingIOS React Cocoapod subspec included in our Podfile (which the demo app [already does](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/ios/Podfile#L8)), as well as a bit of Objective-C code added to `AppDelegate.m` to support handling deep links into our app. The official React Native docs have details on the code snippet that you'll need to [handle deep links](https://facebook.github.io/react-native/docs/linking#handling-deep-links).
+
+
