@@ -6,11 +6,14 @@ comments: true
 tags: [React Native, SQLite, TypeScript, Dropbox, mobile, apps]
 published: true
 ---
-In the last two posts we have set up a React Native project [with TypeScript and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/), and then integrated an SQLite plugin to enable [storing relational data on-device](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/). Next, let's take a look at using the Dropbox REST API to backup our database, and enable synchronization across devices. We'll begin by implementing support for Dropbox v2 authorization in our app, and then use the token we are granted to enable synchronization of our database file via the Dropbox `files` API.
+In the last two posts we have set up a React Native project [with TypeScript and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/), and then integrated an SQLite plugin to enable [storing relational data on-device](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/). Next, let's take a look at using the Dropbox REST API to backup our database, and enable synchronization between devices. We'll begin by implementing support for Dropbox v2 authorization in our app, and then use the token we are granted to enable synchronization of our database file via the Dropbox `files` API.
+
 
 ## Goal
 
-When I began looking into this topic my goal was to provide a way to backup my user's data _without_ storing it on a server that I would need to implement (and maintain). I also envisioned a use case where my app could be installed on more than one device (say, a user's iPhone and iPad), and up-to-date data would be available on both devices. While the app would depend on an internet connection to support backup and sync, it was important to me that the app continue to work "offline first" in the absence of connectivity. At a high level, my design for the overall flow looked like this:
+When I began looking into this topic my goal was to provide a way to backup my user's data _without_ storing it on a server that I would need to implement (and maintain). I also envisioned a use case where my app could be installed on more than one device (say, a user's iPhone and iPad), and up-to-date data would be available on both devices. While the app would depend on an internet connection to support backup and sync, it was important to me that the app continue to work "offline first" in the absence of connectivity. 
+
+At a high level, my concept for the overall flow looked like this:
 
 1. User installs the app on their iPhone.
 1. User inputs their data into the app, and wishes to have a backup of their work.
@@ -68,28 +71,6 @@ With that, we're ready to roll as far as the Dropbox app console is concerned. B
 
 There are a number of ways that Dropbox could be integrated in a React Native app; what follows is merely my suggestion. This approach has worked well for me in the small side project app I shipped earlier this year. That said, I'd be interested to hear any thoughts you have on this approach in the comments.
 
-<!-- 
-Let's start by looking at the TypeScript class which contains our Dropbox integration code: `DatabaseSync.ts`
-
-The interface for this class looks like so:
-
-    interface DatabaseSync {
-      // Authorization related
-      authorize(): Promise<void>;
-      revokeAuthorization(): Promise<void>;
-      // Sync related
-      getDatabaseSyncState(): Promise<DatabaseSyncState>;
-      queueDatabaseUpload(): Promise<void>;
-      downloadDatabase(): Promise<void>;
-      // Inspect the state of synchronization
-      hasUserAuthorized(): Promise<boolean>;
-      hasDatabaseBeenSynced(): Promise<boolean>;
-      isRemoteDatabaseNewer(): Promise<boolean>;
-      wasLastUploadCompleted(): Promise<boolean>;
-    }
-
--->
-
 There are a few 3rd party dependencies that I've added to help with various aspects of this use case, including:
 
 - dealing with the filesystem on React Native ([react-native-fs](https://www.npmjs.com/package/react-native-fs))
@@ -126,14 +107,59 @@ Are you new to Cocoapods or TypeScript? I wrote a little post on bootstrapping a
 And with that, we're ready to get into the code.
 
 
-## Authorizing with Dropbox
-
-For all the detail on Dropbox's OAuth2 authorization flow, take a look at their [official API docs](https://www.dropbox.com/developers/documentation/http/documentation#authorization). The APIs that we will be using in this post are all listed in [DropboxConstants.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/sync/dropbox/DropboxConstants.ts).
+## iOS project configuration
 
 On the iOS project side, we need to ensure we have the RCTLinkingIOS React Cocoapod subspec included in our Podfile (which the demo app [already does](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/ios/Podfile#L8)), as well as a bit of Objective-C code added to `AppDelegate.m` to support handling deep links into our app. The official React Native docs have details on the code snippet that you'll need to [handle deep links](https://facebook.github.io/react-native/docs/linking#handling-deep-links).
 
-<!-- TODO: pick it up here!!! -->
+Our app needs to know which URL schemes to respond to. With our project's `*.xcworkspace` file opened in Xcode, open the app's properties editor and navigate to the Info tab. Here you will find the "URL Types" setting. Add a new item with the "URL Schemes" field set to the Redirect URI `id` value you chose during the Dropbox app console setup above (`com.brucelefebvre.rnsqlitelistapp.oauth` in my demo app's case):
 
-- "Register Your URL Scheme" section of the Apple docs for details on the steps to take in Xcode: https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
+![Xcode properties page for handling deep links]({{ site.baseurl }}/images/react-native/dropbox-sync/deep_links_xcode_setup.png)
+
+For more detail on this step, check out the "Register Your URL Scheme" section of the [Apple dev docs](https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app).
+
+
+## Authorizing with Dropbox
+
+In an attempt to keep this post readable, I am going to keep the code that I embed to a minimum and link to my (fully functional) example project whenever possible: [github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) 
+
+Before we can sync anything with Dropbox we will need our user's permission to do so. I've broken down the sync-related code into two interfaces in the example app: [Authorize](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/Authorize.ts) and [DatabaseSync](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/DatabaseSync.ts). I attempted to keep these interfaces generic enough that another backend could replace the Dropbox implementation, if ever needed. You'll find the Dropbox implementation of these interfaces in the `src/sync/dropbox/` folder.
+
+The `Authorize` interface defines 3 functions: one to authorize, one to revoke that authorization, and one to query if the app is authorized:
+
+<!--
+{% highlight js %}
+
+{% endhighlight %}
+-->
+
+{% highlight js %}
+export interface Authorize {
+  authorize(): Promise<void>;
+  revokeAuthorization(): Promise<void>;
+  hasUserAuthorized(): Promise<boolean>;
+}
+{% endhighlight %}
+
+In the Dropbox implementation, the `authorize` function opens the device's browser to [dropbox.com/oauth2/authorize](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxConstants.ts#L7) complete with our app's [client_id](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxAuthorize.ts#L33) (generated by Dropbox above), redirect_uri, a requested response type (`token`), and a randomly generated `state` value included as query parameters.
+
+_Aside!_ Why is this optional `state` value included? From the [Dropbox API docs](https://www.dropbox.com/developers/documentation/http/documentation#authorization): [state can contain] "Up to 500 bytes of arbitrary data that will be passed back to your redirect URI. This parameter should be used to protect against cross-site request forgery (CSRF)." In other words, it enables us to verify if the deep link response from Dropbox is the one we are expecting, as opposed to a malicious user crafting a link that opens up our app with a Dropbox token that links to _another_ account. I highly recommend that you make use of it in your implementation as well.
+
+Once the user indicates they would like to link their Dropbox account (perhaps by tapping a button in the app), a web browser will open up to dropbox.com and either ask them to sign in, or take them right to the authorization step (if already signed in). How this page looks can be configured in the Dropbox app console to include your app's logo and other metadata:
+
+![Authorize step on dropbox.com]({{ site.baseurl }}/images/react-native/dropbox-sync/authorize_on_dropbox.png)
+
+Let's take a closer look at the Dropbox implementation in the demo list app, in [DropboxAuthorize.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxAuthorize.ts#L29). The React Native `Linking.openURL()` call returns a Promise which, once resolved, we attached a listener to the "uri" type (using `Linking.addEventListener()`). This enables our app's JS code to be notified when the app is opened with a deep link that matches the URL Scheme we specified in Xcode.
+
+With this logic in place, and our Xcode project configured correctly, the user will see a dialog like this asking if they would like to be taken back to our app once they tap the blue "Allow" button:
+
+![Authorize step on dropbox.com]({{ site.baseurl }}/images/react-native/dropbox-sync/open_in_app.png)
+
+As "Open" is tapped, our Linking event listener will finally be called! In [this function](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxAuthorize.ts#L95), we then parse the deep link's query string, ensure that our `state` value matches what was passed back to the app, and lastly record the Dropbox access token and account ID values that were granted to us via `AsyncStorage`.
+
+
+## When to authorize?
+
+
+
 
 
