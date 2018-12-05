@@ -245,8 +245,7 @@ Note that we're "wrapping" the path to our local DB backup file, and that we're 
 
 If our hypothetical user were to then install our app on another device and link it to the same Dropbox account, the initial call to `hasRemoteUpdate()` would return `true`. The user would then be prompted to replace their local database with the version from Dropbox. Upon their agreement, the `download()` function would be called.
 
-Like upload, this function also makes use of the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package. The key piece of code that performs the download looks as follows, and can be found in 
-
+Like upload, this function also makes use of the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package. The key piece of code that performs the download looks as follows, and can be found in [DropboxDatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L200):
 
 {% highlight js %}
 RNFetchBlob.config({
@@ -259,3 +258,40 @@ RNFetchBlob.config({
     })
 })
 {% endhighlight %}
+
+The last important step of this process is to record the timestamp that we received as part of the response from Dropbox:
+
+{% highlight js %}
+// Store client modified value (contained in clientModifiedString)
+return AsyncStorage.setItem(
+    DROPBOX.MOST_RECENT_BACKUP_TIMESTAMP_KEY,
+    clientModifiedString
+);
+{% endhighlight %}
+
+If, for whatever reason, we do not complete the `download()` call, this timestamp will not be recorded and the download will be attempted again the next time the app is launched. Speaking of `DROPBOX.MOST_RECENT_BACKUP_TIMESTAMP_KEY` (one of the [DropboxConstants](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxConstants.ts#L15))...
+
+
+#### hasSynced()
+
+This function will simply check for a value stored in AsyncStorage at the `DROPBOX.MOST_RECENT_BACKUP_TIMESTAMP_KEY` key. It is helper to enable the [DatabaseSynchronizer](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/DatabaseSynchronizer.ts) class to determine if it needs to bother checking for an update at all.
+
+
+#### hasLastUploadCompleted()
+
+Another convenience function. Like `hasSynced()`, this one will check the value of a key in AsyncStorage. If `DROPBOX.LAST_UPDATE_STATUS_KEY` is set to the value stored in `DROPBOX.UPDATE_STATUS_FINISHED`, true will be returned. If the key is unset or set to any other value, the function will return false. 
+
+This function is called from the `DatabaseSynchronizer` class [reconcileDatabaseChanges()](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/DatabaseSynchronizer.ts#L35) function. If it returns `false`, then we know that the previous upload to Dropbox never completed. Therefore, assuming there was not a conflicting change made to the Dropbox file, we will attempt the upload again.
+
+
+## In conclusion
+
+I hope this post has shed some light on how I was able to implement a SQLite database sync feature without supporting a server of my own. I welcome any thoughts or questions you have on the approach I have taken.
+
+If you would like to see this code in action, I have open sourced a sample app that is completely functional out-of-the-box (includes my sample Dropbox client ID generated above) on iOS. You can check it out on GitHub here:
+
+[github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo)
+
+What's next? I have a post on component & end to end testing in the works, and plan to cover the process of updating to the latest React Native release in the new year.
+
+Thanks for reading!
