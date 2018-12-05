@@ -159,7 +159,103 @@ As "Open" is tapped, our Linking event listener will finally be called! In [this
 
 ## When to authorize?
 
+In both my side project app and the [SQLite list demo](https://github.com/blefebvre/react-native-sqlite-demo), authorizing with Dropbox is an optional step. Therefore, I did not include it in the app onboarding, and instead tucked it away in a settings screen. Your apps requirements may very!
+
+The settings screen I am describing is named [SettingsModal.tsx](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/components/SettingsModal.tsx) and provides a button to kick off the authorization flow. Once authorized, the text and button change to enable the user to unlink the app from Dropbox.
+
+I bring up this screen because it is also the first time that an authorized app will interface with Dropbox. If this is the 2nd (or 3rd, 4th, etc.) device that this same Dropbox user is linking to their account, we need to provide the option to overwrite the local database with the version that is available on their account:
+
+![Prompt on-device to see if the user would like to replace their local DB with the Dropbox copy]({{ site.baseurl }}/images/react-native/dropbox-sync/replace_local_db.png)
+
+The code to support this check is of interest to the next piece of the puzzle: `DatabaseSync.ts`.
 
 
+## Syncing a database file
+
+As with the authorization code, I have included a TypeScript interface in the demo app to define how a database sync implementation would look: 
+[DatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/DatabaseSync.ts):
+
+{% highlight js %}
+export interface DatabaseSync {
+  upload(): Promise<void>;
+  download(): Promise<void>;
+  hasSynced(): Promise<boolean>;
+  hasRemoteUpdate(): Promise<boolean>;
+  hasLastUploadCompleted(): Promise<boolean>;
+}
+{% endhighlight %}
+
+#### hasRemoteUpdate()
+
+The Dropbox implementation of `hasRemoteUpdate()` is a good place to jump in to the sync code since it will be our first call to the Dropbox API, post authorization. And it's relatively simple. From [DropboxDatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L72):
+
+{% highlight js %}
+public hasRemoteUpdate(): Promise<boolean> {
+    // [ Code omitted to check connectivity, and determine path of remote file ]
+    return fetch(DROPBOX.GET_METADATA_URL, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${dropboxAccessToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            path: dropboxFilePath
+        })
+    }).then(response => {
+        // [ Code omitted to process response and compare to last uploaded timestamp ]
+    });
+}
+{% endhighlight %}
+
+The key bits to note are that we are making a standard `fetch` call in this function, and must include `Bearer <Dropbox access token>` as the `Authorization` header value. Including the token will be required for all our further interactions with the Dropbox API.
 
 
+#### upload()
+
+When the app is initially linked to a user's Dropbox account, there will be no existing database file present. The first step in this case is to perform the first upload of the database. The code which performs this upload is the `upload` function in [DropboxDatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L23).
+
+The `upload` code can be broken down into 2 distinct operations. First, the connection to the DB is closed and a [copy of the database file](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L46) is made, from `FILE_NAME` to `BACKUP_FILE_NAME` (defined in src/database/[Constants.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/Constants.ts#L6)). I use the [react-native-fs](https://www.npmjs.com/package/react-native-fs) to efficiently handle deleting the previous backup file and creating the new copy. Once complete the database is reopened and the `upload()` function's Promise is resolved.
+
+_Why is the Promise resolved already? The upload hasn't even begun yet!_ Sticking with the offline first approach, I want to avoid blocking the UI while waiting for an upload to complete. Since mobile networks can be unreliable -- for example, reporting connectivity but not supporting enough bandwidth to actually do anything -- I took the approach that the upload should happen in the background. With this approach we simply do the minimum amount of work necessary while the database is closed (the copy operation), and then kick off the upload after the fact.
+
+The 2nd piece of the puzzle is the actual upload. In order to support efficient binary file upload I have incorporated the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package, which avoids the Base64 bridging typically needed for file access in React Native. I found this the best way to actually upload content to Dropbox, after a number of failed attempts of uploading without it (related [issue](https://github.com/facebook/react-native/issues/14445) and [post](https://www.dropboxforum.com/t5/API-Support-Feedback/The-Dropbox-API-V2-not-compatible-with-React-Native/td-p/226203) on the subject).
+
+The key piece of this operation is the call to `RNFetchBlob.fetch()` in the [uploadDBToDropbox()](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L381) function:
+
+{% highlight js %}
+RNFetchBlob.fetch(
+    "POST",
+    DROPBOX.UPLOAD_URL,
+    {
+        Authorization: `Bearer ${dropboxAccessToken}`,
+        "Content-Type": "application/octet-stream",
+        "Dropbox-API-Arg": JSON.stringify({
+            path: dropboxFilePath,
+            mode: "overwrite"
+        })
+    },
+    RNFetchBlob.wrap(localFilePath)
+)
+{% endhighlight %}
+
+Note that we're "wrapping" the path to our local DB backup file, and that we're not using the standard `fetch` call but instead using the one provided by `RNFetchBlob`.
+
+
+#### download()
+
+If our hypothetical user were to then install our app on another device and link it to the same Dropbox account, the initial call to `hasRemoteUpdate()` would return `true`. The user would then be prompted to replace their local database with the version from Dropbox. Upon their agreement, the `download()` function would be called.
+
+Like upload, this function also makes use of the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package. The key piece of code that performs the download looks as follows, and can be found in 
+
+
+{% highlight js %}
+RNFetchBlob.config({
+    // DB data will be saved to this path
+    path: this.getLocalDBFilePath()
+}).fetch("POST", DROPBOX.DOWNLOAD_URL, {
+    Authorization: `Bearer ${accessToken}`,
+    "Dropbox-API-Arg": JSON.stringify({
+        path: this.getDropboxFolder() + this.getDatabaseBackupName()
+    })
+})
+{% endhighlight %}
