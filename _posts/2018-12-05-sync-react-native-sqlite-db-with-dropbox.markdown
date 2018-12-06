@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sync your React Native SQLite database between devices with Dropbox"
-date: 2018-12-05 14:01
+date: 2018-12-05 22:01
 comments: true
 tags: [React Native, SQLite, TypeScript, Dropbox, mobile, apps]
 published: true
@@ -9,6 +9,11 @@ published: true
 In the previous two posts we have bootstrapped a React Native project [with TypeScript and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/), and then integrated an SQLite plugin to enable [storing relational data on-device](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/). Next, let's take a look at using the Dropbox HTTP API to backup our database and enable synchronization between devices. We’ll begin by walking through support for the Dropbox v2 authorization flow in a React Native app, and then use the token we are granted to enable synchronization of our database file via the Dropbox `files` HTTP endpoints.
 
 ![Demo app settings screen showing that the user has linked their Dropbox account]({{ site.baseurl }}/images/react-native/dropbox-sync/linked_with_dropbox.png)
+
+This post is accompanied by a fully-functional demo app that illustrates the approach: 
+
+[github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo)
+
 
 ## Goal
 
@@ -103,7 +108,9 @@ A keen eye will note that we're only installing types for 1 of the 5 dependencie
 
 If you're _really_ a TypeScript keener, as I am, you can take the not-yet-released index.d.ts [from master](https://github.com/joltup/rn-fetch-blob/blob/master/index.d.ts) and create the corresponding file in your project's `node_modules/rn-fetch-blob/` directory. Note that since this directory _should be_ ignored by source control, taking this action will not benefit anyone else on your team, and will get overwritten if you install a new version of `rn-fetch-blob` later on.
 
-Are you new to Cocoapods or TypeScript? I wrote a little post on bootstrapping a React Native project with both tools wired up: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/)
+![TypeScript support for rn-fetch-blob showed off in VS Code]({{ site.baseurl }}/images/react-native/dropbox-sync/rn-fetch-blob-types.png)
+
+Much better! Are you new to Cocoapods or TypeScript? I wrote a little post on bootstrapping a React Native project with both tools wired up: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/)
 
 
 ## iOS project configuration
@@ -121,7 +128,7 @@ And with that, we're ready to get into the code.
 
 ## Authorizing with Dropbox
 
-In an attempt to keep this post readable, I am going to keep the code that I embed to a minimum and link to my (fully functional) demo project whenever possible: [github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) 
+In an attempt to keep this post readable, I am going to keep the code that I embed to a minimum and link to my (fully functional) [demo app](https://github.com/blefebvre/react-native-sqlite-demo) whenever possible. 
 
 Before we can sync anything with Dropbox we will need our user's permission to do so. I've broken down the sync-related code into two interfaces in the demo app: [Authorize](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/Authorize.ts) and [DatabaseSync](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/DatabaseSync.ts). I attempted to keep these interfaces generic enough that another backend could replace the Dropbox implementation, if ever needed. You'll find the Dropbox implementation of these interfaces in the `src/sync/dropbox/` directory.
 
@@ -153,9 +160,9 @@ Let's take a closer look at the Dropbox implementation in the demo list app, in 
 
 With this logic in place, and our Xcode project configured correctly, the user will see a dialog like this asking if they would like to be taken back to our app once they tap the blue "Allow" button:
 
-![Authorize step on dropbox.com]({{ site.baseurl }}/images/react-native/dropbox-sync/open_in_app.png)
+![Authorize step on dropbox.com, step 2 where the user is asked to open back up our app]({{ site.baseurl }}/images/react-native/dropbox-sync/open_in_app.png)
 
-As "Open" is tapped, our Linking event listener will finally be called! In [this function](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxAuthorize.ts#L95), we then parse the deep link's query string, ensure that our `state` value matches what was passed back to the app, and lastly record the Dropbox access token and account ID values that were granted to us via `AsyncStorage`.
+As "Open" is tapped, our Linking event listener callback will fire. In [this function](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxAuthorize.ts#L117), we then parse the deep link's query string, ensure that our `state` value matches what was passed back to the app, and lastly record the Dropbox access token and account ID values that were granted to us in `AsyncStorage`.
 
 
 ## When to authorize?
@@ -188,7 +195,7 @@ export interface DatabaseSync {
 
 #### hasRemoteUpdate()
 
-The Dropbox implementation of `hasRemoteUpdate()` is a good place to jump in to the sync code since it will be our first call to the Dropbox API, post authorization. And it's relatively simple. From [DropboxDatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L72):
+The Dropbox implementation of `hasRemoteUpdate()` is a good place to jump in to the sync code since it will be our first call to the Dropbox API, post-authorization. And it's relatively simple. From [DropboxDatabaseSync.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L72):
 
 {% highlight js %}
 public hasRemoteUpdate(): Promise<boolean> {
@@ -208,7 +215,7 @@ public hasRemoteUpdate(): Promise<boolean> {
 }
 {% endhighlight %}
 
-The key bits to note are that we are making a standard `fetch` call in this function, and must include `Bearer <Dropbox access token>` as the `Authorization` header value. Including the token will be required for all further interactions with the Dropbox API.
+The key bits to note are that we are making a standard `fetch` call in this function, and must include `Bearer <Dropbox access token>` as the `Authorization` header value. Including this token will be required for all future interactions with the Dropbox API.
 
 
 #### upload()
@@ -217,9 +224,9 @@ When the app is initially linked to a user's Dropbox account, there will be no e
 
 The `upload` code can be broken down into 2 distinct operations. First, the connection to the DB is closed and a [copy of the database file](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L46) is made, from `FILE_NAME` to `BACKUP_FILE_NAME` (defined in src/database/[Constants.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/Constants.ts#L6)). I use the [react-native-fs](https://www.npmjs.com/package/react-native-fs) package to efficiently handle deleting the previous backup file and creating the new copy. Once complete the database is reopened and the `upload()` function's Promise is resolved.
 
-_Why is the Promise resolved already? The upload hasn't even begun yet!_ Sticking with the offline first approach, I need to avoid blocking the UI while waiting for an upload to complete. Since mobile networks can be unreliable -- for example, reporting connectivity but not supporting enough bandwidth to actually do anything -- I took the approach that the upload should happen in the background. With this approach we simply do the minimum amount of work necessary while the database is closed (the copy operation), and then kick off the upload after the fact.
+_Why is the Promise resolved already? The upload hasn't even begun yet!_ Sticking with the offline first approach, I need to avoid blocking the UI while waiting for an upload to complete. Since mobile networks can be unreliable -- for example, reporting connectivity but not supporting enough bandwidth to actually do anything -- I took the approach that the upload should happen in the background. With this approach I do the minimum amount of work necessary while the database is closed (the copy operation), and then kick off the upload after the fact.
 
-The 2nd piece of the puzzle is the actual upload. In order to support efficient binary file upload I have incorporated the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package, which avoids the Base64 bridging typically needed for file access in React Native. I found this the best way to actually upload content to Dropbox, after a number of failed attempts of uploading without it (related [issue](https://github.com/facebook/react-native/issues/14445) and [post](https://www.dropboxforum.com/t5/API-Support-Feedback/The-Dropbox-API-V2-not-compatible-with-React-Native/td-p/226203) on the subject).
+The 2nd part of the upload is the actual file upload. In order to support efficient binary file transfers I have incorporated the [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob) package, which avoids the Base64 bridging typically needed for file access in React Native. I found this the best way to actually upload content to Dropbox, after a number of failed attempts of uploading without it (related [issue](https://github.com/facebook/react-native/issues/14445) and [post](https://www.dropboxforum.com/t5/API-Support-Feedback/The-Dropbox-API-V2-not-compatible-with-React-Native/td-p/226203) on the subject).
 
 The key piece of this operation is the call to `RNFetchBlob.fetch()` in the [uploadDBToDropbox()](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxDatabaseSync.ts#L381) function:
 
@@ -270,7 +277,7 @@ return AsyncStorage.setItem(
 );
 {% endhighlight %}
 
-If, for whatever reason, we do not complete the `download()` call, this timestamp will not be recorded and the download will be attempted again the next time the app is launched. Speaking of `DROPBOX.MOST_RECENT_BACKUP_TIMESTAMP_KEY` (one of the [DropboxConstants](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxConstants.ts#L15))...
+If, for whatever reason, we do not complete the `download()` call, this timestamp will not be recorded and the download will be attempted again the next time the app is launched. Speaking of `DROPBOX.MOST_RECENT_BACKUP_TIMESTAMP_KEY` (one of the [DropboxConstants](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/sync/dropbox/DropboxConstants.ts#L16))...
 
 
 #### hasSynced()
@@ -280,19 +287,39 @@ This function will simply check for a value stored in AsyncStorage at the `DROPB
 
 #### hasLastUploadCompleted()
 
-Another helper function. Like `hasSynced()`, a call to this function will check the value of a key in AsyncStorage. If `DROPBOX.LAST_UPDATE_STATUS_KEY` is set to the value of `DROPBOX.UPDATE_STATUS_FINISHED`, true will be returned. If the key is unset or set to any other value, the function will return false. 
+Another helper function. Like `hasSynced()`, a call to this function will check the value of a key in AsyncStorage. If `DROPBOX.LAST_UPDATE_STATUS_KEY` is set to the value of `DROPBOX.UPDATE_STATUS_FINISHED`, true will be resolved. If the key is unset or set to any other value, the function will resolve false. 
 
 This function is called from the `DatabaseSynchronizer` class [reconcileDatabaseChanges()](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/DatabaseSynchronizer.ts#L35) function. If it returns `false`, then we know that the previous upload to Dropbox never completed. Therefore, assuming there was not a conflicting change made to the Dropbox file from another device, we will attempt the upload again.
 
 
+## Triggering an upload
+
+The action that triggers an upload of the database to Dropbox is completely up to you. It can be a manual step, or it can happen each time the database is written to. The latter approach is the one I have taken with the demo list app. 
+
+To implement the upload-on-each-write approach, I have added a `databaseSync.upload()` call to the end of each of the Database functions which INSERTs, UPDATEs, or DELETEs data. For an example, check out [Database.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/dropbox-sync/src/database/Database.ts#L84).
+
+{% highlight js %}
+    // Queue database upload
+    return this.databaseSync.upload();
+{% endhighlight %}
+
+Since all of the database functions already return a `Promise`, it was simple to add this call right at the end of each function's existing Promise chain. You'll recall from above that the `upload()` call briefly closes the database, but it's Promise chain will resolve immediately after the copy is complete and the database is reopened; it does not wait for the upload itself to complete.
+
+## Downsides to this approach
+
+This approach has worked well for me, but it is not going to work for _many_ apps. Perhaps most apps. Apps that would not be good candidates for this approach would likely have one or more of the following characteristics:
+
+- Require frequent database writes that occur in quick succession (for example, an app that records location data a few times per second)
+- Contain a large database. Since we back up the entire database on each save, this approach does not make sense when the database is big.
+- Require sharing data with other users of the app. The database is self-contained on device, so there is no way to have a relationship with another user's data.
+
+
 ## In conclusion
 
-I hope this post has shed some light on how I was able to implement an SQLite database sync feature without supporting a server of my own. I welcome any thoughts or questions you have on the approach I have taken.
+I hope this post has shed some light on how I was able to implement an SQLite database sync feature in a React Native app without supporting a server of my own. I welcome any thoughts or questions you have on the approach I have taken.
 
-If you would like to see this code in action, I highly recommend checking out the demo app that I have been referencing throughout this post. It is completely functional out-of-the-box on iOS (includes my sample Dropbox client ID generated above). You can check it out on GitHub here:
+If you would like to see this code in action, I recommend checking out the demo app that I have been referencing throughout this post. It is completely functional out-of-the-box on iOS (includes my sample Dropbox client ID generated above). You can check it out on GitHub here:
 
 [github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo)
 
-_What's next?_ I have a post on component & end to end testing in the works, and plan to cover the process of updating to the latest React Native release in the new year.
-
-Thanks for reading!
+_What's next, Bruce?_ I have a post in the works on component & end-to-end testing, and plan to cover the process of updating to the latest React Native release shortly after that.

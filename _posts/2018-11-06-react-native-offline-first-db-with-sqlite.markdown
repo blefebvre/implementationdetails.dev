@@ -121,7 +121,7 @@ Key points about this approach:
 3. All CRUD operation code is contained in the Database class, which does not expose anything about the underlying SQLite datastore.
 4. There is an additional `DatabaseInitialization` class which is used initially to create the SQL tables for the schema, and handles any ongoing schema changes after the app has been shipped.
 
-Let's take a look at an outline of the `Database` class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts):
+Let's take a look at an outline of the `Database` class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/database/Database.ts):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -160,7 +160,7 @@ Why do it this way? Had I exported `DatabaseImpl` instead (or more likely, simpl
 
 ## Connection management
 
-Speaking of connection management brings me to the next piece of the puzzle: opening and closing our database connection at the right time during the app's lifecycle. I'll highlight key aspects of App.tsx below, but the complete file should be referenced [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/App.tsx):
+Speaking of connection management brings me to the next piece of the puzzle: opening and closing our database connection at the right time during the app's lifecycle. I'll highlight key aspects of App.tsx below, but the complete file should be referenced [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/App.tsx):
 
 {% highlight js %}
 import React, { Component } from "react";
@@ -270,7 +270,7 @@ You may have noticed the `State` interface in App.tsx above. A nice feature of w
 export default class App extends Component<object, State> {
 {% endhighlight %}
 
-By passing two type arguments (`<object, State>`) to Component, we are stating that we do not expect any specific `props` to this component via `object`, but will be storing an object in state that matches the shape of the `State` interface, defined a few lines above. This same approach works just as well with stateless functional components (for props only, of course). Let's take a look at the [Checkbox component](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/components/Checkbox.tsx) to see how this works within a SFC:
+By passing two type arguments (`<object, State>`) to Component, we are stating that we do not expect any specific `props` to this component via `object`, but will be storing an object in state that matches the shape of the `State` interface, defined a few lines above. This same approach works just as well with stateless functional components (for props only, of course). Let's take a look at the [Checkbox component](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/components/Checkbox.tsx) to see how this works within a SFC:
 
 {% highlight js %}
 interface Props {
@@ -293,7 +293,7 @@ OK! Back to the database.
 
 Since we are using an SQLite database under the hood, we have to define our schema before we can store anything in it. Additionally we will need to provide a way to update this schema as our app evolves, and enable the database to update itself once the user has applied an update from the App Store or Google Play.
 
-To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts)):
+To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/database/DatabaseInitialization.ts)):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -365,7 +365,7 @@ export class DatabaseInitialization {
   }
 {% endhighlight %}
 
-The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
+The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
 
 1. SQL tables, as described in `createTables`, are created in a single transaction _if they do not already exist_. This is not the place for schema updates once your app has shipped, unless that update is a fresh new table!
 1. The `Version` table is then queried to determine what version the app's local database is at. This version is then used to determine if schema changes are needed, for example if the schema has been changed during a recent app store update.
@@ -376,7 +376,7 @@ The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-
 
 All the Create, Read, Update and Delete code for dealing with Lists and ListItems in my [RN SQLite Demo app](https://github.com/blefebvre/react-native-sqlite-demo) is contained within the Database.ts class. I like this approach because the rest of my app can be completely ignorant about how data is being persisted, and I have the option to cleanly swap out the DatabaseImpl class for another implementation using a completely different persistence mechanism in the future, should the need arise.
 
-What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts) for creating a new List with a given name:
+What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-native-sqlite-demo/blob/react-native-offline-first-db-with-sqlite/src/database/Database.ts) for creating a new List with a given name:
 
 {% highlight js %}
   public createList(newListTitle: string): Promise<void> {

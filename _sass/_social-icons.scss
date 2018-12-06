@@ -1,4 +1,5 @@
-.social-icons-left, .social-icons-right {
+.social-icons-left,
+.social-icons-right {
   text-align: center;
   float: none;
 }
@@ -19,7 +20,11 @@
   opacity: 1;
 }
 
-.social-icons iframe[title=Flattr] {
+.social-icons iframe[title="Flattr"] {
   position: relative;
   top: 0.1em;
+}
+
+.share-links {
+  display: inline;
 }
