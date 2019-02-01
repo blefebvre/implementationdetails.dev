@@ -8,7 +8,7 @@ published: true
 ---
 If you've been following along with the [previous](/blog/2018/12/05/sync-react-native-sqlite-db-with-dropbox/) [few](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/) [posts](/blog/2018/10/12/react-native-typescript-cocoapods/), you'll know that I recently shipped a React Native app that deals with financial data. Financial data values are very often represented by decimal numbers. Computers are good at many things, but representing decimal numbers (known technically as "floating point" numbers) is not one of them - and JavaScript is no exception. Need proof? Just copy and paste `0.3-0.2` into your nearest browser's console. If JS can't be trusted with basic math _that you can do in your head_, how can it be trusted with real data?
 
-![Console output showing how 0.3-0.2 does not exactly equal 0.1]({{ site.baseurl }}/images/react-native/decimal_math.png)
+<img src="{{ site.baseurl }}/images/react-native/decimal_math.png" alt="Console output showing how 0.3-0.2 does not exactly equal 0.1" style="width: 500px;"/>
 
 ## Goal
 
