@@ -121,7 +121,7 @@ export const formatCurrency = (
 };
 {% endhighlight %}
 
-This helper leans on the `Number.toLocaleString()` method to do the grunt work by passing the provided `currency` and `locale` strings to it. Since we are only rendering this value out (and not performing any mathematical operations on it), we call Big's `toFixed(2)` to round the number to 2 decimal places and return a string. 
+This helper leans on the `Number.toLocaleString()` method to do the grunt work by passing the provided `currency` and `locale` strings to it. Since I am only rendering this value out (and not performing any mathematical operations on it), I call Big's `toFixed(2)` to round the number to 2 decimal places, and return a string. 
 
 The result, as seen by a person with a device set to an American locale rendering a Canadian dollar figure:
 
@@ -140,7 +140,7 @@ usdPrice.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFra
 
 ## Conclusion
 
-If you're looking to deal with numbers in a JavaScript-based app and are concerned at all about their precision or size, I highly recommend big.js: [github.com/MikeMcl/big.js/](https://github.com/MikeMcl/big.js/)
+If you're looking to deal with monetary values in a JavaScript-based app and are concerned at all about their precision or size, I highly recommend big.js: [github.com/MikeMcl/big.js/](https://github.com/MikeMcl/big.js/)
 
 And if you're curious about why computers have such difficulty with decimal numbers, I highly recommend checking out the [Floating-Point Guide](https://floating-point-gui.de/). It gets right to the point and should help to clear up any confusion on this topic in general.
 
