@@ -6,9 +6,9 @@ comments: true
 tags: [React Native, TypeScript, upgrade, mobile, apps]
 published: true
 ---
-Shortly after I published my [previous post](/blog/2019/03/03/upgrading-react-native-with-rn-diff-purge/) on upgrading React Native, the owner and maintainer of the [rn-diff-purge](https://github.com/react-native-community/rn-diff-purge) repo, [Pavlos Vinieratos](https://github.com/pvinis), kindly reached out to let me know that some changes were in the works for the way upgrade was going to work going forward. I had an upgrade that I had been planning to do and thought I would give the updated approach a try. This post is a summary of my experience upgrading an RN app from `0.55.4` all the way to the state-of-the-art (at the time of writing): `0.59.2`. 
+Shortly after I published my [previous post](/blog/2019/03/03/upgrading-react-native-with-rn-diff-purge/) on upgrading React Native apps, the owner and maintainer of the [rn-diff-purge](https://github.com/react-native-community/rn-diff-purge) repo, [Pavlos Vinieratos](https://github.com/pvinis), kindly reached out to let me know that some changes were in the works to the way upgrades were going to happen going forward. I had an upgrade that I had been planning to do and thought I would give the updated approach a try. This post is a summary of my experience upgrading an RN app from `0.55.4` all the way to the state-of-the-art (at the time of writing): `0.59.2`. 
 
-The plans for improving upgrade that Pavlos shared with me are twofold. First, a web UI will be released to enable easier access to the diffs. This piece is now complete and is linked to from the original home of the [rn-diff-purge](https://github.com/pvinis/rn-diff-purge) repo: [pvinis.github.io/purge-web](https://pvinis.github.io/purge-web)
+The plan for improving upgrade that Pavlos shared with me will happen in two steps. First, a web UI will be released to enable easier access to the diffs. This piece is now complete and is linked to from the original home of the [rn-diff-purge](https://github.com/pvinis/rn-diff-purge) repo: [pvinis.github.io/purge-web](https://pvinis.github.io/purge-web)
 
 Next, the current git-upgrade method of performing upgrades with the React Native CLI will be replaced by the purge approach. This is in the works now, and is expected to land in `0.60.*`.
 
