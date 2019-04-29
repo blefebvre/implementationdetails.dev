@@ -59,4 +59,4 @@ If I piqued your interest about how floating point numbers work in computers, I 
 1. [Floating Point Arithmetic 1: Addition - Jacob Schrum](https://www.youtube.com/watch?v=KiWz-mGFqHI) on YouTube
 1. The entire [Floating-Point Guide](https://floating-point-gui.de/) site
 
-Lastly, a big thanks to those that came out to the meetup, to Shopify for hosting, and to the organizers for putting together a consistently awesome event! Don't miss Kent C. Dodds (!!) next month: [meetup.com/Ottawa-ReactJS-Meetup/events/260941602/](https://www.meetup.com/Ottawa-ReactJS-Meetup/events/260941602/)
+Lastly, a big thanks to those that came out to the meetup, to [Shopify](https://twitter.com/Shopify) for hosting, and to the organizers for putting together a consistently awesome event! Don't miss Kent C. Dodds (!!) next month: [meetup.com/Ottawa-ReactJS-Meetup/events/260941602/](https://www.meetup.com/Ottawa-ReactJS-Meetup/events/260941602/)
