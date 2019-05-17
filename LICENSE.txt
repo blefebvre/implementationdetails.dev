@@ -1,9 +1,9 @@
-Copyright (c) 2014-2018 John Otander
+Site content © 2013-present Bruce Lefebvre. All Rights Reserved.
+
+Copyright (c) 2014-2018 John Otander for the Jekyll theme 'Pixyll'
 Copyright (c) 2014 Daniel Eden for animate.css
 Copyright (c) 2014 Brent Jackson for Basscss
 Copyright (c) 2013 Twitter, Inc for CSS copied from Bootstrap
-
-Copyright (c) 2013-2018 Bruce Lefebvre for the blog article content
 
 MIT License
 
