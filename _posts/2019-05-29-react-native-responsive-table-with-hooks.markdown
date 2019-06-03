@@ -187,4 +187,4 @@ Once the device is rotated, the additional columns are instantly visible to the 
 
 That's it! You now have a table that looks great on mobile and supports showing additional data by rotating the device.
 
-The demo app can be found on GitHub: [https://github.com/blefebvre/react-native-responsive-table](github.com/blefebvre/react-native-responsive-table)
+The demo app can be found on GitHub: [github.com/blefebvre/react-native-responsive-table](https://github.com/blefebvre/react-native-responsive-table)
