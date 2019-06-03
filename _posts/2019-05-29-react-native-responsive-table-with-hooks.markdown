@@ -80,7 +80,56 @@ export enum Breakpoint {
 }
 {% endhighlight %}
 
-We will need a way to determine the breakpoint for use by the `reduceDataForScreenSize(..)` function. I wrote a small hook called [useBreakpoint](https://github.com/blefebvre/react-native-responsive-table/blob/master/src/hooks/useBreakpoint.ts#L10) to return the current matching breakpoint, which relies on another hook called [useScreenDimensions](https://github.com/blefebvre/react-native-responsive-table/blob/master/src/hooks/useScreenDimensions.ts#L10) to figure out the device's screen size each time it changes.
+We will need a way to determine the breakpoint for use by the `reduceDataForScreenSize(..)` function. I wrote a small hook called [useBreakpoint](https://github.com/blefebvre/react-native-responsive-table/blob/master/src/hooks/useBreakpoint.ts#L10) to return the current matching breakpoint:
+
+{% highlight js %}
+// Determine if the current screen width should
+// match the Small, Medium, or Large breakpoint.
+export function useBreakpoint(): Breakpoint {
+  const { width } = useScreenDimensions();
+  console.log(`Determining device breakpoint for width: ${width}`);
+
+  if (width < 500) {
+    console.log(`= Breakpoint.SMALL`);
+    return Breakpoint.SMALL;
+  } else if (width >= 500 && width < 1000) {
+    console.log(`= Breakpoint.MEDIUM`);
+    return Breakpoint.MEDIUM;
+  } else {
+    console.log(`= Breakpoint.LARGE`);
+    return Breakpoint.LARGE;
+  }
+}
+{% endhighlight %}
+
+`useBreakpoint` relies on another hook called [useScreenDimensions](https://github.com/blefebvre/react-native-responsive-table/blob/master/src/hooks/useScreenDimensions.ts#L10) to figure out the device's screen size each time it changes:
+
+{% highlight js %}
+// A hook to return the current screen dimensions
+export function useScreenDimensions(): { width: number; height: number } {
+  // Get initial dimensions and initialize state
+  const initialDimensions = Dimensions.get("screen");
+  const [width, setWidth] = useState(initialDimensions.width);
+  const [height, setHeight] = useState(initialDimensions.height);
+
+  useEffect(() => {
+    const handleChange = ({ screen }: DimensionsCallbackProp) => {
+      setWidth(screen.width);
+      setHeight(screen.height);
+    };
+
+    // Listen for dimension changes, which typically indicates a rotation
+    Dimensions.addEventListener("change", handleChange);
+
+    // Cleanup
+    return () => {
+      Dimensions.removeEventListener("change", handleChange);
+    };
+  });
+
+  return { width, height };
+}
+{% endhighlight %}
 
 The two hooks compose together nicely, so all that needs to be done from our responsive table component is call `const breakpoint = useBreakpoint();` and pass the result along to the `reduceDataForScreenSize(..)` function.
 
