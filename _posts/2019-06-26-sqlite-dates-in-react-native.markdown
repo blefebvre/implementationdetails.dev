@@ -31,9 +31,9 @@ Later on, when you'd like to write to this table, craft an INSERT statement that
 
 {% highlight js %}
 function insertTransaction(transactionDate: moment.Moment, tx) {
-  tx.executeSql(
+  return tx.executeSql(
     // Other columns removed to simplify example
-    "INSERT INTO Transactions (transactionDate) VALUES (?)",
+    "INSERT INTO Transaction (transactionDate) VALUES (?)",
     [transactionDate.format("YYYY-MM-DD")]
   )
 }
@@ -48,7 +48,7 @@ function getTransactions(tx): Promise<Transaction[]> {
   return tx.executeSql(
     "SELECT id, transactionDate " +
     /* other columns... */
-    "FROM Transactions " +
+    "FROM Transaction " +
     /* WHERE... */
     /* 1. Note date() function call */
     "ORDER BY date(transactionDate) ASC;"
@@ -75,7 +75,7 @@ function newTransactionFromObject(row): Transaction {
 }
 {% endhighlight %}
 
-There are a couple of interesting things happening in the code above:
+There are a couple of things happening in the code above:
 
 1. Note the `date(transactionDate)` function call. This enables us to `ORDER BY` based on the date, amongst other [date-related things](https://www.sqlite.org/lang_datefunc.html). In this example the transactions will be ordered oldest to newest.
 2. We can conditionally create a new `Moment` instance if the row's `transactionDate` is defined. Otherwise, it will be `null`.
@@ -84,9 +84,7 @@ You now have a date value available for use on the app's client side, in the sup
 
 ## Further reading
 
-The SQLite docs are concise and easy to parse: https://www.sqlite.org/docs.html
-
-I've written a few other posts on the topic of SQLite and React Native. Check out:
+I've written a couple of other posts on the topic of SQLite and React Native. Check out:
 
 - [Building an offline first app with React Native and SQLite](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/)
 - [Sync your React Native SQLite database between devices with Dropbox](/blog/2018/12/05/sync-react-native-sqlite-db-with-dropbox/)
