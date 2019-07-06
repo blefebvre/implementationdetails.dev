@@ -400,3 +400,11 @@ Well, that got longer than expected. Kudos to you if you've stuck with me to thi
 In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, and it's truly an enjoyable development experience when combined with TypeScript. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I used in my side project app which is currently live in the App Store. 
 
 _But Bruce, is this not an "offline only" app, as opposed to offline first_? Indeed it is. Stay tuned for the next article where I will go into detail on how you can use the Dropbox API to sync your app's database file between devices, giving you some of the benefits of having a server (backup and sync, namely), with very few of the headaches!
+
+## Further reading
+
+- [Sync your React Native SQLite database between devices with Dropbox](/blog/2018/12/05/sync-react-native-sqlite-db-with-dropbox/)
+- [Dealing with monetary values in a React Native app](/blog/2019/01/31/dealing-with-monetary-values-react-native/)
+- [React Native upgrade by example (featuring Purge Web)](/blog/2019/04/03/react-native-upgrade-by-example/)
+- [Building a responsive table in React Native with Hooks](/blog/2019/06/02/react-native-responsive-table-with-hooks/)
+- [Using SQLite Dates in a React Native app](/blog/2019/06/27/sqlite-dates-in-react-native/)
