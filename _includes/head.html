@@ -73,7 +73,9 @@
     <meta name="twitter:description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}" />
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
     {% if site.post_preview_image %}
-    <meta name="twitter:image" content="{{ site.url }}/images/me.jpeg" />
+    {% if page.twitter_image %}
+    <meta name="twitter:image" content="{{ site.url }}{{page.twitter_image}}" />
+    {% endif %}
     {% endif %}
 
     <!-- Icons -->
