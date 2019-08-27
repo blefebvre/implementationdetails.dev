@@ -1,18 +1,18 @@
 ---
 layout: post
-title: "Cypress (and the Electron browser) has a problem with Promises"
-summary: "Tips and tricks on avoiding issues with Promises in your Cypress E2E tests."
-twitter_image: "url/to/twitter/image.png"
-date: 2019-08-25 21:16
+title: "Avoiding issues with Promises in your Cypress E2E tests"
+summary: "Using Cypress.Promise for consistency across Chrome and the Electron browser."
+twitter_image: "/images/cypress/promises/thumbnail.png"
+date: 2019-08-26 21:56
 comments: true
-tags: [Cypress, E2E, JavaScript]
+tags: [Cypress, E2E, JavaScript, Promises]
 published: true
 ---
-Before I begin: The Cypress docs are [very clear](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises) that while the Cypress API looks a lot like it's based on `Promise`'s, it actually isn't. There's plenty of detail about the fact that Cypress has it's own command queuing mechanism which means that — in theory — there should be no need to write your own asynchronous Promise-based code. Nevertheless, since many of the Cypress commands appear Promise-like, your temptation to try and `catch` an error or even write your own helper function that returns a `Promise` would be completely understandable. My experience with the latter is what led me to write this post, in which I'll share a simple trick for avoiding issues while using Promises from your Cypress test code.
+Before I begin: The Cypress docs are [very clear](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Not-Promises) that while the Cypress API looks a lot like it's based on `Promise`'s, it actually isn't. There's plenty of detail about the fact that Cypress has it's own command queuing mechanism which means that — in theory — there should be no need to write your own asynchronous Promise-based code. Nevertheless, since many of the Cypress commands appear Promise-like, your temptation to try and `catch` an error or even write your own helper function that returns a `Promise` would be completely understandable. My experience with the latter is what led me to write this post, in which I'll share a simple trick for avoiding issues while using Promises in your Cypress test code.
 
 ## Background
 
-We use the [Cypress](https://www.cypress.io/) test framework at work for running our end-to-end tests both locally and on our continuous integration server (Jenkins). Aside from a touch of flakiness and some challenges with the Adobe ID login flow, Cypress has been excellent. That is, until I discovered that some test suites were running fine locally but being skipped altogether _yet still passing_ due to the way I had written a helper script to read from sessionStorage asynchronously, using Promises.
+We use the [Cypress](https://www.cypress.io/) test framework at work for running our end-to-end tests both locally and on our continuous integration server (Jenkins). Aside from a touch of flakiness and some challenges with the Adobe ID login flow, Cypress has been excellent. That is, until I discovered that some test suites were running fine locally but being skipped altogether on Jenkins _yet still passing_ due to the way I had written a helper script to read from sessionStorage, using Promises.
 
 ## Why?
 
@@ -84,6 +84,6 @@ You can try out this code yourself here: [github.com/blefebvre/cypress-electron-
 
 ## Conclusion
 
-My hope is that by sharing my experience with this gotcha that I can help someone avoid a headache. It is not lost on me that I could have avoided my own headache by reading the docs more thoroughly. My experience with Cypress has otherwise been great, and I (still) highly recommend that everyone check it out for their E2E testing needs. 
+My hope is that by sharing my experience with this issue I can help someone avoid a headache. It is not lost on me that I could have avoided my own headache by reading the docs more thoroughly. My experience with Cypress has otherwise been great, and I still highly recommend that everyone check it out for their E2E testing needs. 
 
-Big thanks to the Cypress team for an awesome tool!
+Big thanks are due to the Cypress team for an awesome tool!
