@@ -2,7 +2,7 @@
 layout: post
 title: "Avoiding issues with Promises in your Cypress E2E tests"
 summary: "Using Cypress.Promise for consistency across Chrome and the Electron browser."
-twitter_image: "/images/cypress/promises/thumbnail.png"
+twitter_image: "/images/cypress/promises/thumbnail_square.png"
 date: 2019-08-26 21:56
 comments: true
 tags: [Cypress, E2E, JavaScript, Promises]
