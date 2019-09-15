@@ -51,7 +51,7 @@
 
   // Hide the CTA when requested, and don't show it for a number of days
   document.getElementById("no-subscribe").addEventListener("click", function() {
-    hideCTAForDays(7);
+    hideCTAForDays(14);
     // Track "no thanks" clicks
     ga("send", "event", "CTA", "No thanks", "Newsletter");
   });
