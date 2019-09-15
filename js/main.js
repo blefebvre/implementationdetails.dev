@@ -34,28 +34,31 @@
     window.addEventListener("scroll", scrollHandler);
   }
 
-  // Hide the CTA when requested, and don't show it for a number of days
-  document.getElementById("no-subscribe").addEventListener("click", function() {
-    const daysToHideCTA = 5;
-    const millisToHideCTA = daysToHideCTA * 24 * 60 * 60 * 1000;
+  const hideCTAForDays = function(numberOfDays) {
+    const millisToHideCTA = numberOfDays * 24 * 60 * 60 * 1000;
     const expireCookieDate = new Date(Date.now() + millisToHideCTA);
 
     // Prevent it from showing on other pages, for a few days
     document.cookie =
-      hideCTACookie + ";expires=" + expireCookieDate.toUTCString();
+      hideCTACookie + ";expires=" + expireCookieDate.toUTCString() + ";path=/";
 
     // Hide the CTA
     document.getElementById("cta").classList.remove("visible");
 
     // Prevent scroll actions from showing the CTA again
     window.removeEventListener("scroll", scrollHandler);
+  };
 
+  // Hide the CTA when requested, and don't show it for a number of days
+  document.getElementById("no-subscribe").addEventListener("click", function() {
+    hideCTAForDays(7);
     // Track "no thanks" clicks
     ga("send", "event", "CTA", "No thanks", "Newsletter");
   });
 
   // "Sign me up" was clicked!
   document.getElementById("subscribe").addEventListener("click", function() {
+    hideCTAForDays(730);
     // Track subscribe clicks
     ga("send", "event", "CTA", "Sign me up", "Newsletter");
   });
