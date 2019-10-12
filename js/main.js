@@ -1,4 +1,4 @@
-(function() {
+function setupSubscribeComponent() {
   /**
    * Call-to-action slide-down
    */
@@ -62,4 +62,7 @@
     // Track subscribe clicks
     ga("send", "event", "CTA", "Sign me up", "Newsletter");
   });
-})();
+}
+
+// Setup the "subscribe to the newsletter" slide-down component
+setupSubscribeComponent();
