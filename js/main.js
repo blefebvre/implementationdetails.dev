@@ -65,4 +65,4 @@ function setupSubscribeComponent() {
 }
 
 // Setup the "subscribe to the newsletter" slide-down component
-setupSubscribeComponent();
+//setupSubscribeComponent();
