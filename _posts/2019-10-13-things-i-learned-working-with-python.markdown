@@ -8,17 +8,21 @@ comments: false
 tags: [Python, numpy, pandas, machine learning]
 published: true
 ---
-For the past month I've been working through an intro to machine learning with Python course on the Coursera platform. As a complete beginner to Python, I wanted to put together some of the handy APIs and tools that I've found useful to keep as a reference for myself as I progress through the program, and also (mostly) as a means to further my comprehension of the concepts.
+For the past month I've been working through an intro to Machine Learning course using Python. Being completely new to Python, I thought it might help with my retention of the content to put together a post on the handy libraries, functions, and tools that I've come across so far. 
+
+As a case study for this post, I put together some Canadian data to explore the relationship between the GDP values of each of Canada's provinces and territories to see if we can come up with a model that will predict the GDP of a region given a handful of key features. 
+
+If you have a Jupyter Notebook environment available you can download this post's [Notebook file on GitHub](https://github.com/blefebvre/machine-learning-learning/blob/master/notebooks/canada_gdp.ipynb). 👈 Whoa! Jupyter Notebooks render to HTML on GitHub. How cool is that?
 
 ## Sample data
 
-Here's a bit of Canadian data for us to work with throughout this post:
+Here's the initial dataset mentioned above, which includes features `Land (km^2)`, `Population`, `Unemployment rate (%)`, as well as the target value `GDP (million, CAD)` (making this a Regression problem):
 
 {% highlight python %}
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
-# data is a dict type
 data = {
     'Province/Territory': 
         ['Nunavut', 'Alberta', 'Saskatchewan', 
@@ -46,36 +50,33 @@ data = {
 
 # Instantiate a new DataFrame with the above dict
 canada_df = pd.DataFrame(data)
+
+# Pick the columns we want from the original dict, and indicate the desired order.
+# This is necessary for versions of Python before 3.6, which did not maintain an order in the dict type.
+canada_df = canada_df[['Province/Territory', 'Land (km^2)', 'Population', 'Unemployment rate (%)', 'GDP (million, CAD)']]
+
 print(canada_df)
 {% endhighlight %}
 
-If all goes well when the above code is run, it should render a table similar to this one:
+If all goes well when the above code is run, it should render a table similar to:
 
 <img src="{{ site.baseurl }}/images/python/canada_data.png" alt="Canada DataFrame including province & territory population data rendered as a table in the Jupyter Notebook environment" style="width: 100%; max-width: 500px" />
 
+We'll use this data set as the subject of our investigation for the remainder of this post.
 
 
+## Examining data
+
+Most real world datasets will not be able to fit completely on your laptop monitor, so it will be necessary to examine their data programmatically. Looking at _our_ data and searching for factors that may lead to a higher GDP, let's begin by counting the number of provinces with "high" unemployment vs. "low", where a province is classified as "high" if it's % unemployment is > 7% (an arbitrary number that I picked):
+
+{% highlight python %}
+high_unemployment_series = canada_df['Unemployment rate (%)'] > 7
+
+high_unemployment_count = len(high_unemployment_series[high_unemployment_series == True].index)
+low_unemployment_count = len(high_unemployment_series[high_unemployment_series == False].index)
+
+print("High unemployment: ", high_unemployment_count) # 6
+print("Low unemployment: ", low_unemployment_count)   # 7 
+{% endhighlight %}
 
 
-# ROUGH NOTES
-
-stacking a column onto a 2d array:
-
-    data_and_target = np.column_stack((cancer['data'], cancer['target']))
-
-create a pandas series with named columns (index), and an overall name:
-
-    series = pd.Series(data=[malignant_count, benign_count], index=['malignant', 'benign'], name='target')
-
-split the target values from the training:
-
-    X = cancerdf.drop(['target'], axis=1)
-    y = cancerdf['target']
-
-get the mean accuracy for a classifier:
-
-    score = knn.score(X_test, y_test)
-
-look for relationships in the data:
-
-    scatter = pd.plotting.scatter_matrix(X_train, c= y_train, marker = 'o', s=40, hist_kwds={'bins':15}, figsize=(9,9), cmap=cmap)
