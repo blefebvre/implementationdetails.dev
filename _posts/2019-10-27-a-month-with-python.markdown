@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Tips and Tricks from my first month with Python"
-summary: "Over the past month I've been working through an introductory Machine Learning course with Python. Being completely new to Python, and finding the pace of the course quite high, I wanted to write up a post with a handful of tips and tricks I picked up before moving on to the next module in the program."
+summary: "A few things I learned in my first month of an Applied Machine Learning in Python course."
 twitter_image: "/images/python/thumbnail.png"
 date: 2019-10-27 22:30
 comments: false
 tags: [Python, numpy, pandas, machine learning]
 published: true
 ---
-Over the past month I've been working through an introductory Machine Learning course with Python. Being completely new to Python, and finding the pace of the course quite high, I wanted to write up a post with a handful of tips and tricks I picked up before moving on to the next module in the program.
+Over the past month I've been working through an introductory Machine Learning course with Python. Being completely new to Python and finding the pace of the course quite high, I wanted to write up a post with a handful of tips and tricks I picked up before moving on to the next module in the program.
 
 As a case study for this post, I put together a table of Canadian data to explore the relationships behind the GDP values of each of Canada's provinces and territories. By the end of the post our goal is to come up with a model that will predict the GDP of a region given a set of key features. 
 
