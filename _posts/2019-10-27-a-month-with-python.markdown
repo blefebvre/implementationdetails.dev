@@ -12,7 +12,7 @@ Over the past month I've been working through an introductory Machine Learning c
 
 As a case study for this post, I put together a table of Canadian data to explore the relationships behind the GDP values of each of Canada's provinces and territories. By the end of the post our goal is to come up with a model that will predict the GDP of a region given a set of key features. 
 
-If you have a Jupyter Notebook environment available you can download this post's [Notebook file on GitHub](https://github.com/blefebvre/machine-learning-learning/blob/master/notebooks/canada_gdp.ipynb). 👈 Whoa! Jupyter Notebooks render out to HTML on GitHub!
+If you have a Jupyter Notebook environment available you can download this post's [Notebook file on GitHub](https://github.com/blefebvre/machine-learning-learning/blob/master/notebooks/canada_gdp.ipynb). 👈 Cool - Jupyter Notebooks render out to HTML on GitHub!
 
 ## Sample data
 
@@ -246,3 +246,9 @@ merged_df
 
 To note from the above, `how='left'` tells the merge to operate similar to an SQL left outer join: all keys from the left frame will be included in the resulting DataFrame, but keys in the right frame without a match on the left will be excluded.
 
+
+## Conclusion
+
+This has been a great course so far and I am learning a ton. If you would like to check it out for yourself, click here: [coursera.org/learn/python-machine-learning](https://www.coursera.org/learn/python-machine-learning/)
+
+Next up: Neural Networks! 🤓
