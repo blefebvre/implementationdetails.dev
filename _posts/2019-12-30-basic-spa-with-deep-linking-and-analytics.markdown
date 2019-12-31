@@ -71,8 +71,8 @@ What if JS is disabled? In our case, all the content is still readable! It will 
 The trick is in avoiding hiding the content if JS is disabled, which can be done by adding a class to a top level element (such as the body) _in JS_. If the code is run, you can be confident that JS is available in this user's browser:
 
 {% highlight javascript %}
-// JS is enabled! Set a class on the body to enable our 'hidden' class
-document.body.className = "js-enabled";
+// JS is enabled! Set a class on the body to enable our 'visuallyhidden' class
+  document.body.classList.add("js-enabled");
 {% endhighlight %}
 
 On the CSS side, our `.visuallyhidden` class will only be applied when it is a child of a `.js-enabled` element:
