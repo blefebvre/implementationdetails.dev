@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Building an offline first app with React Native and SQLite - 2020 update"
+title: "Building an offline first app with React Native and SQLite: 2020 update"
 date: 2020-02-23 7:32
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, Dropbox, mobile, apps, offline first]
 ---
 Refreshed for 2020 to feature Hooks, Context, and React Native 0.61.5!
 
-This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
+This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. As I mentioned in the intro of [a previous post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
 - There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
 - There would be no server-side code to develop, debug, load test, and monitor
@@ -16,13 +16,13 @@ This article walks through how I built an _offline first_ React Native app using
 
 We were sold on the approach, and began looking into options for storing relational data on-device with minimal overhead. <a href="https://www.sqlite.org/index.html" target="_blank">SQLite</a> quickly became the natural choice: it's fast, rock solid, and has been battle tested for years across a huge array of platforms and devices.
 
-Let's start by working through adding SQLite to an existing React Native app (RN going forward) that's built with the excellent productivity combo of TypeScript and CocoaPods. Looking for steps to bootstrap an app like this? Take 10 minutes and work through these instructions first: [Get started with React Native, TypeScript, and CocoaPods](/blog/2018/10/12/react-native-typescript-cocoapods/). Or, skip right to [the code](https://github.com/blefebvre/react-native-with-typescript-and-cocoapods-demo) from the last post, but note that the dependencies will be more up-to-date if you follow the steps yourself.
+Let's start by working through adding SQLite to an existing React Native app (RN going forward) that's built with the excellent productivity combo of TypeScript and CocoaPods. Looking for steps to bootstrap an app like this? Take 10 minutes and work through the official docs on the subject first: [Using TypeScript with React Native](https://facebook.github.io/react-native/docs/typescript).
 
 ## What are we building?
 
 I created a basic List app using the approach outlined below so I could share a working example of these concepts (and code) in action. It can be found here:
 
-Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo/tree/pre-hooks) (_NOTE:_ all links in this post now point to the `pre-hooks` branch. For an updated post on this subject, [click here](/link/to/new/post)!) on GitHub.
+Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo/) on GitHub.
 
 ![Demo List app running on an iPhone X sim]({{ site.baseurl }}/images/react-native/sqlite-offline/list-app-demo.png)
 
@@ -122,7 +122,7 @@ Key points about this approach:
 3. All CRUD operation code is contained in the Database class, which does not expose anything about the underlying SQLite datastore.
 4. There is an additional `DatabaseInitialization` class which is used initially to create the SQL tables for the schema, and handles any ongoing schema changes after the app has been shipped.
 
-Let's take a look at an outline of the `Database` class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/database/Database.ts):
+Let's take a look at an outline of the `Database` class. You can find the complete class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -161,7 +161,7 @@ Why do it this way? Had I exported `DatabaseImpl` instead (or more likely, simpl
 
 ## Connection management
 
-Speaking of connection management brings me to the next piece of the puzzle: opening and closing our database connection at the right time during the app's lifecycle. I'll highlight key aspects of App.tsx below, but the complete file should be referenced [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/App.tsx):
+Speaking of connection management brings me to the next piece of the puzzle: opening and closing our database connection at the right time during the app's lifecycle. I'll highlight key aspects of App.tsx below, but the complete file should be referenced [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/App.tsx):
 
 {% highlight js %}
 import React, { Component } from "react";
@@ -271,7 +271,7 @@ You may have noticed the `State` interface in App.tsx above. A nice feature of w
 export default class App extends Component<object, State> {
 {% endhighlight %}
 
-By passing two type arguments (`<object, State>`) to Component, we are stating that we do not expect any specific `props` to this component via `object`, but will be storing an object in state that matches the shape of the `State` interface, defined a few lines above. This same approach works just as well with stateless functional components (for props only, of course). Let's take a look at the [Checkbox component](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/components/Checkbox.tsx) to see how this works within a SFC:
+By passing two type arguments (`<object, State>`) to Component, we are stating that we do not expect any specific `props` to this component via `object`, but will be storing an object in state that matches the shape of the `State` interface, defined a few lines above. This same approach works just as well with stateless functional components (for props only, of course). Let's take a look at the [Checkbox component](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/components/Checkbox.tsx) to see how this works within a SFC:
 
 {% highlight js %}
 interface Props {
@@ -294,7 +294,7 @@ OK! Back to the database.
 
 Since we are using an SQLite database under the hood, we have to define our schema before we can store anything in it. Additionally we will need to provide a way to update this schema as our app evolves, and enable the database to update itself once the user has applied an update from the App Store or Google Play.
 
-To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/database/DatabaseInitialization.ts)):
+To support both these cases we will introduce a new class named DatabaseInitialization.ts, which will take the following form (you can check out the entire class [on GitHub here](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts)):
 
 {% highlight js %}
 import SQLite from "react-native-sqlite-storage";
@@ -366,7 +366,7 @@ export class DatabaseInitialization {
   }
 {% endhighlight %}
 
-The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
+The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/DatabaseInitialization.ts) includes further comments and example code detailing how the schema update process works. To provide additional context on why this is necessary, I will outline the steps taken by `updateDatabaseTables()` below:
 
 1. SQL tables, as described in `createTables`, are created in a single transaction _if they do not already exist_. This is not the place for schema updates once your app has shipped, unless that update is a fresh new table!
 1. The `Version` table is then queried to determine what version the app's local database is at. This version is then used to determine if schema changes are needed, for example if the schema has been changed during a recent app store update.
@@ -375,9 +375,9 @@ The complete class [on GitHub](https://github.com/blefebvre/react-native-sqlite-
 
 ## CRUD operations
 
-All the Create, Read, Update and Delete code for dealing with Lists and ListItems in my [RN SQLite Demo app](https://github.com/blefebvre/react-native-sqlite-demo/tree/pre-hooks) is contained within the Database.ts class. I like this approach because the rest of my app can be completely ignorant about how data is being persisted, and I have the option to cleanly swap out the DatabaseImpl class for another implementation using a completely different persistence mechanism in the future, should the need arise.
+All the Create, Read, Update and Delete code for dealing with Lists and ListItems in my [RN SQLite Demo app](https://github.com/blefebvre/react-native-sqlite-demo/) is contained within the Database.ts class. I like this approach because the rest of my app can be completely ignorant about how data is being persisted, and I have the option to cleanly swap out the DatabaseImpl class for another implementation using a completely different persistence mechanism in the future, should the need arise.
 
-What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-native-sqlite-demo/blob/pre-hooks/src/database/Database.ts) for creating a new List with a given name:
+What follows is a [function in DatabaseImpl](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/src/database/Database.ts) for creating a new List with a given name:
 
 {% highlight js %}
   public createList(newListTitle: string): Promise<void> {
