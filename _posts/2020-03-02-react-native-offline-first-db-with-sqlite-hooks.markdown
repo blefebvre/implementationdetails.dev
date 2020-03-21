@@ -1,13 +1,18 @@
 ---
 layout: post
 title: "Building an offline first app with React Native and SQLite: 2020 update"
+summary: "Get started with SQLite in a React Native app. Refreshed for 2020 to feature Hooks, Context, and React Native 0.61.5!"
 date: 2020-02-23 7:32
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, Dropbox, mobile, apps, offline first]
 ---
-Refreshed for 2020 to feature Hooks, Context, and React Native 0.61.5!
+What follows is a refresh of my most-read [post](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/), originally published in 2018. The code and content has been given a complete overhaul for 2020 to feature Hooks, Context, and React Native 0.61.5.
 
-This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. As I mentioned in the intro of [a previous post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
+---
+
+This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. 
+
+My original catalyst for this approach was a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
 - There would be no server for us to manage, patch, keep online, and serve as a single point of failure for the app
 - There would be no server-side code to develop, debug, load test, and monitor
