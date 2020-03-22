@@ -27,17 +27,17 @@ Let's start by working through adding SQLite to an existing React Native app (RN
 
 I created a basic List app using the approach outlined below so I could share a working example of these concepts (and code) in action. It can be found here:
 
-Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo/) on GitHub.
+Check out [React Native SQLite Demo on GitHub](https://github.com/blefebvre/react-native-sqlite-demo/).
 
-![Demo List app running on an iPhone X sim]({{ site.baseurl }}/images/react-native/sqlite-offline/list-app-demo.png)
+<img src="{{ site.baseurl }}/images/react-native/sqlite-offline-2020/list-app-demo.png" alt="Demo List app running on an iPhone 11 sim" style="width: 100%; max-width: 400px" />
 
-It's only been tested on iOS at this time, but the JS code and concepts should work on Android as well.
+It's only been tested on iOS at this time, but the native plugins and JS code should both work great on Android as well.
 
-I'll be referencing this codebase plenty in the details below. Please do let me know if you run into any issues with the demo!
+I'll be referencing this codebase plenty in the details below. Let me know in the comments if you run into any issues with the demo.
 
 ## Installing the SQLite plugin
 
-My RN SQLite plugin of choice was built by GitHub user [andpor](https://github.com/andpor) and is called [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, critical pull requests are still being merged, so I am optimistic that it will continue to live on.
+My RN SQLite plugin of choice was built by GitHub user [Andrzej Porebski](https://github.com/andpor) and is called [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, critical pull requests are still being merged, so I am optimistic that it will continue to live on.
 
 To keep this article from getting too long I am going to focus on iOS and only document the steps that I took, but I can confirm that the plugin works on Android as well. Refer to the [README](https://github.com/andpor/react-native-sqlite-storage) instructions for further details on plugin installation.
 
