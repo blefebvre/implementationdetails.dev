@@ -37,9 +37,9 @@ I'll be referencing this codebase plenty in the details below. Let me know in th
 
 ## Installing the SQLite plugin
 
-My RN SQLite plugin of choice was built by GitHub user [Andrzej Porebski](https://github.com/andpor) and is called [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, critical pull requests are still being merged, so I am optimistic that it will continue to live on.
+My SQLite plugin of choice is [react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage), built by GitHub user [Andrzej Porebski](https://github.com/andpor). It's been very solid, supports a Promise-based API, and there is a TypeScript type definition available which checked all the boxes for me. The only downside I can see with this plugin is that it doesn't seem super active at the moment. That said, pull requests are still occasionally being merged, so I am optimistic that it will continue to be maintained.
 
-To keep this article from getting too long I am going to focus on iOS and only document the steps that I took, but I can confirm that the plugin works on Android as well. Refer to the [README](https://github.com/andpor/react-native-sqlite-storage) instructions for further details on plugin installation.
+To keep this article from getting too long I am going to focus only on the steps that I took to support iOS, but I can confirm that the plugin works on Android as well. Refer to the [README](https://github.com/andpor/react-native-sqlite-storage) instructions for further details on plugin installation.
 
 From the root directory of your RN app, install the plugin using npm:
 
