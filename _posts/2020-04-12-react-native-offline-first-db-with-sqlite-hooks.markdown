@@ -99,7 +99,7 @@ If you were to type the above code into App.tsx instead of copy/pasting it, you 
 
 ![TypeScript Intellisense in action]({{ site.baseurl }}/images/react-native/sqlite-offline/typescript-in-action.png)
 
-VS Code is able to give us intelligent tooltips (amongst other things) about the SQLite native plugin because we installed it's type declaration file above - which comes in extremely handy, especially when experimenting with a new API. We also installed the React and React Native types as part of the [previous article](/blog/2018/10/12/react-native-typescript-cocoapods/), so you will have access to this same intellisense for the entire React and RN APIs.
+VS Code is able to give us intelligent tooltips (amongst other things) about the SQLite plugin because we installed it's type declaration file above! This is extremely handy, especially when experimenting with a new API. We also installed the React and React Native types as part of a [previous article](/blog/2018/10/12/react-native-typescript-cocoapods/), to enable this same effect for the entire React and RN APIs.
 
 ## Build and Run the app
 
