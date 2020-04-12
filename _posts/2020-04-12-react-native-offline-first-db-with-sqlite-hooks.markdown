@@ -103,17 +103,17 @@ VS Code is able to give us intelligent tooltips (amongst other things) about the
 
 ## Build and Run the app
 
-Ensure the TypeScript compiler is currently running in watch mode. In my case, this is a matter of keeping a terminal tab/window open with the following command running:
+Run the TypeScript compiler in watch mode. In my [demo app's case](https://github.com/blefebvre/react-native-sqlite-demo/blob/master/package.json#L12), this is a matter of keeping a terminal tab/window open with the following command running (runs `tsc -w` under the hood):
 
-    npm run tsc -- -w
+    npm run watch
 
-From Xcode, run your app targeting a simulator of your choice. Once it's running, open up the RN developer menu from the app and toggle "Start JS Debugging" to open up a Chrome window attached to your app. With the debugger attached, devtools open, and everything wired up correctly, you will be able to see the `Database open!` log that we added above in the `SQLite.openDatabase().then()` block:
+Next, build and run your app from Xcode targeting a simulator of your choice. Once it's running, open up the RN developer menu from the app (use Command+D, or Hardware > Shake Gesture) and tap "Debug" to open up a Chrome window attached to your app. With the debugger attached, Chrome devtools open, and everything wired up correctly, you will be able to see `Database open!` logged to the console:
 
 ![SQLite plugin installed and functional!]({{ site.baseurl }}/images/react-native/sqlite-offline/database-opened-console-output.png)
 
-Alright! This indicates to us that the native SQLite plugin has been installed correctly. It also means that we've installed all the native code that we need for this article, so we will not have to build and run the app from Xcode again. Instead, make sure to toggle "Enable Hot Reloading" from the app's developer menu, and the app will reload to show your latest changes as soon as you've saved a file in VS Code.
+Alright! This indicates to us that the SQLite plugin has been installed correctly. It also means that we've installed all the native iOS bits that we need for this article, so we will not have to build and run the app from Xcode again. Instead, make sure to toggle "Enable Fast Refresh" from the app's developer menu, and the app will "refresh" - _without losing existing app state_ - to show your latest changes as soon as you've saved a file.
 
-☝️ this is one of my favourite features of building apps with RN. Make sure this is all working as described before moving on (you can try making a change to App.tsx to verify)!
+☝️ this is one of my favourite features of building apps with RN. Make sure this is all working before moving on (you can try making a change to App.tsx to verify).
 
 ## Project architecture
 
