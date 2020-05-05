@@ -1,10 +1,14 @@
 ---
 layout: post
 title: "Building an offline first app with React Native and SQLite"
+summary: "This article walks through how I built an offline first React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own."
 date: 2018-11-06 7:32
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, mobile, apps, offline first]
 ---
+> Hello! This post has been updated and the sample code refreshed for 2020 to feature Hooks, Context, and React Native 0.61.5. You can find the new post here: 
+>
+> [Building an offline first app with React Native and SQLite: 2020 refresh](/blog/2020/05/03/react-native-offline-first-db-with-sqlite-hooks/)
 
 This article walks through how I built an _offline first_ React Native app using a device-local SQLite database, and details the patterns that I would recommend following when building your own. As I mentioned in the intro of [my last post](/blog/2018/10/12/react-native-typescript-cocoapods/), I recently worked on a side project which required the secure storage of financial data in a relational manner. Due to the sensitive nature of the data, we did not want to store it on a server. The solution we came up with was one where the data would be stored locally on-device, which we found to have a number of benefits:
 
