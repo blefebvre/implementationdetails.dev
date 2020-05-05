@@ -2,6 +2,7 @@
 layout: post
 title: "Building an offline first app with React Native and SQLite: 2020 refresh"
 summary: "Get started with SQLite in a React Native app. Refreshed for 2020 to feature Hooks, Context, and React Native 0.61.5!"
+twitter_image: "/images/react-native/sqlite-offline-2020/react-native-sqlite-twitter-img.png"
 date: 2020-05-03 21:12
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, Dropbox, mobile, apps, offline first]
