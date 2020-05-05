@@ -6,6 +6,7 @@ twitter_image: "/images/react-native/sqlite-offline-2020/react-native-sqlite-twi
 date: 2020-05-03 21:12
 comments: true
 tags: [React Native, SQLite, TypeScript, CocoaPods, Dropbox, mobile, apps, offline first]
+published: true
 ---
 What follows is a refresh of my most-read [post](/blog/2018/11/06/react-native-offline-first-db-with-sqlite/), originally published in 2018. The code and content has been given a complete overhaul for 2020 to feature Hooks, Context, and updated to use React Native 0.61.5. The text has been condensed too because _man_ did I ever ramble on back then 😅.
 
