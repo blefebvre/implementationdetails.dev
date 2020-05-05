@@ -401,7 +401,7 @@ Make sure to use prepared statements (the `?` syntax) instead of constructing a 
 
 ## In conclusion
 
-In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, and combining it with TypeScript makes for a truly enjoyable (and productive) development experience. I hope the detail in this article has been helpful for you - please do reach out if anything is unclear or if I can provide any further detail. While my code above is simply a demo, I took the exact approach with it that I have used in my side project app, which is currently live in the App Store. 
+In case it wasn't clear above: I am a huge fan of the approach of using SQLite on-device in a React Native app, and combining it with TypeScript makes for a truly enjoyable (and productive) development experience. While my code above is simply a demo, I took the exact approach with it that I have used in my side project app, which is currently live in the App Store. 
 
 _But Bruce, is this not an "offline only" app, as opposed to offline first_? Indeed it is. Click below to read on about how you can use the Dropbox API to sync your app's database file between devices, giving you some of the benefits of having a server (backup and sync, namely), with very few of the headaches:
 
