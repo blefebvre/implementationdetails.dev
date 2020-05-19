@@ -25,7 +25,7 @@ Let's start by working through adding SQLite to an existing React Native app (RN
 
 I created a basic List app using the approach outlined below so I could share a working example of these concepts (and code) in action. It can be found here:
 
-Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo/tree/pre-hooks) (_NOTE:_ all links in this post now point to the `pre-hooks` branch. For an updated post on this subject, [click here](/link/to/new/post)!) on GitHub.
+Check out [React Native SQLite Demo](https://github.com/blefebvre/react-native-sqlite-demo/tree/pre-hooks) on GitHub. (_NOTE:_ all links in this post now point to the `pre-hooks` branch. For my latest post on this subject, [click here](/blog/2020/05/03/react-native-offline-first-db-with-sqlite-hooks/)!).
 
 ![Demo List app running on an iPhone X sim]({{ site.baseurl }}/images/react-native/sqlite-offline/list-app-demo.png)
 
