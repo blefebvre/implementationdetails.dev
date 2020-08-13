@@ -27,4 +27,4 @@ What do we cover? There are currently 4 experiments in the repository:
 3. [Effect of an ignoreUrlParams allow list](https://github.com/adobe/aem-dispatcher-experiments/blob/master/experiments/ignoreUrlParams)
 4. [Effect of the gracePeriod setting](https://github.com/adobe/aem-dispatcher-experiments/blob/master/experiments/gracePeriod)
 
-... and we'll be adding more. Do you have an idea for an experiment or configuration you'd like to see covered? Drop us a note in the issues, or send us a PR!
+... and we'll be adding more. Do you have an idea for an experiment or configuration you'd like to see covered? Drop us a note in the [issues](https://github.com/adobe/aem-dispatcher-experiments/issues), or send us a PR!
