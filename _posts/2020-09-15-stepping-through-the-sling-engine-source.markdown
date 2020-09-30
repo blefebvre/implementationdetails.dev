@@ -52,7 +52,7 @@ With that, you now have an exact copy of the Sling Engine source which is runnin
 
 ## Enable `debug` mode
 
-In order to connect a debugger to the JVM which is running AEM, you will need to set the `agentlib:jdwp` JVM arg as part of the command you use to start AEM. You can update the script in quickstart/bin/start to include this arg, or simply modify the command you use to run AEM:
+In order to connect a debugger to the Java virtual machine (JVM) which is running AEM, you will need to set the `agentlib:jdwp` JVM arg as part of the command you use to start AEM. You can update the script in crx-quickstart/bin/start to include this arg, or otherwise modify the command you use to run AEM:
 
 ```
 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:40404
@@ -62,5 +62,89 @@ Note that you cannot hook up a debugger to an AEM instance which was started by 
 
 Make note of the address port above: `40404`. You will need this port later on when configuring your IDE.
 
+Start AEM with this new arg in place, and you should see a log entry printed to the console indicating that it is listening:
+
+```
+Listening for transport dt_socket at address: 40404
+```
+
 ## Connect your IDE
 
+This article covers the use of IntelliJ and Visual Studio Code. Other IDEs which support Java will have similar steps.
+
+### IntelliJ
+
+Open the Sling Engine project source code with IntelliJ. On my Mac, I do so via File > Open, and then I select the folder which contains the top level pom.xml.
+
+From the menu bar, select Run > Edit Configurations...:
+
+<img src="{{ site.baseurl }}/images/aem/sling/intellij_configurations.png" alt="Select Edit Configurations from the top menu" width="300">
+
+From the left hand pane, expand Templates. Locate the Remote entry, and Select it. From the top right of the dialog, click the "Create Configuration" text to create a new config from the Remote template.
+
+Give it a name, such as "Sling Engine debug". Ensure Debugger Mode is set to "Attach to remote JVM", Host is set to `localhost` and port is the port number you set in your JVM args above (`40404` in my case):
+
+<img src="{{ site.baseurl }}/images/aem/sling/debug_config.png" alt="Configure the new debug config" width="600">
+
+Click "OK" to save your debug configuration.
+
+With your new configuration selected in the "Build/Run" dropdown, click the bug icon to start a debugging session.
+
+With any luck, you should see the following message in the debugger:
+
+<img src="{{ site.baseurl }}/images/aem/sling/intellij_connected.png" alt="Debugger connected message in console" width="600">
+
+Excellent! You're now ready to set breakpoints and step through the code. You can skip the VS Code section below.
+
+### Visual Studio Code
+
+Ensure you have the "Language Support for Java(TM) by Red Hat" and "Debugger for Java" extensions installed.
+
+Open the Sling Engine project source code with VS Code. This can be done via the File > Open dialog, or by running `code .` from a terminal where the current working directory is the Sling Engine source.
+
+Open a Java file to "activate" the extension. I picked `SlingRequestProcessor.java`.
+
+Select the Run tab, then click "create a launch.json file".
+
+<img src="{{ site.baseurl }}/images/aem/sling/create_launch_file.png" alt="Create Launch.json file in VS Code" width="600">
+
+In launch.json, change `request` from "launch" to "attach". Replace `mainClass` with `hostName` and `port` properties. As an example, refer to my configuration:
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug Sling Engine",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 40404
+        }
+    ]
+}
+```
+
+Save launch.json. 
+
+Still in the Run tab, click the Play button in the dropdown containing a list of run configs:
+
+<img src="{{ site.baseurl }}/images/aem/sling/click_play.png" alt="Click play to start a debug session" width="600">
+
+You may be prompted to run the Java language server in Standard mode. I said "Yes":
+
+<img src="{{ site.baseurl }}/images/aem/sling/standard_mode.png" alt="run the Java language server in Standard mode" width="600">
+
+Barring any errors, you are now ready to debug!
+
+## Set a breakpoint
+
+In your IDE/editor of choice, open `SlingRequestProcessorImpl.java` (any Java file works, but this one is a good place to start). In the file margin next to the line number, click to set a breakpoint on that line.
+
+Not sure where to start? Try setting a breakpoint on line `143`, just after the calls to `requestData.initResource(..)` and `requestData.initServlet(..)`.
+
+Make a request to the AEM instance that you have your debug session connected to. Since I have connected to my publish instance, the following cURL command will do:
+
+```
+curl http://localhost:4503/content/we-retail/us/en.html
+```
