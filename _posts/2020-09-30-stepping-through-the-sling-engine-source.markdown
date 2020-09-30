@@ -2,7 +2,7 @@
 layout: post
 title: "Step through the source code of AEM's Apache Sling Engine"
 summary: "Sling's interpretation of a request may differ from your own. Hook up a debugger to see how its working behind the scenes."
-twitter_image: "/images/aem/.png"
+twitter_image: "/images/aem/sling/sling-debug-post.png"
 date: 2020-09-30 8:24
 comments: true
 tags: [Adobe Experience Manager, AEM, Sling, Apache Sling]
