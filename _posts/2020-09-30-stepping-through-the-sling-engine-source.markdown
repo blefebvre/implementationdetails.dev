@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Step through the source code of AEM's Apache Sling Engine"
-summary: "Sling's interpretation of a request can sometimes seem complicated. Hook up a debugger to see how it works behind the scenes."
+summary: "Sling's interpretation of a request may differ from your own. Hook up a debugger to see how its working behind the scenes."
 twitter_image: "/images/aem/.png"
 date: 2020-09-30 8:24
 comments: true
