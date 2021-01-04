@@ -14,15 +14,9 @@ Fortunately, the folks at Microsoft had been hard at work on [React Native for W
 
 This post details some of the gotchas I ran into while adding macOS support to an existing React Native app.
 
-<!--
-
-<img src="{{ site.baseurl }}/images/aem/sling/intellij_breakpoint.png" alt="IntelliJ state when a breakpoint is hit" >
-
--->
-
 # Before you begin
 
-I'd highly recommend giving the [Get Started with macOS](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before even opening your terminal. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. 
+I'd highly recommend giving the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before attempting to add support to an existing app. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. Worst case, you'll find out which dev dependencies you are missing and can get things sorted before beginning the process on your app.
 
 Next, ensure your existing app has been upgraded to React Native `0.62.2` (the latest 0.62 release). At the time of writing the latest release of RN is 0.63, but the "Get Started with macOS" states the following: "** Latest stable version available for React Native for macOS is 0.62**"
 
@@ -30,17 +24,26 @@ Are you a few versions behind? The [React Native Upgrade Helper](https://react-n
 
 # Install
 
-The actual installation is dead simple and was finished in a few minutes. I won't duplicate the steps here since they are very nicely laid out in [Get Started with macOS](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started). 
+The actual installation is dead simple and was finished in a few minutes. I won't duplicate the steps here since they are very nicely laid out in [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) guide. 
 
-Hopefully this part goes smoothly for you as well, but if not I'd recommend perusing the [react-native-macos issues](https://github.com/microsoft/react-native-macos/issues?q=is%3Aissue+) to see if there's a workaround for your problem.
+Hopefully this part goes smoothly for you as well, but if not I'd recommend perusing the [react-native-macos GitHub repo issues tab](https://github.com/microsoft/react-native-macos/issues?q=is%3Aissue+) to see if there's a workaround for your problem.
 
-Upon reaching the bottom of the "Get Started with macOS" guide you should have a shiny new `macos/` directly next to `ios/` and `android/` in your project root. Open your new `macos/*.xcworkspace` file with Xcode, select the `*-macOS` build target, and hit the play button to build and run your app.
+Upon reaching the bottom of the "Get Started with macOS" guide you should have a shiny new `macos/` directly next to `ios/` and/or `android/` in your project root. Open your new `macos/*.xcworkspace` file with Xcode, select the `*-macOS` build target, and hit the play button to build and run your app.
 
 <img src="{{ site.baseurl }}/images/react-native/macos/macOS-build-target.png" alt="Selecting the macOS build target in Xcode" >
 
 # Gotchas
 
+Did your app open up, work perfectly, and not display any redbox errors? If so, I offer my sincere congratulations. You may close this browser tab now and begin the App Store release process for your new macOS app (after a thorough round of testing, of course 🙂).
+
+If not, however, perhaps I can help by sharing the solutions to issues that I ran into.
+
 ## Invariant Violation: `Native module cannot be null`
+
+
+<img src="{{ site.baseurl }}/images/react-native/macos/invariant-violation.png" alt="Redbox error stating 'Invariant Violation: Native module cannot be null' (detailed in text form below)" width="350" >
+
+This was a frustrating one to debug. Which module are we talking about, here?
 
 ```
 Invariant Violation: Native module cannot be null.
@@ -57,6 +60,20 @@ loadModuleImplementation
     DropboxDatabaseSync.bundle?platform=macos&dev=true&minify=false&modulesOnly=true&runModule=false&shallow=true:17:57
 loadModuleImplementation
 ```
+
+### If you come across this error
+
+My understanding of this error is that there is some JS code which is attempting to use a native module which does not exist in the compiled app, for whatever reason. Therefor the first step in resolving this error is understanding which native module is failing to run on macOS.
+
+There is a clue in the fine print of this stacktrace which I would not find until after my debugging and extensive Googling: starting at the top, look for the first line of fine print which involves a JS file from your app. In my apps case, [DropboxDatabaseSync](https://github.com/blefebvre/react-native-sqlite-demo/blob/main/src/sync/dropbox/DropboxDatabaseSync.ts) is this file.
+
+Next, open the file in question. If you aren't using source control now might be a good time to start, since I am going to suggest deleting source which you will _most likely_ want to add back at some point. At the very least, take a complete backup of your app before making any changes.
+
+Now it's time to remove imports for any native modules that this file includes, and comment out (or delete) the code which is using the imported module. In my case this involved commenting out 
+
+<!-- LEFT OFF HERE! -->
+
+### Solution/workaround
 
 ## `Modal` support
 
