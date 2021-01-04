@@ -8,14 +8,35 @@ comments: true
 tags: [React Native, macOS, SQLite, gotchas]
 published: true
 ---
+I first learned about the [React Native for macOS](https://github.com/microsoft/react-native-macos) project while investigating a claim I'd heard that _any iOS app_ could now run natively on Big Sur. Turns out I had heard wrong; iOS apps [can run natively on Big Sur](https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_0_1-ios-ipados-apps-on-mac-release-notes), but only on Macs with the new Apple silicon (M1 chip).
+
+Fortunately, the folks at Microsoft had been hard at work on [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/docs/rnm-getting-started) which claims to enable you to run your React Native apps on macOS 10.13 (High Sierra) and greater. I have an app which has no mobile-specific requirements and a user base that would value being able to work on both iOS and Mac, so I decided to try it out.
+
+This post details some of the gotchas I ran into while adding macOS support to an existing React Native app.
+
 <!--
 
 <img src="{{ site.baseurl }}/images/aem/sling/intellij_breakpoint.png" alt="IntelliJ state when a breakpoint is hit" >
 
 -->
+
 # Before you begin
 
-# Setup
+I'd highly recommend giving the [Get Started with macOS](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before even opening your terminal. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. 
+
+Next, ensure your existing app has been upgraded to React Native `0.62.2` (the latest 0.62 release). At the time of writing the latest release of RN is 0.63, but the "Get Started with macOS" states the following: "** Latest stable version available for React Native for macOS is 0.62**"
+
+Are you a few versions behind? The [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/) is an excellent tool for working through an upgrade. I've done a few of these now, and have my process documented here: [Upgrading a React Native app](/blog/2019/03/03/upgrading-react-native-with-rn-diff-purge/)
+
+# Install
+
+The actual installation is dead simple and was finished in a few minutes. I won't duplicate the steps here since they are very nicely laid out in [Get Started with macOS](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started). 
+
+Hopefully this part goes smoothly for you as well, but if not I'd recommend perusing the [react-native-macos issues](https://github.com/microsoft/react-native-macos/issues?q=is%3Aissue+) to see if there's a workaround for your problem.
+
+Upon reaching the bottom of the "Get Started with macOS" guide you should have a shiny new `macos/` directly next to `ios/` and `android/` in your project root. Open your new `macos/*.xcworkspace` file with Xcode, select the `*-macOS` build target, and hit the play button to build and run your app.
+
+<img src="{{ site.baseurl }}/images/react-native/macos/macOS-build-target.png" alt="Selecting the macOS build target in Xcode" >
 
 # Gotchas
 
