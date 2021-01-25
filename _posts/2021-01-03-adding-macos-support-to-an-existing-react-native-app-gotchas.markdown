@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Adding macOS support to an existing React Native app"
-summary: "Microsoft recently introduced a package to enable React Native apps to be built and run on macOS. This post covers some gotchas that I encountered while adding support to an existing app."
+summary: "Microsoft recently introduced a package to enable React Native apps to be built and run on macOS. This post covers some gotchas that I encountered while adding support to an existing app of mine."
 twitter_image: "/images/...."
 date: 2021-01-03 6:24
 comments: true
@@ -10,13 +10,13 @@ published: true
 ---
 I first learned about the [React Native for macOS](https://github.com/microsoft/react-native-macos) project while investigating a claim I'd heard that _any iOS app_ could now run natively on Big Sur. Turns out I had heard wrong; iOS apps [can run natively on Big Sur](https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_0_1-ios-ipados-apps-on-mac-release-notes), but only on Macs with the new Apple silicon (M1 chip).
 
-Fortunately, the folks at Microsoft had been hard at work on [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/docs/rnm-getting-started) which claims to enable you to run your React Native apps on macOS 10.13 (High Sierra) and greater. I have an app which has no mobile-specific requirements and a user base that would value being able to work on both iOS and Mac, so I decided to try it out.
+Fortunately, the folks at Microsoft had been hard at work on [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/docs/rnm-getting-started) which claims to enable you to run your React Native apps on macOS 10.13 (High Sierra) and greater. I have an app with a user base that would value being able to work on both mobile and desktop, so I decided to try it out.
 
 This post details some of the gotchas I ran into while adding macOS support to an existing React Native app.
 
 # Before you begin
 
-I'd highly recommend giving the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before attempting to add support to an existing app. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. Worst case, you'll find out which dev dependencies you are missing and can get things sorted before beginning the process on your app.
+I'd highly recommend giving the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before attempting to add support to an existing app. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. Worst case, you'll find out which dev dependencies you are missing and can get those sorted before beginning the process with your own app.
 
 Next, ensure your existing app has been upgraded to React Native `0.62.2` (the latest 0.62 release). At the time of writing the latest release of RN is 0.63, but the "Get Started with macOS" states the following: "** Latest stable version available for React Native for macOS is 0.62**"
 
@@ -24,7 +24,7 @@ Are you a few versions behind? The [React Native Upgrade Helper](https://react-n
 
 # Install
 
-The actual installation is dead simple and was finished in a few minutes. I won't duplicate the steps here since they are very nicely laid out in [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) guide. 
+The installation itself is a breeze and was finished in a few minutes over a decent internet connection. I won't duplicate the steps here since they are very nicely laid out in the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) guide. 
 
 Hopefully this part goes smoothly for you as well, but if not I'd recommend perusing the [react-native-macos GitHub repo issues tab](https://github.com/microsoft/react-native-macos/issues?q=is%3Aissue+) to see if there's a workaround for your problem.
 
@@ -32,14 +32,15 @@ Upon reaching the bottom of the "Get Started with macOS" guide you should have a
 
 <img src="{{ site.baseurl }}/images/react-native/macos/macOS-build-target.png" alt="Selecting the macOS build target in Xcode" >
 
+Want to try out the React Native SQLite demo list app on macOS? You can find the source here: [github.com/blefebvre/react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo)
+
 # Gotchas
 
 Did your app open up, work perfectly, and not display any redbox errors? If so, I offer my sincere congratulations. You may close this browser tab now and begin the App Store release process for your new macOS app (after a thorough round of testing, of course 🙂).
 
-If not, however, perhaps I can help by sharing the solutions to issues that I ran into.
+If not, however, perhaps I can help by sharing the solutions to issues that I ran into while adding macOS support to the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) app.
 
 ## Invariant Violation: `Native module cannot be null`
-
 
 <img src="{{ site.baseurl }}/images/react-native/macos/invariant-violation.png" alt="Redbox error stating 'Invariant Violation: Native module cannot be null' (detailed in text form below)" width="350" >
 
