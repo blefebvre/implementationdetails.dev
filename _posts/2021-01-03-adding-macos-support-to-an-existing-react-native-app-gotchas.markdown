@@ -38,7 +38,7 @@ Want to try out the React Native SQLite demo list app on macOS? You can find the
 
 Did your app open up, work perfectly, and not display any redbox errors? If so, I offer my sincere congratulations. You may close this browser tab now and begin the App Store release process for your new macOS app (after a thorough round of testing, of course 🙂).
 
-If not, however, perhaps I can help by sharing the solutions to issues that I ran into while adding macOS support to the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) app.
+If not, however, perhaps I can help by sharing the solutions/workarounds to issues that I ran into while adding macOS support to the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) app.
 
 ## Invariant Violation: `Native module cannot be null`
 
@@ -64,17 +64,44 @@ loadModuleImplementation
 
 ### If you come across this error
 
-My understanding of this error is that there is some JS code which is attempting to use a native module which does not exist in the compiled app, for whatever reason. Therefor the first step in resolving this error is understanding which native module is failing to run on macOS.
+My understanding of this error is that there is some JS code which is attempting to use a native module which does not exist in the compiled app, for whatever reason. Knowing this, the first step in resolving this error is understanding which native module is failing to run on macOS.
 
-There is a clue in the fine print of this stacktrace which I would not find until after my debugging and extensive Googling: starting at the top, look for the first line of fine print which involves a JS file from your app. In my apps case, [DropboxDatabaseSync](https://github.com/blefebvre/react-native-sqlite-demo/blob/main/src/sync/dropbox/DropboxDatabaseSync.ts) is this file.
+There is a clue in the fine print of the above stacktrace which I would not find until after some debugging and extensive Googling: starting at the top, look for the first line of fine print which involves a JS file from your app. In my apps case, [DropboxDatabaseSync](https://github.com/blefebvre/react-native-sqlite-demo/blob/main/src/sync/dropbox/DropboxDatabaseSync.ts) is this file.
 
-Next, open the file in question. If you aren't using source control now might be a good time to start, since I am going to suggest deleting source which you will _most likely_ want to add back at some point. At the very least, take a complete backup of your app before making any changes.
+Next, open the file in question. If you aren't using source control now might be a good time to start, since I am going to suggest deleting source which you will _most likely_ want to add back later on. At the very least, take a complete backup of your app before making any changes.
 
-Now it's time to remove imports for any native modules that this file includes, and comment out (or delete) the code which is using the imported module. In my case this involved commenting out 
+Now it's time to remove imports for any native modules that this file includes, and comment out (or delete) the code which is making use of the imported module. In my case this first involved commenting out the following 4 lines, and then updating the code in the source file to not use these imports. This _complete breaks this feature_, of course, and is temporary - We are just performing a search for the module that is causing the error:
 
-<!-- LEFT OFF HERE! -->
+```
+//import NetInfo from "@react-native-community/netinfo";
+//import AsyncStorage from "@react-native-async-storage/async-storage";
+//import RNFetchBlob from "rn-fetch-blob";
+//import RNFS from "react-native-fs";
+```
+
+With these imports commented out and the methods of this file updated to either return `Promise<void>` or `null`, I was able to run the app! 
+
+> Note: In some cases I needed to re-run the app from Xcode in order to have my changes reflected in the macOS simulator. If you are stuck in a "RedBox loop", try re-running instead of reloading.
+
+I began adding back in imports for these modules until I determined that the culprit of _my_ error was: `react-native-fs`. A quick search of the project's GitHub issues reveals that there are others who are [lobbying for macOS support](https://github.com/itinance/react-native-fs/issues/887) already - 🤞.
 
 ### Solution/workaround
+
+So you've discovered that a dependency containing platform native code is not supported on macOS. What next?
+
+In the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) app's case, this is not a critical dependency to run the app. It does break one of the app's main features (Dropbox database sync) unfortunately, but the app _can_ still function as a standalone app without it. 
+
+An option available to support native functionality on platforms which support it, while disabling it on those which don't, is to leverage React Native's [Platform Specific Code](https://reactnative.dev/docs/platform-specific-code) features. I specifically like the [Platform-specific file extensions](https://reactnative.dev/docs/platform-specific-code#platform-specific-extensions), which allow you "sub in" platform specific files as needed, without changing any of the code which uses those files.
+
+In my case, the solution involved creating a [DropboxDatabaseSync.macos.ts]() platform-specific file which contains a mocked implementation of the `DatabaseSync` interface that basically does nothing. Since it does nothing, does not need the `react-native-fs` plugin, and the app is able to run successfully with this file picked when the app is run on macOS.
+
+To avoid user frustration, I also added a platform specific Settings page which shows the following message when the app is run on macOS:
+
+// TODO image of Settings on macOS
+
+Thinking creatively: since Dropbox is typically running on a user's computer, a possible workaround could be to bypass the need for the plugin (and sync mechanism) by loading the database file directly from it's location in the user's Dropbox folder. Something to try in a future post! 😄
+
+
 
 ## `Modal` support
 
