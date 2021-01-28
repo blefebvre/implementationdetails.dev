@@ -93,28 +93,50 @@ In the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqli
 
 An option available to support native functionality on platforms which support it, while disabling it on those which don't, is to leverage React Native's [Platform Specific Code](https://reactnative.dev/docs/platform-specific-code) features. I specifically like the [Platform-specific file extensions](https://reactnative.dev/docs/platform-specific-code#platform-specific-extensions), which allow you "sub in" platform specific files as needed, without changing any of the code which uses those files.
 
-In my case, the solution involved creating a [DropboxDatabaseSync.macos.ts]() platform-specific file which contains a mocked implementation of the `DatabaseSync` interface that basically does nothing. Since it does nothing, does not need the `react-native-fs` plugin, and the app is able to run successfully with this file picked when the app is run on macOS.
+In my case, the solution involved creating a [DropboxDatabaseSync.macos.ts](https://github.com/blefebvre/react-native-sqlite-demo/blob/macOS-support/src/sync/dropbox/DropboxDatabaseSync.macos.ts#L15) platform-specific file which contains a mocked implementation of the `DatabaseSync` interface that basically does nothing. Since it does nothing, does not need the `react-native-fs` plugin, and the app is able to run successfully with this file picked when the app is run on macOS.
 
-To avoid user frustration, I also added a platform specific Settings page which shows the following message when the app is run on macOS:
+To avoid user frustration, I also added a [platform specific Settings page](https://github.com/blefebvre/react-native-sqlite-demo/blob/macOS-support/src/components/SettingsScreen.macos.tsx#L19) which shows the following message when the app is run on macOS:
 
-// TODO image of Settings on macOS
+<img src="{{ site.baseurl }}/images/react-native/macos/macOS-no-sync.png" alt="Screenshot of the app notifying the user that Dropbox sync is not available on macOS" width="350">
 
-Thinking creatively: since Dropbox is typically running on a user's computer, a possible workaround could be to bypass the need for the plugin (and sync mechanism) by loading the database file directly from it's location in the user's Dropbox folder. Something to try in a future post! 😄
-
+Another option, for my particular issue: since Dropbox is typically running locally on a user's machine, a potential workaround could be to bypass the need for the plugin (and sync mechanism) altogether by accessing the database file directly from it's location in the user's Dropbox folder. Something to try in a future post... 😄
 
 
 ## `Modal` support
+
+<img src="{{ site.baseurl }}/images/react-native/macos/invariant-violation.png" alt="Redbox error stating 'Invariant Violation: requireNativeComponent: RCTModalHostView was not found in the UIManager' (detailed in text form below)" width="350" >
 
 ```
 Invariant Violation: requireNativeComponent: "RCTModalHostView" was not found in the UIManager.
 
 This error is located at:
     in RCTModalHostView (at Modal.js:262)
-    in Modal (at ViewListModal.tsx:64)
-    in ViewListModal (at AllLists.tsx:62)
-    in RCTView (at AllLists.tsx:37)
-    in AllLists (at HomeScreen.tsx:14)
+    in Modal (at HomeScreen.tsx:36)
+    in HomeScreen (at SceneView.tsx:122)
+    in StaticContainer
+    in StaticContainer (at SceneView.tsx:115)
+    in EnsureSingleNavigator (at SceneView.tsx:114)
+    in SceneView (at useDescriptors.tsx:153)
 ```
+
+This error is due to the core React Native `Modal` component [not being supported on macOS and Windows](https://github.com/microsoft/react-native-macos/issues/481). I was frustrated by this one at first since my two main RN apps both make extensive use of the Modal component. However, when you think about it, the UI pattern offered by Modal is not a very common pattern on non-mobile devices.
+
+### Solution/workaround
+
+Since Modal support is not implemented in the [react-native-macos](https://github.com/microsoft/react-native-macos) project, I could have either implemented it myself (a larger task than I was hoping to take on), or switch from using Modal to something else. I chose the latter.
+
+Up until this point I had tried to keep the dependencies of the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) to a bare minimum to focus on the SQLite & Dropbox aspects. As a result I had deliberately avoided including a navigator. With Modal no longer being viable I figured that it was time to introduce a navigator, and landed on [React Navigation](https://reactnavigation.org) which appeared to support macOS out of the box.
+
+Note: if you choose this route, or perhaps you already use React Navigation in your app, note the following line in the Getting Started guide:
+
+> Note: If you are building for Android or iOS, do not skip this step, or your app may crash in production even if it works fine in development. This is not applicable to other platforms.
+
+```
+import 'react-native-gesture-handler';
+```
+
+// TODO!!
+
 
 ## Dropbox OAuth2 support (?)
 
