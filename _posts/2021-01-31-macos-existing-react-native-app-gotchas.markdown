@@ -2,7 +2,7 @@
 layout: post
 title: "Adding macOS support to an existing React Native app"
 summary: "Microsoft recently introduced a package to enable React Native apps to be built and run on macOS. This post covers some gotchas that I encountered while adding support to an existing app of mine."
-twitter_image: "/images/...."
+twitter_image: "/images/react-native/macos/macOS-react-native-post-image.png"
 date: 2021-01-31 21:14
 comments: true
 tags: [React Native, macOS, SQLite, gotchas]
