@@ -16,7 +16,7 @@ This post details some of the gotchas I ran into while adding macOS support to a
 
 <img src="{{ site.baseurl }}/images/react-native/macos/running-on-macos.png" alt="React Native SQLite demo app shown running on macOS" width="450" >
 
-# Before you begin
+## Before you begin
 
 I'd highly recommend giving the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) doc a read from top to bottom before attempting to add support to an existing app. It is short and sweet, and in a perfect world will give you a working macOS app in about 5 minutes. Worst case, you'll find out which dev dependencies you are missing and can get those sorted before beginning the process with your own app.
 
@@ -24,7 +24,7 @@ Next, ensure your existing app has been upgraded to React Native `0.62.2` (the l
 
 Are you a few versions behind? The [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/) is an excellent tool for working through an upgrade. I've done a few of these now, and have my process documented here: [Upgrading a React Native app](/blog/2019/03/03/upgrading-react-native-with-rn-diff-purge/)
 
-# Install
+## Install
 
 The installation itself is a breeze and was finished in a few minutes over a decent internet connection. I won't duplicate the steps here since they are very nicely laid out in the [Get Started with macOS - 0.62](https://microsoft.github.io/react-native-windows/docs/0.62/rnm-getting-started) guide. 
 
@@ -35,13 +35,13 @@ Upon reaching the bottom of the "Get Started with macOS" guide you should have a
 <img src="{{ site.baseurl }}/images/react-native/macos/macOS-build-target.png" alt="Selecting the macOS build target in Xcode" >
 
 
-# Gotchas
+## Gotchas
 
 Did your app open up, work perfectly, and not display any redbox errors? If so, I offer my sincere congratulations. You may close this browser tab now and begin the App Store release process for your new macOS app (after a thorough round of testing, of course 🙂).
 
 If not, however, perhaps I can help by sharing some workarounds to issues that I ran into while adding macOS support to the [react-native-sqlite-demo](https://github.com/blefebvre/react-native-sqlite-demo) app.
 
-## Invariant Violation: `Native module cannot be null`
+### Invariant Violation: `Native module cannot be null`
 
 <img src="{{ site.baseurl }}/images/react-native/macos/invariant-violation.png" alt="Redbox error stating 'Invariant Violation: Native module cannot be null' (detailed in text form below)" width="350" >
 
@@ -63,7 +63,7 @@ loadModuleImplementation
 loadModuleImplementation
 ```
 
-### If you come across this error
+#### If you come across this error
 
 My understanding of this error is that there is some JS code in your app which is attempting to use a native module which does not exist in the compiled app, for whatever reason. Knowing this, the first step to resolving this error is to understand which native module is failing to run on macOS.
 
@@ -86,7 +86,7 @@ _Note:_ In some cases I had to re-run the app from Xcode in order to have the la
 
 I began adding back in imports for these modules until I determined that the culprit of _my_ error was: `react-native-fs`. A quick search of the project's GitHub issues revealed that there are others who are [lobbying for macOS support](https://github.com/itinance/react-native-fs/issues/887) already - 🤞.
 
-### Solution/workaround
+#### Solution/workaround
 
 So you've discovered that a dependency containing platform native code does not support macOS. What next?
 
@@ -103,7 +103,7 @@ To avoid user frustration, I also added a [platform specific Settings page](http
 Another option, for my particular issue: since Dropbox is typically running locally on a user's machine, a potential workaround could be to bypass the need for the plugin (and sync mechanism) altogether by accessing the database file directly from it's location in the user's Dropbox folder. Something to try in a future post... 😄
 
 
-## React Native `Modal` support
+### React Native `Modal` support
 
 <img src="{{ site.baseurl }}/images/react-native/macos/modal-issue.png" alt="Redbox error stating 'Invariant Violation: requireNativeComponent: RCTModalHostView was not found in the UIManager' (detailed in text form below)" width="350" >
 
@@ -122,7 +122,7 @@ This error is located at:
 
 This error is due to the core React Native `Modal` component [not being supported on macOS and Windows](https://github.com/microsoft/react-native-macos/issues/481). I was frustrated by this one at first since my two main RN apps both make extensive use of the Modal component. However, when you think about it, the UI pattern offered by Modal is not a very common pattern on desktop.
 
-### Solution/workaround
+#### Solution/workaround
 
 Since Modal support is not implemented in react-native-macos, I could have either implemented it myself (a larger task than I was game to take on), or switch from using Modal to something else. I chose the latter.
 
@@ -138,7 +138,7 @@ The last sentence above is key: This import should **not** be included when the 
 
 By replacing my use of Modal with a React Navigation "Stack Navigator" I was able to work around this issue. I recognize that this is a much simpler endeavour for a 3-screen demo app than it would be for a real production app—and is the main reason that I have not rolled out macOS support yet for my side project app.
 
-# Conclusion
+## Conclusion
 
 With these (non-trivial) issues resolved, my [React Native SQLite demo](https://github.com/blefebvre/react-native-sqlite-demo) app now runs successfully on macOS! The Dropbox sync functionality is unavailable, but the other plugins in use (most notably: SQLite) work as expected.
 
