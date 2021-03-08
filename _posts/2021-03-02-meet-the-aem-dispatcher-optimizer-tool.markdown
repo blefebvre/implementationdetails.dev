@@ -61,18 +61,18 @@ _Shameless plug:_ if you'd like to experiment with a number of these properties 
 
 #### Allow list checks
 
+The allow list rules are all about reducing the impact of _unexpected_ requests made to the public facing site. What is an unexpected request? I would classify anything that occurs outside of the regular traffic resulting from legitimate users browsing the site as "unexpected."
 
+The 3 allow list rules help achieve goals 1. (Maximize the cache hit ratio) and 2. (Reduce the impact of unexpected or malicious requests) by preventing requests containing unexpected query parameters from being treated as a cache misses, and by outright blocking requests containing unexpected Sling selectors and suffixes.
 
-## Can the rule set be extended?
-
-The default rules that are used when the Maven plugin is run can absolutely be extended. 
 
 ## Can I run it on my project today?
 
-You bet. 
+You bet! Check out the AEM DOT Dispatcher experiment for details: [Using the Dispatcher Optimizer Tool (DOT)](https://github.com/adobe/aem-dispatcher-experiments/tree/main/experiments/optimizer)
 
-## Future plans
+## Can the rule set be extended?
 
+The "core" rules that are used when the Maven plugin is run can absolutely be extended. The DOT experiment covers this use case as well: [Test #5 - Overlay some rules](https://github.com/adobe/aem-dispatcher-experiments/tree/main/experiments/optimizer#test-5---overlay-some-rules)
 
 
 ## Summary
