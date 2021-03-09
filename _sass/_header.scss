@@ -12,6 +12,12 @@
 
 .site-header .site-title {
   font-size: $h2;
+  text-decoration-line: underline;
+  text-underline-position: under;
+  text-decoration-style: wavy;
+  /* text-decoration-color: #63AEFE; */
+  text-decoration-color: red;
+  text-decoration-thickness: 1px;
 }
 
 .site-nav {
