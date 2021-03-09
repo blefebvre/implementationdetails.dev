@@ -42,6 +42,17 @@
   font-style: italic;
 }
 
+.post-meta a,
+.post-meta a:link, 
+.post-meta a:hover, 
+.post-meta a:visited,
+.post-meta a:active {
+  text-decoration: none;
+  text-decoration-color: #7a7a7a;
+  color: #7a7a7a;
+  text-decoration-thickness: 1px;
+}
+
 .related-post-title {
   border-bottom: thin solid #f3f3f3;
 }
