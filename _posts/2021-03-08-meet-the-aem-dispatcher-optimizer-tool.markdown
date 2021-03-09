@@ -61,6 +61,8 @@ These rules primarily help achieve goals `1.` "Maximize the cache hit ratio" and
 
 _Shameless plug:_ if you're curious how `/statfileslevel` and `/gracePeriod` can limit the effect of activations, or you'd otherwise like to experiment with these properties in a controlled environment (read: not your public site), check out the lab format [AEM Dispatcher Experiments](https://github.com/adobe/aem-dispatcher-experiments#aem-65-dispatcher-experiments) repository.
 
+Need a quick refresher on the role of these properties? The official Dispatcher documentation is an excellent resource to keep handy: [AEM documentation on Configuring the Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=en)
+
 #### Allow list checks
 
 The allow list rules are all about reducing the impact of _unexpected_ requests made to your public facing site. 
