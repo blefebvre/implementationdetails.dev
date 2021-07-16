@@ -10,7 +10,7 @@ published: true
 ---
 The Content Transfer Tool (CTT) is essential if you have an existing AEM site or app and intend to migrate it to AEM as a Cloud Service (AEMCS). I contribute to the CTT as part of my day job, and wanted to share an in-depth, technical 2-part series into the phases of a migration. First up: Extraction.
 
-There is lots to consider when executing a migration, and this post is going to assume you're [read the official docs](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/moving/cloud-migration/content-transfer-tool/using-content-transfer-tool.html) already before trying any of the below on your own environment. If you do wish to follow along, you will need a source AEM instance (6.3-6.5) and be an Administrator on an AEMCS instance. I'll be using an AEM 6.4 instance backed by an Azure data store, and my AEMCS is on the latest release at the time of writing (`2021.7.5607`).
+There is lots to consider when executing a migration, and this post is going to assume you're [read the official docs](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/moving/cloud-migration/content-transfer-tool/using-content-transfer-tool.html) already before trying any of the below on your own environment. If you do wish to follow along, you will need a source AEM instance (6.3-6.5) and be an Administrator on an AEMCS instance. I'll be using an AEM 6.4 instance backed by an Azure data store, and my AEMCS is on the latest release at the time of writing (`2021.7.5607`). With the latest CTT release installed (v1.5.4), I'm ready to begin:
 
 <img src="{{ site.baseurl }}/images/aem/ctt/blank-slate.png" alt="Create migration set form, all filled out" >
 
