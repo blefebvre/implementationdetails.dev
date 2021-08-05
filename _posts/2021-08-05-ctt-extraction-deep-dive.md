@@ -2,7 +2,7 @@
 layout: post
 title: "AEM Content Transfer Tool: Tips and tricks for a successful (and fast!) Extraction"
 summary: "From content paths to 'Overwrite staging container' to logs, get acquainted with the CTT Extraction phase."
-twitter_image: "/images/aem/dispatcher/introducing_the_aem_dot.png"
+twitter_image: "/images/aem/ctt/ctt-social.png"
 date: 2021-08-05 12:03
 comments: true
 tags: [Adobe Experience Manager, AEM, dispatcher, dispatcher optimizer tool, DOT]
