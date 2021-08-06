@@ -18,7 +18,7 @@ With the latest [CTT release](https://experience.adobe.com/#/downloads/content/s
 
 ## Creating the migration set
 
-While not technically part of the extraction, it is an important step so we'll cover it quickly. 
+While not technically part of the extraction, it is the starting point so we'll cover it quickly. 
 
 Note that if you're going to "Include versions", it is advised to add `/var/audit` as one of the Paths to migrate, since this is where some of the Assets timeline metadata is stored. Here's my migration set, just prior to hitting save:
 
